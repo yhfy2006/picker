@@ -15,6 +15,10 @@
 		452A84CB1C6439E100EEAE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 452A84C91C6439E100EEAE06 /* LaunchScreen.storyboard */; };
 		452A84D31C643BBD00EEAE06 /* MainCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A84D21C643BBD00EEAE06 /* MainCollectionViewCells.swift */; };
 		452A84D61C6452A000EEAE06 /* PickerJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A84D51C6452A000EEAE06 /* PickerJob.swift */; };
+		FC227B391C6547720045AE05 /* PickOne.png in Resources */ = {isa = PBXBuildFile; fileRef = FC227B381C6547720045AE05 /* PickOne.png */; };
+		FC227B3B1C6547A70045AE05 /* AddButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FC227B3A1C6547A70045AE05 /* AddButton.png */; };
+		FC227B3D1C6548880045AE05 /* cross92 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = FC227B3C1C6548880045AE05 /* cross92 (1).png */; };
+		FC227B3F1C65488D0045AE05 /* pencil23 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = FC227B3E1C65488D0045AE05 /* pencil23 (1).png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		452A84D51C6452A000EEAE06 /* PickerJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerJob.swift; sourceTree = "<group>"; };
 		5DE4DE3D40F3FD8CC589272F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E03822DEBD56116821A2BB6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		FC227B381C6547720045AE05 /* PickOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PickOne.png; sourceTree = "<group>"; };
+		FC227B3A1C6547A70045AE05 /* AddButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddButton.png; sourceTree = "<group>"; };
+		FC227B3C1C6548880045AE05 /* cross92 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross92 (1).png"; sourceTree = "<group>"; };
+		FC227B3E1C65488D0045AE05 /* pencil23 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil23 (1).png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +73,7 @@
 		452A84BF1C6439E100EEAE06 /* PickerOne */ = {
 			isa = PBXGroup;
 			children = (
+				FC227B351C65450E0045AE05 /* Resources */,
 				452A84D41C64527900EEAE06 /* Realm */,
 				452A84C01C6439E100EEAE06 /* AppDelegate.swift */,
 				452A84C21C6439E100EEAE06 /* ViewController.swift */,
@@ -100,6 +109,17 @@
 				5DE4DE3D40F3FD8CC589272F /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC227B351C65450E0045AE05 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FC227B3E1C65488D0045AE05 /* pencil23 (1).png */,
+				FC227B3C1C6548880045AE05 /* cross92 (1).png */,
+				FC227B381C6547720045AE05 /* PickOne.png */,
+				FC227B3A1C6547A70045AE05 /* AddButton.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +186,10 @@
 				452A84CB1C6439E100EEAE06 /* LaunchScreen.storyboard in Resources */,
 				452A84C81C6439E100EEAE06 /* Assets.xcassets in Resources */,
 				452A84C61C6439E100EEAE06 /* Main.storyboard in Resources */,
+				FC227B3F1C65488D0045AE05 /* pencil23 (1).png in Resources */,
+				FC227B3B1C6547A70045AE05 /* AddButton.png in Resources */,
+				FC227B391C6547720045AE05 /* PickOne.png in Resources */,
+				FC227B3D1C6548880045AE05 /* cross92 (1).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
