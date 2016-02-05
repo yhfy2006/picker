@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickerOne/PickerJob.swift"
+            timestampString = "476338697.616522"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "PickerJob"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PickerOne.PickerJob.createdDate.setter : __ObjC.NSDate"
+                  moduleName = "PickerOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/PickerOne/PickerOne/PickerJob.swift"
+                  timestampString = "476337900.48368"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PickerOne.PickerJob.createdDate.materializeForSet : __ObjC.NSDate"
+                  moduleName = "PickerOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/PickerOne/PickerOne/PickerJob.swift"
+                  timestampString = "476337900.483881"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PickerOne.PickerJob.init (PickerOne.PickerJob.Type)() -&gt; PickerOne.PickerJob"
+                  moduleName = "PickerOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/PickerOne/PickerOne/PickerJob.swift"
+                  timestampString = "476337900.484085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PickerOne.PickerJob.init (PickerOne.PickerJob.Type)(value : Swift.AnyObject) -&gt; PickerOne.PickerJob"
+                  moduleName = "PickerOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/PickerOne/PickerOne/PickerJob.swift"
+                  timestampString = "476337900.484274"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "78">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PickerOne.PickerJob.init (PickerOne.PickerJob.Type)(realm : __ObjC.RLMRealm, schema : __ObjC.RLMObjectSchema) -&gt; PickerOne.PickerJob"
+                  moduleName = "PickerOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/PickerOne/PickerOne/PickerJob.swift"
+                  timestampString = "476337900.484475"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "87">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PickerOne.PickerJob.init (PickerOne.PickerJob.Type)(value : Swift.AnyObject, schema : __ObjC.RLMSchema) -&gt; PickerOne.PickerJob"
+                  moduleName = "PickerOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/PickerOne/PickerOne/PickerJob.swift"
+                  timestampString = "476337900.484659"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "87">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickerOne/ViewController.swift"
+            timestampString = "476338021.548234"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
