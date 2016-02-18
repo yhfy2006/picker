@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		0F29808806E20B1DAAB0AA45 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE4DE3D40F3FD8CC589272F /* Pods.framework */; };
 		452A84C11C6439E100EEAE06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A84C01C6439E100EEAE06 /* AppDelegate.swift */; };
-		452A84C31C6439E100EEAE06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A84C21C6439E100EEAE06 /* ViewController.swift */; };
 		452A84C61C6439E100EEAE06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 452A84C41C6439E100EEAE06 /* Main.storyboard */; };
 		452A84C81C6439E100EEAE06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452A84C71C6439E100EEAE06 /* Assets.xcassets */; };
 		452A84CB1C6439E100EEAE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 452A84C91C6439E100EEAE06 /* LaunchScreen.storyboard */; };
 		452A84D31C643BBD00EEAE06 /* MainCollectionViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A84D21C643BBD00EEAE06 /* MainCollectionViewCells.swift */; };
 		452A84D61C6452A000EEAE06 /* PickerJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A84D51C6452A000EEAE06 /* PickerJob.swift */; };
+		4593A10B1C6FE11300A04382 /* ExperimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593A10A1C6FE11300A04382 /* ExperimentViewController.swift */; };
+		538AAEB593F9CD37D41EDFDF /* Pods_PickerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7A7D6129357853EFF8D439 /* Pods_PickerOne.framework */; };
 		FC227B391C6547720045AE05 /* PickOne.png in Resources */ = {isa = PBXBuildFile; fileRef = FC227B381C6547720045AE05 /* PickOne.png */; };
 		FC227B3B1C6547A70045AE05 /* AddButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FC227B3A1C6547A70045AE05 /* AddButton.png */; };
 		FC227B3D1C6548880045AE05 /* cross92 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = FC227B3C1C6548880045AE05 /* cross92 (1).png */; };
@@ -32,8 +33,11 @@
 		452A84CC1C6439E100EEAE06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		452A84D21C643BBD00EEAE06 /* MainCollectionViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCells.swift; sourceTree = "<group>"; };
 		452A84D51C6452A000EEAE06 /* PickerJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerJob.swift; sourceTree = "<group>"; };
+		4593A10A1C6FE11300A04382 /* ExperimentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentViewController.swift; sourceTree = "<group>"; };
+		4593A1141C6FE99600A04382 /* PickerOne-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PickerOne-Bridging-Header.h"; sourceTree = "<group>"; };
 		5DE4DE3D40F3FD8CC589272F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E03822DEBD56116821A2BB6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BF7A7D6129357853EFF8D439 /* Pods_PickerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC227B381C6547720045AE05 /* PickOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PickOne.png; sourceTree = "<group>"; };
 		FC227B3A1C6547A70045AE05 /* AddButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddButton.png; sourceTree = "<group>"; };
 		FC227B3C1C6548880045AE05 /* cross92 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross92 (1).png"; sourceTree = "<group>"; };
@@ -46,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F29808806E20B1DAAB0AA45 /* Pods.framework in Frameworks */,
+				538AAEB593F9CD37D41EDFDF /* Pods_PickerOne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +60,7 @@
 		452A84B41C6439E100EEAE06 = {
 			isa = PBXGroup;
 			children = (
+				4593A1141C6FE99600A04382 /* PickerOne-Bridging-Header.h */,
 				452A84BF1C6439E100EEAE06 /* PickerOne */,
 				452A84BE1C6439E100EEAE06 /* Products */,
 				4A76895C68F61551DD998088 /* Pods */,
@@ -76,6 +82,7 @@
 				FC227B351C65450E0045AE05 /* Resources */,
 				452A84D41C64527900EEAE06 /* Realm */,
 				452A84C01C6439E100EEAE06 /* AppDelegate.swift */,
+				4593A10A1C6FE11300A04382 /* ExperimentViewController.swift */,
 				452A84C21C6439E100EEAE06 /* ViewController.swift */,
 				452A84D21C643BBD00EEAE06 /* MainCollectionViewCells.swift */,
 				452A84C41C6439E100EEAE06 /* Main.storyboard */,
@@ -107,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				5DE4DE3D40F3FD8CC589272F /* Pods.framework */,
+				BF7A7D6129357853EFF8D439 /* Pods_PickerOne.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -208,7 +216,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PickerOne/Pods-PickerOne-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		40AD572D9166D8C6180CE2F2 /* Check Pods Manifest.lock */ = {
@@ -248,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				452A84C31C6439E100EEAE06 /* ViewController.swift in Sources */,
+				4593A10B1C6FE11300A04382 /* ExperimentViewController.swift in Sources */,
 				452A84D31C643BBD00EEAE06 /* MainCollectionViewCells.swift in Sources */,
 				452A84C11C6439E100EEAE06 /* AppDelegate.swift in Sources */,
 				452A84D61C6452A000EEAE06 /* PickerJob.swift in Sources */,
@@ -367,6 +375,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Changchen.PickerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PickerOne-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -379,6 +388,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Changchen.PickerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PickerOne-Bridging-Header.h";
 			};
 			name = Release;
 		};
