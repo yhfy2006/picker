@@ -13,8 +13,10 @@ class MainTableSoundViewCell: UITableViewCell {
     
     @IBOutlet var recordingAudioPlot:EZAudioPlotGL?
     var isRecording = false;
-    var audioFilePath:String?
     var audioFile:EZAudioFile?
+    var sound:Sound?
+    var index:Int?
+    var isloaded = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,29 +29,55 @@ class MainTableSoundViewCell: UITableViewCell {
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+        //self.setSelectedBoarder()
         // Configure the view for the selected state
+    }
+    
+    
+    func setSelectedBoarder()
+    {
+        self.recordingAudioPlot?.layer.borderWidth = 2
+        self.recordingAudioPlot?.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
+    func removeSelectedBoarderCell()
+    {
+        self.recordingAudioPlot?.layer.borderWidth = 0
+        self.recordingAudioPlot?.layer.borderColor = UIColor.clearColor().CGColor
     }
     
     func loadCell()
     {
+        if isloaded
+        {
+            return
+        }
         self.recordingAudioPlot?.backgroundColor = UIColor(red: 0.984, green: 0.71 ,blue: 0.365 ,alpha: 1)
         self.recordingAudioPlot?.color = UIColor(red: 1.0, green: 1.0 ,blue: 1.0 ,alpha: 1)
-        self.recordingAudioPlot?.plotType = EZPlotType.Rolling
         self.recordingAudioPlot?.shouldFill = true
         self.recordingAudioPlot?.shouldMirror = true
+        self.recordingAudioPlot?.gain = 10
         
-        if let filePath = self.audioFilePath
+        if let fileId = self.sound?.fileId
         {
-            if !self.isRecording
+            if self.sound?.isRecording == false
             {
-                let fileUrl = NSURL(fileURLWithPath: "/Users/vincentnewpro/Library/Developer/CoreSimulator/Devices/C908F5A9-C058-48F7-A366-90B7C60A5E1C/data/Containers/Data/Application/E2063A0F-3BA5-438B-961A-DEDE48A5C98B/Documents/1.m4a")
-                self.audioFile = EZAudioFile(URL: fileUrl)
-                
-                self.audioFile?.getWaveformDataWithCompletionBlock({ (waveformData, length) -> Void in
-                    let buffer = waveformData[0]
-                    self.recordingAudioPlot?.updateBuffer(buffer, withBufferSize: UInt32(length))
-                })
+                if fileId != "" {
+                    self.recordingAudioPlot?.plotType = EZPlotType.Buffer
+                    let filePath = Util.getAudioDirectory()+"/\(fileId)"
+                    let fileUrl = NSURL(fileURLWithPath:filePath)
+                    audioFile = EZAudioFile(URL: fileUrl)
+                    let formdata = audioFile?.getWaveformData()
+                    self.recordingAudioPlot?.updateBuffer((formdata?.buffers[0])!, withBufferSize: UInt32((formdata?.bufferSize)!))
+                    print("index \(self.index) \(fileId)")
+                    self.isloaded = true
+                }else
+                {
+                    self.recordingAudioPlot?.clear()
+                }
+            }else
+            {
+                self.recordingAudioPlot?.plotType = EZPlotType.Rolling
             }
         }
         

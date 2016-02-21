@@ -10,5 +10,6 @@ import Foundation
 import RealmSwift
 
 class Sound: Object {
-    dynamic var filePath = ""
+    dynamic var fileId = ""
+    dynamic var isRecording = false
 }

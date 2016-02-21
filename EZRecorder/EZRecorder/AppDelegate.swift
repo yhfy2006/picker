@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 realm.add(soundJob)
             }
         }
-        
+        print(Util.getAudioDirectory())
         return true
     }
 

@@ -41,17 +41,7 @@ class Util:NSObject{
     {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0]
-        let audioPath = documentsDirectory + "/audios"
-        
-        do{
-            if !NSFileManager.defaultManager().fileExistsAtPath(audioPath)
-            {
-                try NSFileManager.defaultManager().createDirectoryAtPath(audioPath, withIntermediateDirectories: false, attributes: nil)
-            }
-        }catch let error as NSError
-        {
-            print(error.localizedDescription);
-        }
+        let audioPath = documentsDirectory
         return audioPath
     }
     

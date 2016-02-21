@@ -22,16 +22,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="390"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="soundCell" rowHeight="122" id="hRe-Lu-EdA" customClass="MainTableSoundViewCell" customModule="EZRecorder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="soundCell" rowHeight="122" id="hRe-Lu-EdA" customClass="MainTableSoundViewCell" customModule="EZRecorder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hRe-Lu-EdA" id="fbB-3u-sqS">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="121.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzb-eY-jPk" customClass="EZAudioPlotGL">
+                                                <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzb-eY-jPk" customClass="EZAudioPlotGL">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="121.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                                                             <color key="value" red="0.1019607843" green="0.73725490199999999" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,9 +38,15 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="gain">
                                                             <real key="value" value="6"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="shouldFill" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="shouldMirror" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Bzb-eY-jPk" firstAttribute="top" secondItem="fbB-3u-sqS" secondAttribute="top" id="UDw-sV-vEi"/>
                                                 <constraint firstItem="Bzb-eY-jPk" firstAttribute="leading" secondItem="fbB-3u-sqS" secondAttribute="leading" id="awB-j2-ljM"/>
@@ -49,6 +54,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Bzb-eY-jPk" secondAttribute="bottom" id="tq9-rB-qxH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="recordingAudioPlot" destination="Bzb-eY-jPk" id="HkH-CY-fS2"/>
                                         </connections>
@@ -70,6 +76,13 @@
                                         </state>
                                         <connections>
                                             <action selector="startOrStopRecording" destination="qoy-ek-6AY" eventType="touchUpInside" id="Tck-y6-cKx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOY-Zh-FsY">
+                                        <rect key="frame" x="114" y="90" width="30" height="30"/>
+                                        <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="addTrack" destination="qoy-ek-6AY" eventType="touchUpInside" id="vPe-pL-IGB"/>
                                         </connections>
                                     </button>
                                 </subviews>

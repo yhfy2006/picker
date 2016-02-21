@@ -11,10 +11,12 @@ import EZAudio
 import RealmSwift
 
 
-class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDelegate,EZAudioPlayerDelegate{
+
+class MainViewController: UIViewController,SoundTrackMangerDelegate ,EZMicrophoneDelegate,EZRecorderDelegate,EZAudioPlayerDelegate{
 
     @IBOutlet var tableView:UITableView?
     @IBOutlet var startRecordingButton:UIButton?
+    @IBOutlet var addTrackButton:UIButton?
     
     var soundNumber = 0
     var isRecording = false
@@ -22,10 +24,9 @@ class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDeleg
     var soundJob:SoundJob?
     var soundCellCache:[MainTableSoundViewCell] = Array()
     
-    //EZAudio
-    var playerArray:[EZAudioPlayer] = Array()
-    var microphone: EZMicrophone?
-    var recorder:EZRecorder?
+    var soundTrackManager:SoundTrackManager?
+    
+
 
     let realm = try! Realm()
     
@@ -36,11 +37,12 @@ class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDeleg
         self.tableView?.separatorInset = UIEdgeInsetsZero;
         self.edgesForExtendedLayout = UIRectEdge.None
         
-        microphone = EZMicrophone.sharedMicrophone()
-        microphone!.delegate = self
+
         
         self.soundJob = realm.objects(SoundJob).first
         
+        soundTrackManager = SoundTrackManager(soundJob: self.soundJob!)
+        soundTrackManager?.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -64,72 +66,111 @@ class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDeleg
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = self.tableView!.dequeueReusableCellWithIdentifier("soundCell") as! MainTableSoundViewCell
-        cell.audioFilePath = soundJob!.sounds[indexPath.row].filePath
+        
+//        if soundCellCache.count <= indexPath.row
+//        {
+//            let cell = self.tableView!.dequeueReusableCellWithIdentifier("soundCell", forIndexPath: indexPath) as! MainTableSoundViewCell
+//            cell.sound = soundJob?.sounds[indexPath.row]
+//            print("\(indexPath.row) \(cell.sound?.fileId)")
+//            cell.loadCell()
+//            cell.index = indexPath.row
+//            if self.soundTrackManager?.currentIndex == indexPath.row
+//            {
+//                cell.setSelectedBoarder()
+//            }else
+//            {
+//                cell.removeSelectedBoarderCell()
+//            }
+//            soundCellCache.append(cell);
+//            return cell
+//        }else
+//        {
+//            return soundCellCache[indexPath.row]
+//        }
+        
+        let cell = self.tableView!.dequeueReusableCellWithIdentifier("soundCell", forIndexPath: indexPath) as! MainTableSoundViewCell
+        cell.sound = soundJob?.sounds[indexPath.row]
+        print("\(indexPath.row) \(cell.sound?.fileId)")
         cell.loadCell()
+        cell.index = indexPath.row
+        if self.soundTrackManager?.currentIndex == indexPath.row
+        {
+            cell.setSelectedBoarder()
+        }else
+        {
+            cell.removeSelectedBoarderCell()
+        }
+        soundCellCache.append(cell);
         return cell
+        
+
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
     
-    // MARK: - EZAudio
-    func microphone(microphone: EZMicrophone!, hasAudioReceived buffer: UnsafeMutablePointer<UnsafeMutablePointer<Float>>, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            //plot?.updateBuffer(buffer[0], withBufferSize: bufferSize);
-            let cell = self.soundCellCache.last
-            cell?.recordingAudioPlot?.updateBuffer(buffer[0], withBufferSize: bufferSize)
-        });
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        let recordingIndex = self.soundTrackManager?.currentIndex
+        let oldIndexPath = NSIndexPath(forRow: recordingIndex!, inSection: 0)
+        let oldCell = tableView.cellForRowAtIndexPath(oldIndexPath) as! MainTableSoundViewCell
+        oldCell.removeSelectedBoarderCell()
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MainTableSoundViewCell
+        cell.setSelectedBoarder()
+        self.soundTrackManager?.currentIndex = indexPath.row
+        
     }
     
-    func microphone(microphone: EZMicrophone!, hasBufferList bufferList: UnsafeMutablePointer<AudioBufferList>, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
-        if self.isRecording
-        {
-            self.recorder?.appendDataFromBufferList(bufferList, withBufferSize: bufferSize)
-        }
-    }
-    
+        
     @IBAction func startOrStopRecording()
     {
         if isRecording
         {
             isRecording = false
-            self.microphone!.stopFetchingAudio()
-            self.recorder?.closeAudioFile()
+            soundTrackManager?.stopRecord()
             self.startRecordingButton?.setTitle("Record", forState: .Normal)
-            
-            let cell = self.soundCellCache.last
-            cell?.isRecording = false
-            self.tableView?.reloadData()
         }
         else
         {
             isRecording = true
-            self.microphone!.startFetchingAudio()
-            self.isRecording = true
-            
-            let filePathString = self.getRandomAudioFilePath()
-            let audioFileUrl = NSURL(fileURLWithPath: filePathString)
-            let sound = Sound()
-            sound.filePath = filePathString
-            try! realm.write{
-                self.soundJob?.sounds.append(sound)
-            }
-            self.tableView?.reloadData()
-            
-            recorder = EZRecorder(URL: audioFileUrl, clientFormat: self.microphone!.audioStreamBasicDescription(), fileType: EZRecorderFileType.M4A, delegate: self)
+            soundTrackManager?.startRecord()
             self.startRecordingButton?.setTitle("Stop", forState: .Normal)
         }
         
 
     }
     
-    func getRandomAudioFilePath() ->String
+    @IBAction func addTrack()
     {
-        let path = Util.getAudioDirectory() + "/" + Util.getRamdonFileName()
-        print(path)
-        return path
+        let newIndex = soundJob?.sounds.count
+        soundTrackManager?.currentIndex = newIndex!
+        // add an empty sound to add the new track
+        try! realm.write{
+            self.soundJob?.sounds.append(Sound())
+        }
+        self.tableView?.reloadData()
+    }
+    
+    //Mark: Sound track manager
+    
+    func soundTrackStartedRecord(index: Int) {
+        self.tableView?.reloadData()
+    }
+    
+    func soundTrackStartedUpdated(microphone: EZMicrophone!, hasAudioReceived buffer: UnsafeMutablePointer<UnsafeMutablePointer<Float>>, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
+        let recordingIndex = self.soundTrackManager?.currentIndex
+        let indexPath = NSIndexPath(forRow: recordingIndex!, inSection: 0)
+        let cell = tableView!.cellForRowAtIndexPath(indexPath) as! MainTableSoundViewCell
+        cell.recordingAudioPlot?.updateBuffer(buffer[0], withBufferSize: bufferSize)
+        
+    }
+    
+    func soundTrackStartedUpdated(microphone: EZMicrophone!, hasBufferList bufferList: UnsafeMutablePointer<AudioBufferList>, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
+        
+    }
+    
+    func soundTrackStopRecordWithIndex(index: Int) {
+        self.tableView?.reloadData()
     }
     
     /*

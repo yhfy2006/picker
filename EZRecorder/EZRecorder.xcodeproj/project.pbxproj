@@ -12,6 +12,8 @@
 		4524A5C21C791D8700B167E3 /* MainTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5C11C791D8700B167E3 /* MainTableViewCells.swift */; };
 		4524A5C51C79273700B167E3 /* SoundJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5C41C79273700B167E3 /* SoundJob.swift */; };
 		4524A5C71C7927BE00B167E3 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5C61C7927BE00B167E3 /* Sound.swift */; };
+		4524A5C91C7942C500B167E3 /* SoundCellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5C81C7942C500B167E3 /* SoundCellManager.swift */; };
+		4524A5CB1C79454B00B167E3 /* SoundTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5CA1C79454B00B167E3 /* SoundTrackManager.swift */; };
 		4593A1221C6FF81200A04382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593A1211C6FF81200A04382 /* AppDelegate.swift */; };
 		4593A1241C6FF81200A04382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593A1231C6FF81200A04382 /* ViewController.swift */; };
 		4593A1271C6FF81200A04382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4593A1251C6FF81200A04382 /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 		4524A5C11C791D8700B167E3 /* MainTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCells.swift; sourceTree = "<group>"; };
 		4524A5C41C79273700B167E3 /* SoundJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundJob.swift; sourceTree = "<group>"; };
 		4524A5C61C7927BE00B167E3 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		4524A5C81C7942C500B167E3 /* SoundCellManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCellManager.swift; sourceTree = "<group>"; };
+		4524A5CA1C79454B00B167E3 /* SoundTrackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundTrackManager.swift; sourceTree = "<group>"; };
 		4593A11E1C6FF81200A04382 /* EZRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593A1211C6FF81200A04382 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4593A1231C6FF81200A04382 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				4593A1231C6FF81200A04382 /* ViewController.swift */,
 				4524A5B81C79138400B167E3 /* Shared.swift */,
 				FCBDDA751C77B5370068794D /* MainViewController.swift */,
+				4524A5CA1C79454B00B167E3 /* SoundTrackManager.swift */,
+				4524A5C81C7942C500B167E3 /* SoundCellManager.swift */,
 				4524A5C11C791D8700B167E3 /* MainTableViewCells.swift */,
 				4593A1251C6FF81200A04382 /* Main.storyboard */,
 				4593A1281C6FF81200A04382 /* Assets.xcassets */,
@@ -238,8 +244,10 @@
 				4593A1241C6FF81200A04382 /* ViewController.swift in Sources */,
 				4524A5B91C79138400B167E3 /* Shared.swift in Sources */,
 				4524A5C51C79273700B167E3 /* SoundJob.swift in Sources */,
+				4524A5C91C7942C500B167E3 /* SoundCellManager.swift in Sources */,
 				4593A1221C6FF81200A04382 /* AppDelegate.swift in Sources */,
 				4524A5C21C791D8700B167E3 /* MainTableViewCells.swift in Sources */,
+				4524A5CB1C79454B00B167E3 /* SoundTrackManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
