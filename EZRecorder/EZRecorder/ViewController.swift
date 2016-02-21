@@ -58,18 +58,8 @@ class ViewController: UIViewController,EZMicrophoneDelegate,EZRecorderDelegate,E
     {
         self.microphone!.startFetchingAudio()
         self.isRecording = true
-
-//        if sender.tag == 1
-//        {
-//            audioFileUrl =
-//
-//        }else
-//        {
-//            
-//        }
         
         let audioFileUrl = self.testFilePathURL(sender.tag)
-        
         
         recorder = EZRecorder(URL: audioFileUrl, clientFormat: self.microphone!.audioStreamBasicDescription(), fileType: EZRecorderFileType.M4A, delegate: self)
 
@@ -141,7 +131,6 @@ class ViewController: UIViewController,EZMicrophoneDelegate,EZRecorderDelegate,E
         
     }
     
-
     
 }
 

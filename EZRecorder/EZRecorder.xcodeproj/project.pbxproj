@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0F2C763E385538462E3F1F29 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 008C2E21E39B501B06A07F0A /* Pods.framework */; };
+		4524A5B91C79138400B167E3 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5B81C79138400B167E3 /* Shared.swift */; };
+		4524A5C21C791D8700B167E3 /* MainTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5C11C791D8700B167E3 /* MainTableViewCells.swift */; };
+		4524A5C51C79273700B167E3 /* SoundJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5C41C79273700B167E3 /* SoundJob.swift */; };
+		4524A5C71C7927BE00B167E3 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4524A5C61C7927BE00B167E3 /* Sound.swift */; };
 		4593A1221C6FF81200A04382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593A1211C6FF81200A04382 /* AppDelegate.swift */; };
 		4593A1241C6FF81200A04382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4593A1231C6FF81200A04382 /* ViewController.swift */; };
 		4593A1271C6FF81200A04382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4593A1251C6FF81200A04382 /* Main.storyboard */; };
@@ -19,6 +23,10 @@
 /* Begin PBXFileReference section */
 		008C2E21E39B501B06A07F0A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C11BBEED8C6B1FD798F0FB2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4524A5B81C79138400B167E3 /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		4524A5C11C791D8700B167E3 /* MainTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCells.swift; sourceTree = "<group>"; };
+		4524A5C41C79273700B167E3 /* SoundJob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundJob.swift; sourceTree = "<group>"; };
+		4524A5C61C7927BE00B167E3 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		4593A11E1C6FF81200A04382 /* EZRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EZRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4593A1211C6FF81200A04382 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4593A1231C6FF81200A04382 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +50,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4524A5C31C79271100B167E3 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				4524A5C41C79273700B167E3 /* SoundJob.swift */,
+				4524A5C61C7927BE00B167E3 /* Sound.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
 		4593A1151C6FF81200A04382 = {
 			isa = PBXGroup;
 			children = (
@@ -63,9 +80,12 @@
 		4593A1201C6FF81200A04382 /* EZRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				4524A5C31C79271100B167E3 /* Realm */,
 				4593A1211C6FF81200A04382 /* AppDelegate.swift */,
 				4593A1231C6FF81200A04382 /* ViewController.swift */,
+				4524A5B81C79138400B167E3 /* Shared.swift */,
 				FCBDDA751C77B5370068794D /* MainViewController.swift */,
+				4524A5C11C791D8700B167E3 /* MainTableViewCells.swift */,
 				4593A1251C6FF81200A04382 /* Main.storyboard */,
 				4593A1281C6FF81200A04382 /* Assets.xcassets */,
 				4593A12A1C6FF81200A04382 /* LaunchScreen.storyboard */,
@@ -213,9 +233,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4524A5C71C7927BE00B167E3 /* Sound.swift in Sources */,
 				FCBDDA761C77B5370068794D /* MainViewController.swift in Sources */,
 				4593A1241C6FF81200A04382 /* ViewController.swift in Sources */,
+				4524A5B91C79138400B167E3 /* Shared.swift in Sources */,
+				4524A5C51C79273700B167E3 /* SoundJob.swift in Sources */,
 				4593A1221C6FF81200A04382 /* AppDelegate.swift in Sources */,
+				4524A5C21C791D8700B167E3 /* MainTableViewCells.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

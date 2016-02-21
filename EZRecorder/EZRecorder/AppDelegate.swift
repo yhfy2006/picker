@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool{
         // Override point for customization after application launch.
+        //assign Realm
+        let realm = try! Realm()
+        if realm.objects(SoundJob).count == 0
+        {
+            let soundJob = SoundJob()
+            soundJob.title = "Test1"
+            soundJob.id = soundJob.IncrementaID()
+            try! realm.write {
+                realm.add(soundJob)
+            }
+        }
+        
         return true
     }
 

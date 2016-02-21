@@ -8,6 +8,7 @@
 
 import UIKit
 import EZAudio
+import RealmSwift
 
 
 class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDelegate,EZAudioPlayerDelegate{
@@ -18,16 +19,27 @@ class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDeleg
     var soundNumber = 0
     var isRecording = false
     
+    var soundJob:SoundJob?
+    var soundCellCache:[MainTableSoundViewCell] = Array()
+    
     //EZAudio
     var playerArray:[EZAudioPlayer] = Array()
     var microphone: EZMicrophone?
     var recorder:EZRecorder?
 
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.tableView?.separatorInset = UIEdgeInsetsZero;
+        self.edgesForExtendedLayout = UIRectEdge.None
+        
         microphone = EZMicrophone.sharedMicrophone()
         microphone!.delegate = self
+        
+        self.soundJob = realm.objects(SoundJob).first
         
         // Do any additional setup after loading the view.
     }
@@ -38,7 +50,13 @@ class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDeleg
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return soundNumber;
+        if let soundJob = self.soundJob
+        {
+            return soundJob.sounds.count
+        }else
+        {
+            return 0
+        }
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -46,19 +64,22 @@ class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDeleg
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = self.tableView!.dequeueReusableCellWithIdentifier("soundCell")
-        return cell!
-
+        let cell = self.tableView!.dequeueReusableCellWithIdentifier("soundCell") as! MainTableSoundViewCell
+        cell.audioFilePath = soundJob!.sounds[indexPath.row].filePath
+        cell.loadCell()
+        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 80
     }
     
     // MARK: - EZAudio
     func microphone(microphone: EZMicrophone!, hasAudioReceived buffer: UnsafeMutablePointer<UnsafeMutablePointer<Float>>, withBufferSize bufferSize: UInt32, withNumberOfChannels numberOfChannels: UInt32) {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             //plot?.updateBuffer(buffer[0], withBufferSize: bufferSize);
+            let cell = self.soundCellCache.last
+            cell?.recordingAudioPlot?.updateBuffer(buffer[0], withBufferSize: bufferSize)
         });
     }
     
@@ -67,6 +88,48 @@ class MainViewController: UIViewController ,EZMicrophoneDelegate,EZRecorderDeleg
         {
             self.recorder?.appendDataFromBufferList(bufferList, withBufferSize: bufferSize)
         }
+    }
+    
+    @IBAction func startOrStopRecording()
+    {
+        if isRecording
+        {
+            isRecording = false
+            self.microphone!.stopFetchingAudio()
+            self.recorder?.closeAudioFile()
+            self.startRecordingButton?.setTitle("Record", forState: .Normal)
+            
+            let cell = self.soundCellCache.last
+            cell?.isRecording = false
+            self.tableView?.reloadData()
+        }
+        else
+        {
+            isRecording = true
+            self.microphone!.startFetchingAudio()
+            self.isRecording = true
+            
+            let filePathString = self.getRandomAudioFilePath()
+            let audioFileUrl = NSURL(fileURLWithPath: filePathString)
+            let sound = Sound()
+            sound.filePath = filePathString
+            try! realm.write{
+                self.soundJob?.sounds.append(sound)
+            }
+            self.tableView?.reloadData()
+            
+            recorder = EZRecorder(URL: audioFileUrl, clientFormat: self.microphone!.audioStreamBasicDescription(), fileType: EZRecorderFileType.M4A, delegate: self)
+            self.startRecordingButton?.setTitle("Stop", forState: .Normal)
+        }
+        
+
+    }
+    
+    func getRandomAudioFilePath() ->String
+    {
+        let path = Util.getAudioDirectory() + "/" + Util.getRamdonFileName()
+        print(path)
+        return path
     }
     
     /*
