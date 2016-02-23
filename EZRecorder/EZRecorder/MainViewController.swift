@@ -67,27 +67,6 @@ class MainViewController: UIViewController,SoundTrackMangerDelegate ,EZMicrophon
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         
-//        if soundCellCache.count <= indexPath.row
-//        {
-//            let cell = self.tableView!.dequeueReusableCellWithIdentifier("soundCell", forIndexPath: indexPath) as! MainTableSoundViewCell
-//            cell.sound = soundJob?.sounds[indexPath.row]
-//            print("\(indexPath.row) \(cell.sound?.fileId)")
-//            cell.loadCell()
-//            cell.index = indexPath.row
-//            if self.soundTrackManager?.currentIndex == indexPath.row
-//            {
-//                cell.setSelectedBoarder()
-//            }else
-//            {
-//                cell.removeSelectedBoarderCell()
-//            }
-//            soundCellCache.append(cell);
-//            return cell
-//        }else
-//        {
-//            return soundCellCache[indexPath.row]
-//        }
-        
         let cell = self.tableView!.dequeueReusableCellWithIdentifier("soundCell", forIndexPath: indexPath) as! MainTableSoundViewCell
         cell.sound = soundJob?.sounds[indexPath.row]
         print("\(indexPath.row) \(cell.sound?.fileId)")
@@ -149,6 +128,11 @@ class MainViewController: UIViewController,SoundTrackMangerDelegate ,EZMicrophon
             self.soundJob?.sounds.append(Sound())
         }
         self.tableView?.reloadData()
+    }
+    
+    @IBAction func playTrack()
+    {
+        self.soundTrackManager?.playCurrentSelectedTrack()
     }
     
     //Mark: Sound track manager

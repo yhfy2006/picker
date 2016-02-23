@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EZRecorder/MainViewController.swift"
-            timestampString = "477724240.772435"
+            timestampString = "477888940.183678"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "soundTrackStartedUpdated(_:hasAudioReceived:withBufferSize:withNumberOfChannels:)"
             landmarkType = "5">
          </BreakpointContent>

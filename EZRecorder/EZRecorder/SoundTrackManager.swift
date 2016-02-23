@@ -13,11 +13,14 @@ import RealmSwift
 
 
 
-class SoundTrackManager:NSObject,EZMicrophoneDelegate,EZRecorderDelegate{
+class SoundTrackManager:NSObject,EZMicrophoneDelegate,EZRecorderDelegate,EZAudioPlayerDelegate{
     //EZAudio
     var playerArray:[EZAudioPlayer] = Array()
     var microphone: EZMicrophone?
     var recorder:EZRecorder?
+    var singleTrackPlayer:EZAudioPlayer?
+    
+    
     var isRecording = false
     var delegate:SoundTrackMangerDelegate?
     var currentIndex = 0
@@ -29,6 +32,7 @@ class SoundTrackManager:NSObject,EZMicrophoneDelegate,EZRecorderDelegate{
             self.soundJob = soundJob
             microphone = EZMicrophone.sharedMicrophone()
             microphone!.delegate = self
+            singleTrackPlayer  = EZAudioPlayer(delegate:self)
     }
     
     // MARK: - EZAudio
@@ -81,6 +85,25 @@ class SoundTrackManager:NSObject,EZMicrophoneDelegate,EZRecorderDelegate{
         delegate?.soundTrackStopRecordWithIndex(self.currentIndex)
     }
     
+    func playCurrentSelectedTrack()
+    {
+        let sound = soundJob?.sounds[currentIndex]
+        if let fileId = sound?.fileId
+        {
+            if fileId == ""
+            {
+                return
+            }else
+            {
+                let filePath = Util.getAudioDirectory()+"/\(fileId)"
+                let fileUrl = NSURL(fileURLWithPath:filePath)
+                let audioFile = EZAudioFile(URL: fileUrl)
+                self.singleTrackPlayer?.audioFile = audioFile
+                self.singleTrackPlayer?.play()
+
+            }
+        }
+    }
     
     func getRandomAudioFilePath() ->String
     {
