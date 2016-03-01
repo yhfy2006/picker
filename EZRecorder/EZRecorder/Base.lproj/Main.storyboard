@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzb-eY-jPk" customClass="EZAudioPlotGL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="121.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
                                                             <color key="value" red="0.1019607843" green="0.73725490199999999" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
