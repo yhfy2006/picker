@@ -1,0 +1,31 @@
+PODS:
+  - EasyAnimation (1.0.4)
+  - Realm (0.98.3):
+    - Realm/Headers (= 0.98.3)
+  - Realm/Headers (0.98.3)
+  - RealmSwift (0.98.3):
+    - Realm (= 0.98.3)
+  - Spring (1.0.3)
+
+DEPENDENCIES:
+  - EasyAnimation
+  - RealmSwift
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift2
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
+    :git: https://github.com/MengTo/Spring.git
+
+SPEC CHECKSUMS:
+  EasyAnimation: 4aabd439b4038f48d72939cc19d6220363b3206e
+  Realm: c6a7d00221a2d5177810a674aebd40c5e0b70b0f
+  RealmSwift: d6ecad6e4c2a645d6ac956c2c7e9efb375f39c31
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+
+COCOAPODS: 0.39.0

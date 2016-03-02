@@ -18,6 +18,9 @@
 		4533B4D11C86570400CCBE63 /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D01C86570400CCBE63 /* Circle.png */; };
 		4533B4D31C86584E00CCBE63 /* plane-front-view.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D21C86584E00CCBE63 /* plane-front-view.png */; };
 		4533B4D51C8667E600CCBE63 /* speedometer.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D41C8667E600CCBE63 /* speedometer.png */; };
+		4533B4D71C868A0F00CCBE63 /* explore-tool.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D61C868A0F00CCBE63 /* explore-tool.png */; };
+		4533B4D91C868AC000CCBE63 /* mountain-range.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D81C868AC000CCBE63 /* mountain-range.png */; };
+		D6971AEF541264941E1E9E70 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,11 @@
 		4533B4D01C86570400CCBE63 /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		4533B4D21C86584E00CCBE63 /* plane-front-view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plane-front-view.png"; sourceTree = "<group>"; };
 		4533B4D41C8667E600CCBE63 /* speedometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speedometer.png; sourceTree = "<group>"; };
+		4533B4D61C868A0F00CCBE63 /* explore-tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore-tool.png"; sourceTree = "<group>"; };
+		4533B4D81C868AC000CCBE63 /* mountain-range.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mountain-range.png"; sourceTree = "<group>"; };
+		BB88BEA106A1B8DC0FBB31DC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C528A53E4A25D06AFEC1EDFF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CF3124C23F52557FBFF6BCBF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6971AEF541264941E1E9E70 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +61,8 @@
 			children = (
 				4533B4B61C86439C00CCBE63 /* TracePilot */,
 				4533B4B51C86439C00CCBE63 /* Products */,
+				A3E0A8B9589E1A333AE3A59D /* Pods */,
+				AD204CAD771AE79F2391E538 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,11 +94,30 @@
 		4533B4CF1C8656F600CCBE63 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4533B4D61C868A0F00CCBE63 /* explore-tool.png */,
+				4533B4D81C868AC000CCBE63 /* mountain-range.png */,
 				4533B4D01C86570400CCBE63 /* Circle.png */,
 				4533B4D41C8667E600CCBE63 /* speedometer.png */,
 				4533B4D21C86584E00CCBE63 /* plane-front-view.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		A3E0A8B9589E1A333AE3A59D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C528A53E4A25D06AFEC1EDFF /* Pods.debug.xcconfig */,
+				CF3124C23F52557FBFF6BCBF /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD204CAD771AE79F2391E538 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB88BEA106A1B8DC0FBB31DC /* Pods.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,9 +127,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4533B4C61C86439C00CCBE63 /* Build configuration list for PBXNativeTarget "TracePilot" */;
 			buildPhases = (
+				FCAA118D9F15BEE93992978E /* Check Pods Manifest.lock */,
 				4533B4B01C86439C00CCBE63 /* Sources */,
 				4533B4B11C86439C00CCBE63 /* Frameworks */,
 				4533B4B21C86439C00CCBE63 /* Resources */,
+				A8948FC4108F10A35366DB37 /* Embed Pods Frameworks */,
+				C1C180FE77FBFA8D5425CE72 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,14 +183,64 @@
 			files = (
 				4533B4C21C86439C00CCBE63 /* LaunchScreen.storyboard in Resources */,
 				4533B4D51C8667E600CCBE63 /* speedometer.png in Resources */,
+				4533B4D91C868AC000CCBE63 /* mountain-range.png in Resources */,
 				4533B4D11C86570400CCBE63 /* Circle.png in Resources */,
 				4533B4BF1C86439C00CCBE63 /* Assets.xcassets in Resources */,
 				4533B4D31C86584E00CCBE63 /* plane-front-view.png in Resources */,
 				4533B4BD1C86439C00CCBE63 /* Main.storyboard in Resources */,
+				4533B4D71C868A0F00CCBE63 /* explore-tool.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A8948FC4108F10A35366DB37 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1C180FE77FBFA8D5425CE72 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCAA118D9F15BEE93992978E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4533B4B01C86439C00CCBE63 /* Sources */ = {
@@ -277,6 +360,7 @@
 		};
 		4533B4C71C86439C00CCBE63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C528A53E4A25D06AFEC1EDFF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TracePilot/Info.plist;
@@ -288,6 +372,7 @@
 		};
 		4533B4C81C86439C00CCBE63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF3124C23F52557FBFF6BCBF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TracePilot/Info.plist;
@@ -316,6 +401,7 @@
 				4533B4C81C86439C00CCBE63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
