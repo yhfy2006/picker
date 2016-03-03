@@ -197,10 +197,40 @@
                                             <action selector="loggingButtonPressed:" destination="whQ-vx-EUY" eventType="touchUpInside" id="f9b-6c-1dN"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNi-bC-Dof">
+                                        <rect key="frame" x="168" y="25" width="132" height="50.5"/>
+                                        <color key="backgroundColor" red="0.0" green="0.66274509800000003" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <state key="normal" title="Finish">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="finishButtonPressed:" destination="whQ-vx-EUY" eventType="touchUpInside" id="pmR-QU-qRx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9J-OF-P6y">
+                                        <rect key="frame" x="20" y="25" width="132" height="50.5"/>
+                                        <color key="backgroundColor" red="0.0" green="0.66274509800000003" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <state key="normal" title="Resume">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resumeButtonPressed:" destination="whQ-vx-EUY" eventType="touchUpInside" id="qZj-Ej-LFM"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="YNi-bC-Dof" firstAttribute="top" secondItem="uRN-d5-hJK" secondAttribute="top" id="FwM-Ks-9SY"/>
+                                    <constraint firstItem="p9J-OF-P6y" firstAttribute="bottom" secondItem="uRN-d5-hJK" secondAttribute="bottom" id="L0v-uE-IpT"/>
+                                    <constraint firstItem="YNi-bC-Dof" firstAttribute="bottom" secondItem="uRN-d5-hJK" secondAttribute="bottom" id="NTb-0L-Aka"/>
                                     <constraint firstAttribute="trailing" secondItem="uRN-d5-hJK" secondAttribute="trailing" constant="20" id="Qf4-bS-Y2I"/>
+                                    <constraint firstItem="YNi-bC-Dof" firstAttribute="trailing" secondItem="uRN-d5-hJK" secondAttribute="trailing" id="SHD-L6-E4V"/>
                                     <constraint firstItem="uRN-d5-hJK" firstAttribute="centerY" secondItem="cKP-f2-aq7" secondAttribute="centerY" id="XNI-no-kvH"/>
+                                    <constraint firstItem="p9J-OF-P6y" firstAttribute="top" secondItem="uRN-d5-hJK" secondAttribute="top" id="XYi-wO-Sia"/>
+                                    <constraint firstItem="p9J-OF-P6y" firstAttribute="width" secondItem="uRN-d5-hJK" secondAttribute="width" multiplier="1/2" constant="-8" id="XfN-WX-OOz"/>
+                                    <constraint firstItem="YNi-bC-Dof" firstAttribute="width" secondItem="uRN-d5-hJK" secondAttribute="width" multiplier="1/2" constant="-8" id="XhC-29-dDi"/>
+                                    <constraint firstItem="p9J-OF-P6y" firstAttribute="leading" secondItem="uRN-d5-hJK" secondAttribute="leading" id="aML-x1-6lC"/>
                                     <constraint firstItem="uRN-d5-hJK" firstAttribute="height" secondItem="cKP-f2-aq7" secondAttribute="height" multiplier="0.5" id="cft-Sp-4dt"/>
                                     <constraint firstItem="uRN-d5-hJK" firstAttribute="leading" secondItem="cKP-f2-aq7" secondAttribute="leading" constant="20" id="eUL-Br-mGp"/>
                                     <constraint firstItem="uRN-d5-hJK" firstAttribute="centerX" secondItem="cKP-f2-aq7" secondAttribute="centerX" id="r6Z-QF-fRc"/>
@@ -275,7 +305,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="degree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jt0-4t-SFx">
-                                                        <rect key="frame" x="0.0" y="24" width="106.5" height="21"/>
+                                                        <rect key="frame" x="0.0" y="24" width="106.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.66274509800000003" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -397,11 +427,13 @@
                         <outlet property="altitudeValueLabel" destination="m9L-r0-3ir" id="qZZ-t1-d8P"/>
                         <outlet property="distanceUnitLabel" destination="mnA-7P-Yme" id="zha-op-X7G"/>
                         <outlet property="distanceValueLabel" destination="jDk-k8-9Ci" id="zCR-2g-ZWc"/>
+                        <outlet property="finishButton" destination="YNi-bC-Dof" id="Bsy-F0-UwQ"/>
                         <outlet property="goundSpeedUnitLabel" destination="fCR-Yd-ppe" id="a3M-bF-OfE"/>
                         <outlet property="goundSpeedValueLabel" destination="3VK-Sf-LsF" id="aku-Y3-5Ck"/>
                         <outlet property="headingUnitLabel" destination="Jt0-4t-SFx" id="CJv-eM-vjR"/>
                         <outlet property="headingValueLabel" destination="0zK-5v-fvT" id="8FZ-ec-gfs"/>
                         <outlet property="loggingButton" destination="uRN-d5-hJK" id="p2M-d1-lHK"/>
+                        <outlet property="resumeButton" destination="p9J-OF-P6y" id="rfb-KK-Bgs"/>
                         <outlet property="timeCountLabel" destination="AbY-LR-F9m" id="8NN-P9-Ws6"/>
                     </connections>
                 </viewController>

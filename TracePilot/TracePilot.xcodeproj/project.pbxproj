@@ -20,6 +20,7 @@
 		4533B4D51C8667E600CCBE63 /* speedometer.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D41C8667E600CCBE63 /* speedometer.png */; };
 		4533B4D71C868A0F00CCBE63 /* explore-tool.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D61C868A0F00CCBE63 /* explore-tool.png */; };
 		4533B4D91C868AC000CCBE63 /* mountain-range.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D81C868AC000CCBE63 /* mountain-range.png */; };
+		4533B4DD1C87F16000CCBE63 /* TraceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533B4DC1C87F16000CCBE63 /* TraceEvent.swift */; };
 		D6971AEF541264941E1E9E70 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		4533B4D41C8667E600CCBE63 /* speedometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speedometer.png; sourceTree = "<group>"; };
 		4533B4D61C868A0F00CCBE63 /* explore-tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore-tool.png"; sourceTree = "<group>"; };
 		4533B4D81C868AC000CCBE63 /* mountain-range.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mountain-range.png"; sourceTree = "<group>"; };
+		4533B4DC1C87F16000CCBE63 /* TraceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceEvent.swift; sourceTree = "<group>"; };
 		BB88BEA106A1B8DC0FBB31DC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C528A53E4A25D06AFEC1EDFF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CF3124C23F52557FBFF6BCBF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		4533B4B61C86439C00CCBE63 /* TracePilot */ = {
 			isa = PBXGroup;
 			children = (
+				4533B4DB1C87F0E700CCBE63 /* Realm */,
 				4533B4B71C86439C00CCBE63 /* AppDelegate.swift */,
 				4533B4B91C86439C00CCBE63 /* MainViewParentController.swift */,
 				4533B4CD1C86557C00CCBE63 /* SessionViewController.swift */,
@@ -101,6 +104,14 @@
 				4533B4D21C86584E00CCBE63 /* plane-front-view.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		4533B4DB1C87F0E700CCBE63 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				4533B4DC1C87F16000CCBE63 /* TraceEvent.swift */,
+			);
+			name = Realm;
 			sourceTree = "<group>";
 		};
 		A3E0A8B9589E1A333AE3A59D /* Pods */ = {
@@ -155,6 +166,11 @@
 				TargetAttributes = {
 					4533B4B31C86439C00CCBE63 = {
 						CreatedOnToolsVersion = 7.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -251,6 +267,7 @@
 				4533B4CA1C8648BF00CCBE63 /* Extensions.swift in Sources */,
 				4533B4CC1C8648D500CCBE63 /* Shared.swift in Sources */,
 				4533B4CE1C86557C00CCBE63 /* SessionViewController.swift in Sources */,
+				4533B4DD1C87F16000CCBE63 /* TraceEvent.swift in Sources */,
 				4533B4B81C86439C00CCBE63 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
