@@ -13,7 +13,7 @@ import CoreLocation
 import HealthKit
 import RealmSwift
 
-class SessionViewController: UIViewController {
+class UIViewController: UIViewController {
     
     @IBOutlet var goundSpeedValueLabel:UILabel?
     @IBOutlet var goundSpeedUnitLabel:UILabel?
