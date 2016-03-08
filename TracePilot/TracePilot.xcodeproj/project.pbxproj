@@ -26,6 +26,9 @@
 		FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */; };
 		FC6684A51C88FB24007DF2F9 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A41C88FB24007DF2F9 /* HistoryViewController.swift */; };
 		FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A61C88FB65007DF2F9 /* R.generated.swift */; };
+		FCFB066D1C8E986900A90FBF /* ResultDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */; };
+		FCFB06701C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */; };
+		FCFB06721C8EA77200A90FBF /* AFDateSwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB06711C8EA77200A90FBF /* AFDateSwiftExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFlightViewController.swift; sourceTree = "<group>"; };
 		FC6684A41C88FB24007DF2F9 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		FC6684A61C88FB65007DF2F9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDisplayViewController.swift; sourceTree = "<group>"; };
+		FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticolorPolylineSegment.swift; sourceTree = "<group>"; };
+		FCFB06711C8EA77200A90FBF /* AFDateSwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDateSwiftExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +93,13 @@
 		4533B4B61C86439C00CCBE63 /* TracePilot */ = {
 			isa = PBXGroup;
 			children = (
+				FCFB066E1C8E9DA100A90FBF /* Utils */,
 				4533B4DB1C87F0E700CCBE63 /* Realm */,
 				4533B4B71C86439C00CCBE63 /* AppDelegate.swift */,
 				4533B4B91C86439C00CCBE63 /* MainViewParentController.swift */,
 				4533B4CD1C86557C00CCBE63 /* SessionViewController.swift */,
 				FC6684A41C88FB24007DF2F9 /* HistoryViewController.swift */,
+				FCFB06731C8EA7D000A90FBF /* ResultDiaplay */,
 				FC6684A61C88FB65007DF2F9 /* R.generated.swift */,
 				FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */,
 				4533B4C91C8648BF00CCBE63 /* Extensions.swift */,
@@ -141,6 +149,23 @@
 				BB88BEA106A1B8DC0FBB31DC /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FCFB066E1C8E9DA100A90FBF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */,
+				FCFB06711C8EA77200A90FBF /* AFDateSwiftExtension.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		FCFB06731C8EA7D000A90FBF /* ResultDiaplay */ = {
+			isa = PBXGroup;
+			children = (
+				FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */,
+			);
+			name = ResultDiaplay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFB06721C8EA77200A90FBF /* AFDateSwiftExtension.swift in Sources */,
 				FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */,
 				4533B4BA1C86439C00CCBE63 /* MainViewParentController.swift in Sources */,
+				FCFB066D1C8E986900A90FBF /* ResultDisplayViewController.swift in Sources */,
 				FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */,
 				4533B4CA1C8648BF00CCBE63 /* Extensions.swift in Sources */,
+				FCFB06701C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift in Sources */,
 				4533B4CC1C8648D500CCBE63 /* Shared.swift in Sources */,
 				4533B4CE1C86557C00CCBE63 /* SessionViewController.swift in Sources */,
 				4533B4DD1C87F16000CCBE63 /* TraceEvent.swift in Sources */,

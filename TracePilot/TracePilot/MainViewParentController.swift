@@ -57,10 +57,10 @@ class ViewController: UIPageViewController {
 
 extension ViewController : UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        if viewController == crewVC { return spaceshipsVC } else { return nil }
+        if viewController == sessionVC { return historyVC } else { return nil }
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        if viewController == spaceshipsVC { return crewVC } else { return nil }
+        if viewController == historyVC { return sessionVC } else { return nil }
     }
 }

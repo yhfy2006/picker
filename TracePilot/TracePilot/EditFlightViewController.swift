@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class EditFlightViewController: UIViewController {
 
@@ -14,10 +15,40 @@ class EditFlightViewController: UIViewController {
     @IBOutlet var flightNameField:UITextField?
     @IBOutlet var flightCommentView:UITextView?
     
+    @IBOutlet var commitButton:UIButton?
+    @IBOutlet var discardButton:UIButton?
+    
+    // DB store
+    var traceEvent:TraceEvent?
+    
+    var delegate:EditFlightViewDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
+    @IBAction func discard(sender:UIButton)
+    {
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            self.delegate?.editDidDiscard()
+        }
+    }
+    
+    @IBAction func commit(sender:UIButton)
+    {
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            
+            try! Realm().write{
+               self.traceEvent?.title = (self.flightNameField?.text)!
+               self.traceEvent?.selfDecsription = (self.flightCommentView?.text)!
+            }
+            
+            self.delegate?.editDidCommit()
+        }
+    }
+    
+}
+
+protocol EditFlightViewDelegate {
+    func editDidDiscard()
+    func editDidCommit()
 }

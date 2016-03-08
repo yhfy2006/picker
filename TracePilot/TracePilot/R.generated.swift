@@ -39,8 +39,8 @@ struct R {
       }
       
       static func validateViewControllers() {
-        assert(spaceshipsVC != nil, "[R.swift] ViewController with identifier 'spaceshipsVC' could not be loaded from storyboard 'Main' as 'UIViewController'.")
-        assert(crewVC != nil, "[R.swift] ViewController with identifier 'crewVC' could not be loaded from storyboard 'Main' as 'UIViewController'.")
+        assert(sessionVC != nil, "[R.swift] ViewController with identifier 'spaceshipsVC' could not be loaded from storyboard 'Main' as 'UIViewController'.")
+        assert(historyVC != nil, "[R.swift] ViewController with identifier 'crewVC' could not be loaded from storyboard 'Main' as 'UIViewController'.")
       }
     }
   }
@@ -62,7 +62,7 @@ struct _R {
   }
 }
 
-struct ReuseIdentifier<T>: Printable {
+struct ReuseIdentifier<T>: CustomStringConvertible {
   let identifier: String
   
   var description: String { return identifier }

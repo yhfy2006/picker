@@ -4,6 +4,7 @@ use_frameworks!
 pod 'RealmSwift'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
 pod "EasyAnimation"
+pod 'TransitionTreasury', '~> 3.0.1'
 
 
 

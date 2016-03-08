@@ -11,6 +11,7 @@ import RealmSwift
 class TraceEvent: Object {
     dynamic var id = 0
     dynamic var title = ""
+    dynamic var selfDecsription = ""
     dynamic var createdTimeStampe = NSDate()
     dynamic var duration:Double = 0.0
     dynamic var distance:Double = 0.0

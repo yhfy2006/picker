@@ -6,7 +6,7 @@
 //  Copyright © 2016 VincentHe. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 
 class HistoryViewController: UIViewController {
 

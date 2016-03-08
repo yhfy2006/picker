@@ -12,8 +12,9 @@ import EasyAnimation
 import CoreLocation
 import HealthKit
 import RealmSwift
+import TransitionTreasury
 
-class UIViewController: UIViewController {
+class SessionViewController: UIViewController,EditFlightViewDelegate {
     
     @IBOutlet var goundSpeedValueLabel:UILabel?
     @IBOutlet var goundSpeedUnitLabel:UILabel?
@@ -63,6 +64,8 @@ class UIViewController: UIViewController {
     
     lazy var locations = [CLLocation]()
     let realm = try! Realm()
+    
+    var flightEidtViewController:EditFlightViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +122,8 @@ class UIViewController: UIViewController {
     
     @IBAction func finishButtonPressed(sender:UIButton)
     {
-        saveFlight()
+        //saveFlight()
+        presentFlightEditView();
     }
     
     func startSwingAnimation()
@@ -211,12 +215,9 @@ class UIViewController: UIViewController {
                 self.traceEvent?.traceLocations.append(traceLocation)
 
             }
-
-            
         }
 
     }
-    
     
     func stopUpdateTime()
     {
@@ -256,6 +257,44 @@ class UIViewController: UIViewController {
         timeCountLabel?.text = "\(strHours):\(strMinutes):\(strSeconds)"
         
     }
+    
+    func presentFlightEditView()
+    {
+        if self.flightEidtViewController == nil
+        {
+            self.flightEidtViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("EditSessionView") as? EditFlightViewController
+        }
+        self.flightEidtViewController?.traceEvent = self.traceEvent
+        self.flightEidtViewController?.delegate = self
+        self.presentViewController(self.flightEidtViewController!, animated: true, completion: nil)
+        
+    }
+    
+    func editDidCommit()
+    {
+        saveFlight()
+        self.performSegueWithIdentifier("goToResultView", sender:nil)
+    }
+    
+    func editDidDiscard()
+    {
+        try! realm.write{
+            self.traceEvent?.distance = 0.0
+            self.traceEvent?.duration = 0.0
+        }
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if(segue.identifier == "goToResultView")
+        {
+            
+            let controller = (segue.destinationViewController as! ResultDisplayViewController)
+            controller.traceEvent = self.traceEvent
+        }
+    }
+    
     
 }
 
