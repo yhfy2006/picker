@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import HealthKit
+
 
 struct GlobalVariables{
 
@@ -23,6 +25,22 @@ class Util:NSObject{
         let documentsDirectory = paths[0]
         let audioPath = documentsDirectory
         return audioPath
+    }
+    
+    static func mps2kph(speed:Double)->Double
+    {
+        return speed*3.6
+    }
+    
+    static func mps2Knot(speed:Double)->Double
+    {
+        return speed * 1.94384
+    }
+    
+    static func distanceInMiles(value:Double)->Double
+    {
+        let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: value)
+        return distanceQuantity.doubleValueForUnit(HKUnit.mileUnit())
     }
 
 }

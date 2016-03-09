@@ -18,6 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UINavigationBar.appearance().barTintColor = GlobalVariables.appThemeColorColor
         print(Util.getAudioDirectory())
+        
+        let motionKit = MotionKit()
+        // on a aircraft yaw = roll roll = yaw  pitch = pitch
+        motionKit.getDeviceMotionObject(0.1){
+            (deviceMotion) -> () in
+            let accelerationX = deviceMotion.userAcceleration.x
+            let gravityY = deviceMotion.gravity.y
+            let rotationX = deviceMotion.rotationRate.x
+            //var magneticFieldX = deviceMotion.m
+            let attitideYaw = deviceMotion.attitude.yaw
+            print("attitideYaw:\(attitideYaw) pitch:\(deviceMotion.attitude.pitch) roll:\(deviceMotion.attitude.roll)")
+        }
+        
         return true
     }
 

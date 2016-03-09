@@ -26,10 +26,27 @@
 		FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */; };
 		FC6684A51C88FB24007DF2F9 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A41C88FB24007DF2F9 /* HistoryViewController.swift */; };
 		FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A61C88FB65007DF2F9 /* R.generated.swift */; };
+		FC9A6E961C8FEE4E009686C5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
+		FC9A6E971C8FEE4E009686C5 /* Pods.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC9A6E9A1C8FFB34009686C5 /* ResultDiaplayCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */; };
+		FC9A6E9C1C90059A009686C5 /* MotionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E9B1C90059A009686C5 /* MotionKit.swift */; };
 		FCFB066D1C8E986900A90FBF /* ResultDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */; };
 		FCFB06701C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */; };
-		FCFB06721C8EA77200A90FBF /* AFDateSwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB06711C8EA77200A90FBF /* AFDateSwiftExtension.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FC9A6E981C8FEE4E009686C5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FC9A6E971C8FEE4E009686C5 /* Pods.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4533B4B41C86439C00CCBE63 /* TracePilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TracePilot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,9 +72,10 @@
 		FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFlightViewController.swift; sourceTree = "<group>"; };
 		FC6684A41C88FB24007DF2F9 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		FC6684A61C88FB65007DF2F9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDiaplayCells.swift; sourceTree = "<group>"; };
+		FC9A6E9B1C90059A009686C5 /* MotionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionKit.swift; sourceTree = "<group>"; };
 		FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDisplayViewController.swift; sourceTree = "<group>"; };
 		FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticolorPolylineSegment.swift; sourceTree = "<group>"; };
-		FCFB06711C8EA77200A90FBF /* AFDateSwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFDateSwiftExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9A6E961C8FEE4E009686C5 /* Pods.framework in Frameworks */,
 				D6971AEF541264941E1E9E70 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,8 +173,8 @@
 		FCFB066E1C8E9DA100A90FBF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FC9A6E9B1C90059A009686C5 /* MotionKit.swift */,
 				FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */,
-				FCFB06711C8EA77200A90FBF /* AFDateSwiftExtension.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -164,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */,
+				FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */,
 			);
 			name = ResultDiaplay;
 			sourceTree = "<group>";
@@ -181,6 +201,7 @@
 				4533B4B21C86439C00CCBE63 /* Resources */,
 				A8948FC4108F10A35366DB37 /* Embed Pods Frameworks */,
 				C1C180FE77FBFA8D5425CE72 /* Copy Pods Resources */,
+				FC9A6E981C8FEE4E009686C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -203,6 +224,7 @@
 				TargetAttributes = {
 					4533B4B31C86439C00CCBE63 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 532TM3B3Z5;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -301,16 +323,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCFB06721C8EA77200A90FBF /* AFDateSwiftExtension.swift in Sources */,
 				FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */,
 				4533B4BA1C86439C00CCBE63 /* MainViewParentController.swift in Sources */,
 				FCFB066D1C8E986900A90FBF /* ResultDisplayViewController.swift in Sources */,
 				FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */,
 				4533B4CA1C8648BF00CCBE63 /* Extensions.swift in Sources */,
 				FCFB06701C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift in Sources */,
+				FC9A6E9C1C90059A009686C5 /* MotionKit.swift in Sources */,
 				4533B4CC1C8648D500CCBE63 /* Shared.swift in Sources */,
 				4533B4CE1C86557C00CCBE63 /* SessionViewController.swift in Sources */,
 				4533B4DD1C87F16000CCBE63 /* TraceEvent.swift in Sources */,
+				FC9A6E9A1C8FFB34009686C5 /* ResultDiaplayCells.swift in Sources */,
 				4533B4B81C86439C00CCBE63 /* AppDelegate.swift in Sources */,
 				FC6684A51C88FB24007DF2F9 /* HistoryViewController.swift in Sources */,
 			);
@@ -424,10 +447,13 @@
 			baseConfigurationReference = C528A53E4A25D06AFEC1EDFF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TracePilot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Changchen.TracePilot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -436,10 +462,13 @@
 			baseConfigurationReference = CF3124C23F52557FBFF6BCBF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TracePilot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Changchen.TracePilot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

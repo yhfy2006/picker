@@ -13,6 +13,7 @@ import CoreLocation
 import HealthKit
 import RealmSwift
 import TransitionTreasury
+import CoreMotion
 
 class SessionViewController: UIViewController,EditFlightViewDelegate {
     
@@ -39,9 +40,15 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     var timer:NSTimer?
     var startTime = NSTimeInterval()
     
+    //altimeter 
+    let altimeter = CMAltimeter()
+    
     // tracking
     var seconds = 0.0
     var distance = 0.0
+    var speed = 0.0
+    var heading = 0.0
+    var relativeAltitude = 0.0
     
     // DB store
     var traceEvent:TraceEvent?
@@ -52,7 +59,6 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     
     lazy var locationManager:CLLocationManager = {
         var _locationManager = CLLocationManager()
-        
         _locationManager.delegate = self
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest
         _locationManager.activityType = .Fitness
@@ -179,22 +185,75 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     func startUpdateTime()
     {
         let aSelector : Selector = "eachSecond"
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
         if(self.loggingStatus == 1)
         {
             startTime = NSDate.timeIntervalSinceReferenceDate()
         }
         locationManager.startUpdatingLocation()
+        // 1
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            // 2
+            altimeter.startRelativeAltitudeUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { data, error in
+                // 3
+                if (error == nil) {
+                    self.relativeAltitude = data!.relativeAltitude.doubleValue
+                }
+            })
+        }
+        
     }
     
     // Everything each second should be doing
     func eachSecond()
     {
         seconds++
-        let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: distance)
-        print("distance:\(distanceQuantity)")
-        self.distanceValueLabel?.text =  distanceQuantity.description
-        updateTimeLabel()
+        print(seconds)
+        
+        // distance
+        let distanceInMiles = String(format: "%.2f", Util.distanceInMiles(distance))
+        print("distance:\(distanceInMiles)")
+        self.distanceValueLabel?.text = distanceInMiles
+        
+        // speed
+        let speedInKnots = String(format: "%.1f", self.speed);
+        self.goundSpeedValueLabel?.text = speedInKnots
+        
+        // heading
+        let headingIndegree = String(format: "%.1f", self.heading);
+        self.headingValueLabel?.text = headingIndegree
+        
+        //altitude
+        if let baseLocation = self.locations.last
+        {
+            var baseAltitude = baseLocation.altitude
+            print("altitude\(baseAltitude)")
+            if abs(self.relativeAltitude) >= 1
+            {
+                baseAltitude += self.relativeAltitude
+            }
+            self.altitudeValueLabel?.text = String(format: "%.2f", baseAltitude);
+        }
+        
+        
+        
+        var elapsedTime: NSTimeInterval = seconds
+        //calculate the minutes in elapsed time.
+        let hours = UInt8(elapsedTime / 3600)
+        elapsedTime -= (NSTimeInterval(hours) * 3600)
+        
+        let minutes = UInt8(elapsedTime / 60.0)
+        elapsedTime -= (NSTimeInterval(minutes) * 60)
+        
+        let scend = UInt8(elapsedTime)
+        elapsedTime -= NSTimeInterval(seconds)
+        
+        let strHours = String(format: "%02d", hours)
+        let strMinutes = String(format: "%02d", minutes)
+        let strSeconds = String(format: "%02d", scend)
+        
+        timeCountLabel?.text = "\(strHours):\(strMinutes):\(strSeconds)"
+        
     }
     
     func saveFlight()
@@ -208,6 +267,8 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
         {
             let traceLocation = TraceLocation()
             try! realm.write{
+                traceLocation.locationSpeed = location.speed
+                traceLocation.locationHeading = location.course
                 traceLocation.locationTimeStamp = location.timestamp
                 traceLocation.locationLatitude = location.coordinate.latitude
                 traceLocation.locationLongitude = location.coordinate.longitude
@@ -221,41 +282,9 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     
     func stopUpdateTime()
     {
+        locationManager.stopUpdatingLocation()
         timer?.invalidate()
         timer = nil
-    }
-    
-    func updateTimeLabel()
-    {
-        let currentTime = NSDate.timeIntervalSinceReferenceDate()
-        var elapsedTime: NSTimeInterval = currentTime - startTime
-        //calculate the minutes in elapsed time.
-        let hours = UInt8(elapsedTime / 360)
-        elapsedTime -= (NSTimeInterval(hours) * 360)
-        
-        let minutes = UInt8(elapsedTime / 60.0)
-        
-        elapsedTime -= (NSTimeInterval(minutes) * 60)
-        
-        //calculate the seconds in elapsed time.
-        
-        let seconds = UInt8(elapsedTime)
-        
-        elapsedTime -= NSTimeInterval(seconds)
-        
-        //find out the fraction of milliseconds to be displayed.
-        
-        
-        //add the leading zero for minutes, seconds and millseconds and store them as string constants
-        
-        let strHours = String(format: "%02d", hours)
-        let strMinutes = String(format: "%02d", minutes)
-        let strSeconds = String(format: "%02d", seconds)
-        
-        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
-        
-        timeCountLabel?.text = "\(strHours):\(strMinutes):\(strSeconds)"
-        
     }
     
     func presentFlightEditView()
@@ -281,6 +310,12 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
         try! realm.write{
             self.traceEvent?.distance = 0.0
             self.traceEvent?.duration = 0.0
+            seconds = -1;
+            heading = 0
+            speed = 0;
+            distance = 0;
+            relativeAltitude = 0;
+            eachSecond()
         }
     }
     
@@ -300,15 +335,20 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
 
 extension SessionViewController:CLLocationManagerDelegate{
     
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        print(newLocation.altitude);
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for location in locations {
             if location.horizontalAccuracy < 20 {
-                // update distance
+                // update distance, heading, and speed
                 if self.locations.count > 0 {
                     let firstLocation = self.locations.last
                     distance += location.distanceFromLocation(firstLocation!)
+                    speed = Util.mps2Knot(location.speed)
+                    heading = location.course
                 }
-                
                 //sace location
                 self.locations.append(location)
             }

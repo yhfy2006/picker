@@ -40,4 +40,6 @@ class TraceLocation:Object{
     dynamic var locationTimeStamp:NSDate = NSDate()
     dynamic var locationLatitude:Double = 0.0
     dynamic var locationLongitude:Double = 0.0
+    dynamic var locationSpeed:Double = 0.0
+    dynamic var locationHeading:Double = 0.0
 }

@@ -10,11 +10,11 @@ import UIKit
 import MapKit
 import HealthKit
 
-class ResultDisplayViewController: UIViewController,MKMapViewDelegate {
+class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource{
 
     var traceEvent:TraceEvent?
     @IBOutlet var mapView: MKMapView!
-
+    @IBOutlet var collectionView:UICollectionView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +96,39 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate {
         
         return MKPolyline(coordinates: &coords, count: (locations?.count)!)
     }
+    
+    
+    //Mark: - CollectionView
+     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+     {
+       return 1
+     }
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+     {
+        if indexPath.row == 0
+        {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BasicInfoCell",forIndexPath: indexPath) as! ResultDiaplayCellBasicInfo
+            cell.traceEvent = self.traceEvent
+            cell.loadCell()
+            return cell
+        }else
+        {
+            return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize{
+
+        return CGSizeMake(collectionView.bounds.width, collectionView.bounds.height)
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+    {
+        return 1
+    }
+
 
     /*
     // MARK: - Navigation
