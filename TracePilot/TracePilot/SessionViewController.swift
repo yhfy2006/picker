@@ -235,24 +235,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
             self.altitudeValueLabel?.text = String(format: "%.2f", baseAltitude);
         }
         
-        
-        
-        var elapsedTime: NSTimeInterval = seconds
-        //calculate the minutes in elapsed time.
-        let hours = UInt8(elapsedTime / 3600)
-        elapsedTime -= (NSTimeInterval(hours) * 3600)
-        
-        let minutes = UInt8(elapsedTime / 60.0)
-        elapsedTime -= (NSTimeInterval(minutes) * 60)
-        
-        let scend = UInt8(elapsedTime)
-        elapsedTime -= NSTimeInterval(seconds)
-        
-        let strHours = String(format: "%02d", hours)
-        let strMinutes = String(format: "%02d", minutes)
-        let strSeconds = String(format: "%02d", scend)
-        
-        timeCountLabel?.text = "\(strHours):\(strMinutes):\(strSeconds)"
+        timeCountLabel?.text = Util.timeString(seconds)
         
     }
     

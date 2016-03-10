@@ -101,7 +101,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     //Mark: - CollectionView
      func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
      {
-       return 1
+       return 2
      }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -113,7 +113,14 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
             cell.traceEvent = self.traceEvent
             cell.loadCell()
             return cell
-        }else
+        }else if indexPath.row == 1
+        {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpeedChartCell",forIndexPath: indexPath) as! ChartCellSpeedCell
+            cell.traceEvent = self.traceEvent
+            cell.loadCell()
+            return cell
+        }
+        else
         {
             return UICollectionViewCell()
         }

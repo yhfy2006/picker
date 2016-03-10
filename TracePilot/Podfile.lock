@@ -1,4 +1,8 @@
 PODS:
+  - Charts/Core (2.2.3)
+  - Charts/Realm (2.2.3):
+    - Charts/Core
+    - RealmSwift (~> 0.97)
   - EasyAnimation (1.0.4)
   - Realm (0.98.3):
     - Realm/Headers (= 0.98.3)
@@ -11,6 +15,7 @@ PODS:
   - TransitionTreasury/Core (3.0.2)
 
 DEPENDENCIES:
+  - Charts/Realm
   - EasyAnimation
   - RealmSwift
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
@@ -27,6 +32,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  Charts: f54267bb3f0f0e74520c6f248517cf5074dfd6fc
   EasyAnimation: 4aabd439b4038f48d72939cc19d6220363b3206e
   Realm: c6a7d00221a2d5177810a674aebd40c5e0b70b0f
   RealmSwift: d6ecad6e4c2a645d6ac956c2c7e9efb375f39c31
