@@ -84,6 +84,10 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         updateButtonWithStatus()
+        if self.loggingStatus == 2
+        {
+            startSwingAnimation()
+        }
         locationManager.requestAlwaysAuthorization()
     }
     
@@ -123,6 +127,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     
     func startSwingAnimation()
     {
+        stopSwingAnimation()
         UIView.animateWithDuration(0.5, delay: 0.0,
             options: [],
             animations: {

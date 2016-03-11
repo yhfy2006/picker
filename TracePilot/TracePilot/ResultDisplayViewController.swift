@@ -37,9 +37,12 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     
     func configureView() {
         loadMap()
-        let firstLocation = self.traceEvent?.traceLocations.first
-        airPlanePin.coordinate = CLLocationCoordinate2DMake((firstLocation?.locationLatitude)!, (firstLocation?.locationLongitude)!)
-        mapView.addAnnotation(airPlanePin)
+        if let firstLocation = self.traceEvent?.traceLocations.first
+        {
+            airPlanePin.coordinate = CLLocationCoordinate2DMake((firstLocation.locationLatitude), (firstLocation.locationLongitude))
+            mapView.addAnnotation(airPlanePin)
+        }
+
     }
     
     
@@ -82,7 +85,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
             mapView.hidden = true
             
             UIAlertView(title: "Error",
-                message: "Sorry, this run has no locations saved",
+                message: "This flight has no locations saved",
                 delegate:nil,
                 cancelButtonTitle: "OK").show()
         }
