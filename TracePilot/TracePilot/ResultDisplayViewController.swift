@@ -10,13 +10,21 @@ import UIKit
 import MapKit
 import HealthKit
 
-class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource{
+class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ResultChartCellDelegate{
 
     var traceEvent:TraceEvent?
     @IBOutlet var mapView: MKMapView!
+    var mapAnotationView:MKAnnotationView?
     @IBOutlet var collectionView:UICollectionView?
     
-    override func viewDidLoad() {
+    lazy var airPlanePin:AirPlanPointAnnotation = {
+        var _airPlanePin = AirPlanPointAnnotation()
+        _airPlanePin.imageName = "transport"
+        return _airPlanePin
+    }()
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         configureView()
         // Do any additional setup after loading the view.
@@ -29,6 +37,9 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     
     func configureView() {
         loadMap()
+        let firstLocation = self.traceEvent?.traceLocations.first
+        airPlanePin.coordinate = CLLocationCoordinate2DMake((firstLocation?.locationLatitude)!, (firstLocation?.locationLongitude)!)
+        mapView.addAnnotation(airPlanePin)
     }
     
     
@@ -85,6 +96,32 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         return renderer
     }
     
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        if !(annotation is AirPlanPointAnnotation) {
+            return nil
+        }
+        
+        let reuseId = "test"
+        
+        var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+        if anView == nil {
+            anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            anView!.canShowCallout = true
+        }
+        else {
+            anView!.annotation = annotation
+        }
+        
+        //Set annotation-specific properties **AFTER**
+        //the view is dequeued or created...
+        
+        let cpa = annotation as! AirPlanPointAnnotation
+        anView!.image = UIImage(named:cpa.imageName)
+        mapAnotationView = anView
+        return anView
+    }
+    
     func polyline() -> MKPolyline {
         var coords = [CLLocationCoordinate2D]()
         
@@ -117,7 +154,9 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpeedChartCell",forIndexPath: indexPath) as! ChartCellSpeedCell
             cell.traceEvent = self.traceEvent
+            cell.delegate = self
             cell.loadCell()
+            
             return cell
         }
         else
@@ -136,6 +175,17 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         return 1
     }
 
+    // MARK: -ResulstDiaplay chat delegate
+    func didTapAtIndex(index: Int) {
+        let location = self.traceEvent?.traceLocations[index]
+        airPlanePin.coordinate = CLLocationCoordinate2DMake((location?.locationLatitude)!, (location?.locationLongitude)!)
+        // handle image rotation
+//        if let mapAnotationView = self.mapAnotationView
+//        {
+//            mapAnotationView.image = 
+//        }
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -147,4 +197,8 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     }
     */
 
+}
+
+class AirPlanPointAnnotation: MKPointAnnotation {
+    var imageName: String!
 }

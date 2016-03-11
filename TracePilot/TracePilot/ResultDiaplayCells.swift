@@ -61,18 +61,26 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
 
 }
 
-class ChartCellSpeedCell: UICollectionViewCell {
+class ChartCellSpeedCell: UICollectionViewCell,ChartViewDelegate{
     @IBOutlet var lineChartView:LineChartView?
     
     // DB store
     var traceEvent:TraceEvent?
     var dataEntries: [BarChartDataEntry] = []
     var x:[Int] = []
+    var delegate:ResultChartCellDelegate?
     
     func loadCell()
     {
         dataEntries.removeAll()
         x.removeAll()
+        
+        lineChartView?.layer.cornerRadius = 10.0
+        lineChartView?.layer.borderColor = UIColor.clearColor().CGColor
+        lineChartView?.layer.borderWidth = 0.5
+        lineChartView?.clipsToBounds = true
+        lineChartView?.delegate = self
+        
         if let traceEvent = self.traceEvent
         {
             var index = 0
@@ -86,35 +94,69 @@ class ChartCellSpeedCell: UICollectionViewCell {
         }
 
         //lineChartView?.data?.setValueTextColor(UIColor.clearColor())
+        let redColor = UIColor(hex: "#E74C3C")
         
-        let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "kts")
+        let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Speed(kts)")
         chartDataSet.lineWidth = 2
-        chartDataSet.fillColor = ChartColorTemplates.liberty()[0]
+        chartDataSet.fillColor = UIColor.whiteColor()//ChartColorTemplates.liberty()[0]
         chartDataSet.axisDependency = .Left // Line will correlate with left axis values
-        //set1.setColor(UIColor.redColor().colorWithAlphaComponent(0.5)) // our line's opacity is 50%
-        chartDataSet.setCircleColor(UIColor.redColor()) // our circle will be dark red
-        chartDataSet.circleRadius = 1.0 // the radius of the node circle
+        chartDataSet.setCircleColor(redColor) // our circle will be dark red
+        chartDataSet.circleRadius = 2.0 // the radius of the node circle
         chartDataSet.fillAlpha = 1
-        chartDataSet.highlightColor = UIColor.whiteColor()
+        chartDataSet.highlightColor = UIColor.yellowColor()
         chartDataSet.drawCircleHoleEnabled = true
-        chartDataSet.valueTextColor = UIColor.clearColor()
-        chartDataSet.drawCubicEnabled = true
+        chartDataSet.drawCubicEnabled = false
         chartDataSet.cubicIntensity = 0.5;
+        chartDataSet.setColor(redColor)
+        chartDataSet.drawValuesEnabled = false
+        
+        
+        
         
         lineChartView!.leftAxis.drawGridLinesEnabled = true
         lineChartView!.leftAxis.drawAxisLineEnabled = false
+        lineChartView!.leftAxis.axisLineColor = GlobalVariables.appThemeColorColor
+        lineChartView!.leftAxis.gridColor = GlobalVariables.appThemeColorColor
+        lineChartView!.leftAxis.gridLineWidth = 0.5
+
+
         lineChartView!.rightAxis.drawGridLinesEnabled = true
         lineChartView!.rightAxis.drawAxisLineEnabled = false
+        lineChartView!.rightAxis.gridColor = UIColor.whiteColor()
+        lineChartView!.rightAxis.gridLineWidth = 0
+
+        lineChartView?.descriptionTextColor = UIColor.whiteColor()
         
         lineChartView!.xAxis.drawGridLinesEnabled = false
         lineChartView!.xAxis.drawAxisLineEnabled = false
+        lineChartView?.getAxis(.Right).labelTextColor = UIColor.clearColor()
+        lineChartView?.getAxis(.Left).labelTextColor = GlobalVariables.appThemeColorColor
+        lineChartView?.getAxis(.Left).labelFont =   UIFont (name: "HelveticaNeue-Medium", size: 12)!
+
+        //lineChartView!.xAxis.axisLineColor = UIColor.whiteColor()
         
         lineChartView?.drawBordersEnabled = false
+        lineChartView?.descriptionText = ""
+        lineChartView?.descriptionFont =  UIFont (name: "HelveticaNeue-Medium", size: 10)!
         
         let chartData = LineChartData(xVals: x, dataSet: chartDataSet)
         lineChartView!.data = chartData
     }
     
+    //MARK: -chartView delegate
+    
+
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight)
+    {
+        print("\(entry.value) in \(entry.xIndex)")
+        self.delegate?.didTapAtIndex(entry.xIndex)
+    }
+    
+}
+
+protocol ResultChartCellDelegate
+{
+    func didTapAtIndex(index:Int)
 }
 
 

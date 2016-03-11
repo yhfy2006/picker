@@ -76,18 +76,8 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if realm.objects(TraceEvent).count == 0
-        {
-            let event = TraceEvent()
-            event.title = "Test1"
-            event.id = event.IncrementaID()
-            try! realm.write {
-                realm.add(event)
-            }
-        }else
-        {
-             self.traceEvent = realm.objects(TraceEvent).first
-        }
+        self.traceEvent = TraceEvent()
+        self.traceEvent?.IncrementaID()
         
     }
     
@@ -128,7 +118,6 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     
     @IBAction func finishButtonPressed(sender:UIButton)
     {
-        //saveFlight()
         presentFlightEditView();
     }
     
@@ -242,6 +231,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     func saveFlight()
     {
         try! realm.write{
+            realm.add(self.traceEvent!)
             self.traceEvent?.distance = distance
             self.traceEvent?.duration = seconds
         }
@@ -256,7 +246,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
                 traceLocation.locationLatitude = location.coordinate.latitude
                 traceLocation.locationLongitude = location.coordinate.longitude
                 traceLocation.eventId = self.traceEvent!.id
-                self.traceEvent?.traceLocations.append(traceLocation)
+                self.traceEvent!.traceLocations.append(traceLocation)
 
             }
         }
@@ -281,25 +271,33 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
         self.presentViewController(self.flightEidtViewController!, animated: true, completion: nil)
         
     }
-    
-    func editDidCommit()
-    {
+    func editDidCommit(flightName: String?, flightComment: String?) {
         saveFlight()
+        try! realm.write{
+            self.traceEvent?.title = flightName!
+            self.traceEvent?.selfDecsription = flightComment!
+        }
         self.performSegueWithIdentifier("goToResultView", sender:nil)
+        editDidDiscard()
     }
     
     func editDidDiscard()
     {
+        self.traceEvent = TraceEvent()
+        self.traceEvent?.IncrementaID()
         try! realm.write{
             self.traceEvent?.distance = 0.0
             self.traceEvent?.duration = 0.0
-            seconds = -1;
-            heading = 0
-            speed = 0;
-            distance = 0;
-            relativeAltitude = 0;
-            eachSecond()
         }
+        seconds = -1;
+        heading = 0
+        speed = 0;
+        distance = 0;
+        relativeAltitude = 0;
+        eachSecond()
+        self.loggingStatus = 1
+        updateButtonWithStatus()
+        
     }
     
     

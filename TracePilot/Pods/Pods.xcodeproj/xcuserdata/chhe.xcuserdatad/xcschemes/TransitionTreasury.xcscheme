@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "87DD5DCD419A83E1AA6DAA5E"
+               BlueprintIdentifier = "51A159D576DFA4371D2718A0"
                BuildableName = "TransitionTreasury.framework"
                BlueprintName = "TransitionTreasury"
                ReferencedContainer = "container:Pods.xcodeproj">

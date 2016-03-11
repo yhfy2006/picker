@@ -24,12 +24,14 @@
 		D6971AEF541264941E1E9E70 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
 		FC66849F1C88EE29007DF2F9 /* TakePhotoRect.png in Resources */ = {isa = PBXBuildFile; fileRef = FC66849E1C88EE29007DF2F9 /* TakePhotoRect.png */; };
 		FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */; };
-		FC6684A51C88FB24007DF2F9 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A41C88FB24007DF2F9 /* HistoryViewController.swift */; };
+		FC6684A51C88FB24007DF2F9 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A41C88FB24007DF2F9 /* FeedViewController.swift */; };
 		FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A61C88FB65007DF2F9 /* R.generated.swift */; };
 		FC9A6E961C8FEE4E009686C5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
 		FC9A6E971C8FEE4E009686C5 /* Pods.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC9A6E9A1C8FFB34009686C5 /* ResultDiaplayCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */; };
 		FC9A6E9C1C90059A009686C5 /* MotionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E9B1C90059A009686C5 /* MotionKit.swift */; };
+		FC9A6EC51C929060009686C5 /* transport.png in Resources */ = {isa = PBXBuildFile; fileRef = FC9A6EC41C929060009686C5 /* transport.png */; };
+		FC9A6EC81C92A1AD009686C5 /* FeedViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6EC71C92A1AD009686C5 /* FeedViewCells.swift */; };
 		FCFB066D1C8E986900A90FBF /* ResultDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */; };
 		FCFB06701C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */; };
 /* End PBXBuildFile section */
@@ -70,10 +72,12 @@
 		CF3124C23F52557FBFF6BCBF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FC66849E1C88EE29007DF2F9 /* TakePhotoRect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TakePhotoRect.png; sourceTree = "<group>"; };
 		FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFlightViewController.swift; sourceTree = "<group>"; };
-		FC6684A41C88FB24007DF2F9 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		FC6684A41C88FB24007DF2F9 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		FC6684A61C88FB65007DF2F9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDiaplayCells.swift; sourceTree = "<group>"; };
 		FC9A6E9B1C90059A009686C5 /* MotionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionKit.swift; sourceTree = "<group>"; };
+		FC9A6EC41C929060009686C5 /* transport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transport.png; sourceTree = "<group>"; };
+		FC9A6EC71C92A1AD009686C5 /* FeedViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCells.swift; sourceTree = "<group>"; };
 		FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDisplayViewController.swift; sourceTree = "<group>"; };
 		FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticolorPolylineSegment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,13 +116,14 @@
 		4533B4B61C86439C00CCBE63 /* TracePilot */ = {
 			isa = PBXGroup;
 			children = (
+				FC9A6EC61C92A18A009686C5 /* Cells */,
 				FCFB066E1C8E9DA100A90FBF /* Utils */,
 				4533B4DB1C87F0E700CCBE63 /* Realm */,
 				4533B4B71C86439C00CCBE63 /* AppDelegate.swift */,
 				4533B4B91C86439C00CCBE63 /* MainViewParentController.swift */,
 				4533B4CD1C86557C00CCBE63 /* SessionViewController.swift */,
-				FC6684A41C88FB24007DF2F9 /* HistoryViewController.swift */,
-				FCFB06731C8EA7D000A90FBF /* ResultDiaplay */,
+				FC6684A41C88FB24007DF2F9 /* FeedViewController.swift */,
+				FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */,
 				FC6684A61C88FB65007DF2F9 /* R.generated.swift */,
 				FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */,
 				4533B4C91C8648BF00CCBE63 /* Extensions.swift */,
@@ -135,6 +140,7 @@
 		4533B4CF1C8656F600CCBE63 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FC9A6EC41C929060009686C5 /* transport.png */,
 				FC66849E1C88EE29007DF2F9 /* TakePhotoRect.png */,
 				4533B4D61C868A0F00CCBE63 /* explore-tool.png */,
 				4533B4D81C868AC000CCBE63 /* mountain-range.png */,
@@ -170,6 +176,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FC9A6EC61C92A18A009686C5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */,
+				FC9A6EC71C92A1AD009686C5 /* FeedViewCells.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		FCFB066E1C8E9DA100A90FBF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,15 +192,6 @@
 				FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */,
 			);
 			name = Utils;
-			sourceTree = "<group>";
-		};
-		FCFB06731C8EA7D000A90FBF /* ResultDiaplay */ = {
-			isa = PBXGroup;
-			children = (
-				FCFB066C1C8E986900A90FBF /* ResultDisplayViewController.swift */,
-				FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */,
-			);
-			name = ResultDiaplay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +265,7 @@
 				4533B4C21C86439C00CCBE63 /* LaunchScreen.storyboard in Resources */,
 				4533B4D51C8667E600CCBE63 /* speedometer.png in Resources */,
 				4533B4D91C868AC000CCBE63 /* mountain-range.png in Resources */,
+				FC9A6EC51C929060009686C5 /* transport.png in Resources */,
 				4533B4D11C86570400CCBE63 /* Circle.png in Resources */,
 				FC66849F1C88EE29007DF2F9 /* TakePhotoRect.png in Resources */,
 				4533B4BF1C86439C00CCBE63 /* Assets.xcassets in Resources */,
@@ -323,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9A6EC81C92A1AD009686C5 /* FeedViewCells.swift in Sources */,
 				FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */,
 				4533B4BA1C86439C00CCBE63 /* MainViewParentController.swift in Sources */,
 				FCFB066D1C8E986900A90FBF /* ResultDisplayViewController.swift in Sources */,
@@ -335,7 +343,7 @@
 				4533B4DD1C87F16000CCBE63 /* TraceEvent.swift in Sources */,
 				FC9A6E9A1C8FFB34009686C5 /* ResultDiaplayCells.swift in Sources */,
 				4533B4B81C86439C00CCBE63 /* AppDelegate.swift in Sources */,
-				FC6684A51C88FB24007DF2F9 /* HistoryViewController.swift in Sources */,
+				FC6684A51C88FB24007DF2F9 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

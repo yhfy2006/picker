@@ -37,12 +37,12 @@ class EditFlightViewController: UIViewController {
     {
         self.dismissViewControllerAnimated(true) { () -> Void in
             
-            try! Realm().write{
-               self.traceEvent?.title = (self.flightNameField?.text)!
-               self.traceEvent?.selfDecsription = (self.flightCommentView?.text)!
-            }
+//            try! Realm().write{
+//               self.traceEvent?.title = (self.flightNameField?.text)!
+//               self.traceEvent?.selfDecsription = (self.flightCommentView?.text)!
+//            }
             
-            self.delegate?.editDidCommit()
+            self.delegate?.editDidCommit(self.flightNameField?.text,flightComment: self.flightCommentView?.text)
         }
     }
     
@@ -50,5 +50,5 @@ class EditFlightViewController: UIViewController {
 
 protocol EditFlightViewDelegate {
     func editDidDiscard()
-    func editDidCommit()
+    func editDidCommit(flightName:String?,flightComment:String?)
 }
