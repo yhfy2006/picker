@@ -36,6 +36,14 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
             let avgSpeedDouble = getAvgSpeed()
             avgSpeed?.text = String(format: "%.2f", avgSpeedDouble)
             
+            if Util.altimeterAvailable()
+            {
+                let avgAlt = getAvgAltitude()
+                avgAltitude?.text = String(format: "%.2f", avgAlt)
+            }else
+            {
+                avgAltitude?.text = "-"
+            }
         }
        
     }
@@ -58,6 +66,33 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
         
         return avgSpeed
     }
+    
+    func getAvgAltitude() -> Double
+    {
+        let locationList = traceEvent?.traceLocations
+        var validNumber = 0
+        var avgAltitude:Double = 0.0
+        var totalAlt = 0.0
+        for location in locationList!
+        {
+            if location.locationAltitude != 0
+            {
+                totalAlt += location.locationAltitude
+                validNumber++
+            }
+        }
+        avgAltitude = totalAlt / Double(validNumber)
+        
+        return avgAltitude
+    }
+
+}
+
+class ChartCellAltitudeCell:ChartCellSpeedCell{
+    override var drawSpeedOrAltitude: Bool { get { return false } }
+    override var descripLabelString:String { get { return "Altitude(ft)" } }
+    override var lineColor:UIColor { get { return UIColor(hex: "#8e44ad") } }
+
 
 }
 
@@ -69,6 +104,11 @@ class ChartCellSpeedCell: UICollectionViewCell,ChartViewDelegate{
     var dataEntries: [BarChartDataEntry] = []
     var x:[Int] = []
     var delegate:ResultChartCellDelegate?
+    // true = speed  false = altitude
+    var drawSpeedOrAltitude:Bool { get { return true } }
+    var descripLabelString:String { get { return "Speed(kts)" } }
+    
+    var lineColor:UIColor { get { return UIColor(hex: "#E74C3C") } }
     
     func loadCell()
     {
@@ -86,28 +126,25 @@ class ChartCellSpeedCell: UICollectionViewCell,ChartViewDelegate{
             var index = 0
             for location in traceEvent.traceLocations
             {
-                let dataEntry = BarChartDataEntry(value: location.locationSpeed, xIndex: index)
+                let dataEntry = BarChartDataEntry(value: drawSpeedOrAltitude ? location.locationSpeed : location.locationAltitude, xIndex: index)
                 dataEntries.append(dataEntry)
                 x.append(index)
                 index++
             }
         }
-
-        //lineChartView?.data?.setValueTextColor(UIColor.clearColor())
-        let redColor = UIColor(hex: "#E74C3C")
         
-        let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Speed(kts)")
+        let chartDataSet = LineChartDataSet(yVals: dataEntries, label: descripLabelString)
         chartDataSet.lineWidth = 2
         chartDataSet.fillColor = UIColor.whiteColor()//ChartColorTemplates.liberty()[0]
         chartDataSet.axisDependency = .Left // Line will correlate with left axis values
-        chartDataSet.setCircleColor(redColor) // our circle will be dark red
+        chartDataSet.setCircleColor(lineColor) // our circle will be dark red
         chartDataSet.circleRadius = 2.0 // the radius of the node circle
         chartDataSet.fillAlpha = 1
         chartDataSet.highlightColor = UIColor.yellowColor()
         chartDataSet.drawCircleHoleEnabled = true
         chartDataSet.drawCubicEnabled = false
         chartDataSet.cubicIntensity = 0.5;
-        chartDataSet.setColor(redColor)
+        chartDataSet.setColor(lineColor)
         chartDataSet.drawValuesEnabled = false
         
         

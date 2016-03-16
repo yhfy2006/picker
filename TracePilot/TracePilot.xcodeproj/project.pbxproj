@@ -21,6 +21,13 @@
 		4533B4D71C868A0F00CCBE63 /* explore-tool.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D61C868A0F00CCBE63 /* explore-tool.png */; };
 		4533B4D91C868AC000CCBE63 /* mountain-range.png in Resources */ = {isa = PBXBuildFile; fileRef = 4533B4D81C868AC000CCBE63 /* mountain-range.png */; };
 		4533B4DD1C87F16000CCBE63 /* TraceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4533B4DC1C87F16000CCBE63 /* TraceEvent.swift */; };
+		45FC60991C96512900ADBBB8 /* FeelinGood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 45FC60961C96512900ADBBB8 /* FeelinGood.mp3 */; };
+		45FC609A1C96512900ADBBB8 /* IronBacon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 45FC60971C96512900ADBBB8 /* IronBacon.mp3 */; };
+		45FC609B1C96512900ADBBB8 /* WhatYouWant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 45FC60981C96512900ADBBB8 /* WhatYouWant.mp3 */; };
+		45FC609F1C98ED5100ADBBB8 /* BlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC609E1C98ED5100ADBBB8 /* BlackBox.swift */; };
+		45FC60A11C990A6300ADBBB8 /* 10sec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 45FC60A01C990A6300ADBBB8 /* 10sec.mp3 */; };
+		45FC60A31C99118D00ADBBB8 /* airports.csv in Resources */ = {isa = PBXBuildFile; fileRef = 45FC60A21C99118D00ADBBB8 /* airports.csv */; };
+		45FC60A51C9911BA00ADBBB8 /* AirPort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FC60A41C9911BA00ADBBB8 /* AirPort.swift */; };
 		D6971AEF541264941E1E9E70 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
 		FC66849F1C88EE29007DF2F9 /* TakePhotoRect.png in Resources */ = {isa = PBXBuildFile; fileRef = FC66849E1C88EE29007DF2F9 /* TakePhotoRect.png */; };
 		FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */; };
@@ -67,6 +74,13 @@
 		4533B4D61C868A0F00CCBE63 /* explore-tool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explore-tool.png"; sourceTree = "<group>"; };
 		4533B4D81C868AC000CCBE63 /* mountain-range.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mountain-range.png"; sourceTree = "<group>"; };
 		4533B4DC1C87F16000CCBE63 /* TraceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceEvent.swift; sourceTree = "<group>"; };
+		45FC60961C96512900ADBBB8 /* FeelinGood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FeelinGood.mp3; sourceTree = "<group>"; };
+		45FC60971C96512900ADBBB8 /* IronBacon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = IronBacon.mp3; sourceTree = "<group>"; };
+		45FC60981C96512900ADBBB8 /* WhatYouWant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WhatYouWant.mp3; sourceTree = "<group>"; };
+		45FC609E1C98ED5100ADBBB8 /* BlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackBox.swift; sourceTree = "<group>"; };
+		45FC60A01C990A6300ADBBB8 /* 10sec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 10sec.mp3; sourceTree = "<group>"; };
+		45FC60A21C99118D00ADBBB8 /* airports.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = airports.csv; sourceTree = "<group>"; };
+		45FC60A41C9911BA00ADBBB8 /* AirPort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPort.swift; sourceTree = "<group>"; };
 		BB88BEA106A1B8DC0FBB31DC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C528A53E4A25D06AFEC1EDFF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CF3124C23F52557FBFF6BCBF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +142,7 @@
 				FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */,
 				4533B4C91C8648BF00CCBE63 /* Extensions.swift */,
 				4533B4CB1C8648D500CCBE63 /* Shared.swift */,
+				45FC609E1C98ED5100ADBBB8 /* BlackBox.swift */,
 				4533B4BB1C86439C00CCBE63 /* Main.storyboard */,
 				4533B4BE1C86439C00CCBE63 /* Assets.xcassets */,
 				4533B4C01C86439C00CCBE63 /* LaunchScreen.storyboard */,
@@ -140,6 +155,11 @@
 		4533B4CF1C8656F600CCBE63 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				45FC60A21C99118D00ADBBB8 /* airports.csv */,
+				45FC60A01C990A6300ADBBB8 /* 10sec.mp3 */,
+				45FC60961C96512900ADBBB8 /* FeelinGood.mp3 */,
+				45FC60971C96512900ADBBB8 /* IronBacon.mp3 */,
+				45FC60981C96512900ADBBB8 /* WhatYouWant.mp3 */,
 				FC9A6EC41C929060009686C5 /* transport.png */,
 				FC66849E1C88EE29007DF2F9 /* TakePhotoRect.png */,
 				4533B4D61C868A0F00CCBE63 /* explore-tool.png */,
@@ -155,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				4533B4DC1C87F16000CCBE63 /* TraceEvent.swift */,
+				45FC60A41C9911BA00ADBBB8 /* AirPort.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -265,12 +286,17 @@
 				4533B4C21C86439C00CCBE63 /* LaunchScreen.storyboard in Resources */,
 				4533B4D51C8667E600CCBE63 /* speedometer.png in Resources */,
 				4533B4D91C868AC000CCBE63 /* mountain-range.png in Resources */,
+				45FC60A11C990A6300ADBBB8 /* 10sec.mp3 in Resources */,
 				FC9A6EC51C929060009686C5 /* transport.png in Resources */,
 				4533B4D11C86570400CCBE63 /* Circle.png in Resources */,
 				FC66849F1C88EE29007DF2F9 /* TakePhotoRect.png in Resources */,
+				45FC60A31C99118D00ADBBB8 /* airports.csv in Resources */,
+				45FC60991C96512900ADBBB8 /* FeelinGood.mp3 in Resources */,
 				4533B4BF1C86439C00CCBE63 /* Assets.xcassets in Resources */,
 				4533B4D31C86584E00CCBE63 /* plane-front-view.png in Resources */,
 				4533B4BD1C86439C00CCBE63 /* Main.storyboard in Resources */,
+				45FC609A1C96512900ADBBB8 /* IronBacon.mp3 in Resources */,
+				45FC609B1C96512900ADBBB8 /* WhatYouWant.mp3 in Resources */,
 				4533B4D71C868A0F00CCBE63 /* explore-tool.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +364,8 @@
 				4533B4CA1C8648BF00CCBE63 /* Extensions.swift in Sources */,
 				FCFB06701C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift in Sources */,
 				FC9A6E9C1C90059A009686C5 /* MotionKit.swift in Sources */,
+				45FC609F1C98ED5100ADBBB8 /* BlackBox.swift in Sources */,
+				45FC60A51C9911BA00ADBBB8 /* AirPort.swift in Sources */,
 				4533B4CC1C8648D500CCBE63 /* Shared.swift in Sources */,
 				4533B4CE1C86557C00CCBE63 /* SessionViewController.swift in Sources */,
 				4533B4DD1C87F16000CCBE63 /* TraceEvent.swift in Sources */,

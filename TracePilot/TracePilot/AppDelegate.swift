@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreMotion
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,17 +20,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = GlobalVariables.appThemeColorColor
         print(Util.getAudioDirectory())
         
-//        let motionKit = MotionKit()
-//        // on a aircraft yaw = roll roll = yaw  pitch = pitch
-////        motionKit.getDeviceMotionObject(0.1){
-////            (deviceMotion) -> () in
-////            let accelerationX = deviceMotion.userAcceleration.x
-////            let gravityY = deviceMotion.gravity.y
-////            let rotationX = deviceMotion.rotationRate.x
-////            //var magneticFieldX = deviceMotion.m
-////            let attitideYaw = deviceMotion.attitude.yaw
-////            print("attitideYaw:\(attitideYaw) pitch:\(deviceMotion.attitude.pitch) roll:\(deviceMotion.attitude.roll)")
-////        }
+        Util.processAirportData()
+        
+
+//        
+//        let am = CMMotionActivityManager()
+//        am.queryActivityStartingFromDate(NSDate().dateByAddingTimeInterval(60), toDate: NSDate(), toQueue: NSOperationQueue()) { (activities, error) -> Void in
+//            if let ats = activities
+//            {
+//                for at in ats
+//                {
+//                    print("AutoMob:\(at.automotive)")
+//                    print("AutoMob:\(at.automotive)")
+//
+//                }
+//            }
+//            
+//        }
+        // on a aircraft yaw = roll roll = yaw  pitch = pitch
+//        motionKit.getDeviceMotionObject(0.1){
+//            (deviceMotion) -> () in
+//            let accelerationX = deviceMotion.userAcceleration.x
+//            let gravityY = deviceMotion.gravity.y
+//            let rotationX = deviceMotion.rotationRate.x
+//            //var magneticFieldX = deviceMotion.m
+//            let attitideYaw = deviceMotion.attitude.yaw
+//            print("attitideYaw:\(attitideYaw) pitch:\(deviceMotion.attitude.pitch) roll:\(deviceMotion.attitude.roll)")
+//        }
+        
+        
+        //let mh = CMDeviceMotionHandler()
+        
         
         return true
     }
@@ -42,10 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        Util.observables.goingtoBackGroundNotice.value = "Sleep!"
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        Util.observables.wakeUpFromBackGroundNotice.value = "wakeUp!"
+
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

@@ -43,6 +43,7 @@ import CoreMotion
         NSLog("MotionKit has been initialised successfully")
     }
     
+    
     /*
     *  getAccelerometerValues:interval:values:
     *

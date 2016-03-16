@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import HealthKit
+import CoreMotion
+
 
 class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ResultChartCellDelegate{
 
@@ -23,6 +25,8 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         return _airPlanePin
     }()
     
+    var resultCelltypes:Array<ResultDisplayCellType> = Array()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -35,14 +39,22 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         // Dispose of any resources that can be recreated.
     }
     
-    func configureView() {
+    func configureView()
+    {
         loadMap()
         if let firstLocation = self.traceEvent?.traceLocations.first
         {
             airPlanePin.coordinate = CLLocationCoordinate2DMake((firstLocation.locationLatitude), (firstLocation.locationLongitude))
             mapView.addAnnotation(airPlanePin)
         }
-
+        
+        resultCelltypes.append(ResultDisplayCellType.metaData)
+        resultCelltypes.append(ResultDisplayCellType.speedChart)
+        if CMAltimeter.isRelativeAltitudeAvailable()
+        {
+            resultCelltypes.append(ResultDisplayCellType.altitudeChart)
+        }
+        
     }
     
     
@@ -101,7 +113,8 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
-        if !(annotation is AirPlanPointAnnotation) {
+        if !(annotation is AirPlanPointAnnotation)
+        {
             return nil
         }
         
@@ -141,21 +154,33 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     //Mark: - CollectionView
      func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
      {
-       return 2
+       return resultCelltypes.count
      }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
      func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
      {
-        if indexPath.row == 0
+        let resultType = resultCelltypes[indexPath.row];
+        
+        if resultType == ResultDisplayCellType.metaData
         {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BasicInfoCell",forIndexPath: indexPath) as! ResultDiaplayCellBasicInfo
             cell.traceEvent = self.traceEvent
             cell.loadCell()
             return cell
-        }else if indexPath.row == 1
+        }
+        else if resultType == ResultDisplayCellType.speedChart
         {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpeedChartCell",forIndexPath: indexPath) as! ChartCellSpeedCell
+            cell.traceEvent = self.traceEvent
+            cell.delegate = self
+            cell.loadCell()
+            
+            return cell
+        }
+        else if resultType == ResultDisplayCellType.altitudeChart
+        {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AltitudeChartCell",forIndexPath: indexPath) as! ChartCellAltitudeCell
             cell.traceEvent = self.traceEvent
             cell.delegate = self
             cell.loadCell()

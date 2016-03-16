@@ -8,6 +8,17 @@
 
 import UIKit
 import HealthKit
+import Observable
+import CoreMotion
+import RealmSwift
+import CSwiftV
+
+
+enum ResultDisplayCellType {
+    case metaData
+    case speedChart
+    case altitudeChart
+}
 
 
 struct GlobalVariables{
@@ -16,9 +27,59 @@ struct GlobalVariables{
     
 }
 
+struct AppObservables {
+    var wakeUpFromBackGroundNotice: Observable<String>= Observable("")
+    var goingtoBackGroundNotice:Observable<String>= Observable("")
+}
+
 
 class Util:NSObject{
 
+    static var observables:AppObservables = AppObservables()
+    
+    static func processAirportData()
+    {
+        let realm = try! Realm()
+        let airPorts = realm.objects(AirPort)
+        if airPorts.count == 0
+        {
+            let fileURL: NSURL! = NSBundle.mainBundle().URLForResource("airports", withExtension: "csv")
+            if let data = NSData(contentsOfURL: fileURL) {
+                if let content = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                    let csv = CSwiftV(String: String(content))
+                    let rows = csv.rows
+                    for row in rows
+                    {
+                        let airPort = AirPort()
+                        airPort.id = Int(row[0])!
+                        airPort.name = row[1]
+                        airPort.city = row[2]
+                        airPort.country = row[3]
+                        airPort.threeLetterCode = row[4]
+                        airPort.fourLetterCode = row[5]
+                        airPort.latitude = Double(row[6])!
+                        airPort.longtitude = Double(row[7])!
+                        airPort.timezone =  Int(floor(CGFloat((row[9] as NSString).floatValue)))
+                        airPort.altitude = Double(row[8])!
+                        airPort.dst = row[10]
+                        airPort.tzTimezone = row[11]
+                        
+                        try! realm.write{
+                            realm.add(airPort)
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+    
+    static func altimeterAvailable() -> Bool
+    {
+        return CMAltimeter.isRelativeAltitudeAvailable()
+    }
+    
     static func getAudioDirectory()->String
     {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)

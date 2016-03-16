@@ -42,4 +42,5 @@ class TraceLocation:Object{
     dynamic var locationLongitude:Double = 0.0
     dynamic var locationSpeed:Double = 0.0
     dynamic var locationHeading:Double = 0.0
+    dynamic var locationAltitude:Double = 0.0
 }

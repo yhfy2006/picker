@@ -9,13 +9,17 @@
 import UIKit
 import Spring
 import EasyAnimation
-import CoreLocation
 import HealthKit
 import RealmSwift
 import TransitionTreasury
+import AVFoundation
 import CoreMotion
+import CoreLocation
 
-class SessionViewController: UIViewController,EditFlightViewDelegate {
+
+
+
+class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDelegate {
     
     @IBOutlet var goundSpeedValueLabel:UILabel?
     @IBOutlet var goundSpeedUnitLabel:UILabel?
@@ -34,21 +38,16 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     @IBOutlet var resumeButton:UIButton?
     @IBOutlet var finishButton:UIButton?
     
+    //debugView
+    @IBOutlet var debugView:UIView?
+    @IBOutlet var debugLocationLabel:UILabel?
+    @IBOutlet var debugLocationAlti:UILabel?
+    @IBOutlet var debugButton:UIButton?
+    
     var startLogging:Bool = false
     
-    // Timer
-    var timer:NSTimer?
-    var startTime = NSTimeInterval()
-    
-    //altimeter 
-    let altimeter = CMAltimeter()
-    
-    // tracking
-    var seconds = 0.0
-    var distance = 0.0
-    var speed = 0.0
-    var heading = 0.0
-    var relativeAltitude = 0.0
+    var blackBox = BlackBox.sharedInstance
+   
     
     // DB store
     var traceEvent:TraceEvent?
@@ -56,73 +55,56 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     // status 1 = before start; 2=Recording; 3=Paused
     var loggingStatus = 1
     
+
     
-    lazy var locationManager:CLLocationManager = {
-        var _locationManager = CLLocationManager()
-        _locationManager.delegate = self
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        _locationManager.activityType = .Fitness
-        
-        // Movement threshold for new events
-        _locationManager.distanceFilter = 10.0
-        return _locationManager
-    }()
-    
-    lazy var locations = [CLLocation]()
     let realm = try! Realm()
     
     var flightEidtViewController:EditFlightViewController?
     
+    var player: AVQueuePlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        blackBox.delegate = self
+        
         self.traceEvent = TraceEvent()
         self.traceEvent?.IncrementaID()
+        updateButtonWithStatus()
         
+        //Observables
+        Util.observables.wakeUpFromBackGroundNotice.afterChange.add { (_) -> () in
+            // resume logging if status ==2
+            if self.loggingStatus == 2
+            {
+                self.resumeButtonPressed(UIButton())
+            }
+        }
+        
+        Util.observables.goingtoBackGroundNotice.afterChange.add { (_) -> () in
+            self.blackBox.timer?.invalidate()
+            self.blackBox.timer = nil
+        }
+        
+        
+        //debug settings
+        debugView?.hidden = true
+        let longPress = UILongPressGestureRecognizer(target: self, action: "debugLongPress:")
+        self.debugButton!.addGestureRecognizer(longPress)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool)
+    {
         super.viewWillAppear(animated)
-        updateButtonWithStatus()
+        self.blackBox.locationManager.requestAlwaysAuthorization()
         if self.loggingStatus == 2
         {
-            startSwingAnimation()
+            resumeButtonPressed(UIButton())
         }
-        locationManager.requestAlwaysAuthorization()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        timer?.invalidate()
-    }
-    
-    @IBAction func loggingButtonPressed(sender:UIButton){
-        if self.loggingStatus == 2
-        {
-            stopUpdateTime()
-            self.loggingStatus = 3
-            updateButtonWithStatus()
-            stopSwingAnimation()
-        }else if self.loggingStatus == 1
-        {
-            self.startUpdateTime()
-            self.loggingStatus = 2
-            updateButtonWithStatus()
-            startSwingAnimation()
-        }
-    }
-    
-    @IBAction func resumeButtonPressed(sender:UIButton)
-    {
-       self.loggingStatus = 2
-        updateButtonWithStatus()
-        startUpdateTime()
-        startSwingAnimation()
-    }
-    
-    @IBAction func finishButtonPressed(sender:UIButton)
-    {
-        presentFlightEditView();
     }
     
     func startSwingAnimation()
@@ -176,72 +158,54 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     }
     
     
-    func startUpdateTime()
+    func startRecording()
     {
-        let aSelector : Selector = "eachSecond"
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
-        if(self.loggingStatus == 1)
-        {
-            startTime = NSDate.timeIntervalSinceReferenceDate()
-        }
-        locationManager.startUpdatingLocation()
-        // 1
-        if CMAltimeter.isRelativeAltitudeAvailable() {
-            // 2
-            altimeter.startRelativeAltitudeUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { data, error in
-                // 3
-                if (error == nil) {
-                    self.relativeAltitude = data!.relativeAltitude.doubleValue
-                }
-            })
-        }
-        
+        self.blackBox.startRecordingWithLoggingState(self.loggingStatus)
     }
     
-    // Everything each second should be doing
-    func eachSecond()
+    func blackBoxEachSecondUpdate(duration: Double, distance: Double, speed: Double, heading: Double, altitude: Double)
     {
-        seconds++
-        print(seconds)
-        
         // distance
         let distanceInMiles = String(format: "%.2f", Util.distanceInMiles(distance))
-        print("distance:\(distanceInMiles)")
+        //print("distance:\(distanceInMiles)")
         self.distanceValueLabel?.text = distanceInMiles
         
         // speed
-        let speedInKnots = String(format: "%.1f", self.speed);
+        let speedInKnots = String(format: "%.1f", speed);
         self.goundSpeedValueLabel?.text = speedInKnots
         
         // heading
-        let headingIndegree = String(format: "%.1f", self.heading);
+        let headingIndegree = String(format: "%.1f", heading);
         self.headingValueLabel?.text = headingIndegree
         
-        //altitude
-        if let baseLocation = self.locations.last
+        if CMAltimeter.isRelativeAltitudeAvailable()
         {
-            var baseAltitude = baseLocation.altitude
-            print("altitude\(baseAltitude)")
-            if abs(self.relativeAltitude) >= 1
-            {
-                baseAltitude += self.relativeAltitude
-            }
-            self.altitudeValueLabel?.text = String(format: "%.2f", baseAltitude);
+            self.altitudeValueLabel?.text = String(format: "%.2f", altitude);
+        }else
+        {
+            self.altitudeValueLabel?.text = "-"
         }
         
-        timeCountLabel?.text = Util.timeString(seconds)
-        
+        timeCountLabel?.text = Util.timeString(duration)
+    }
+    
+    func locationManagerGetUpdated(newestLocations: CLLocation)
+    {
+        // debugView
+        self.debugLocationLabel?.text = "lo:\(newestLocations.coordinate.latitude) \(newestLocations.coordinate.longitude)"
+        self.debugLocationAlti?.text = "loAl:\(self.blackBox.relativeAltitude)"
     }
     
     func saveFlight()
     {
         try! realm.write{
             realm.add(self.traceEvent!)
-            self.traceEvent?.distance = distance
-            self.traceEvent?.duration = seconds
+            self.traceEvent?.distance = self.blackBox.distance
+            self.traceEvent?.duration = self.blackBox.seconds
         }
 
-        for location in self.locations
+        var index = 0
+        for location in self.blackBox.locations
         {
             let traceLocation = TraceLocation()
             try! realm.write{
@@ -251,18 +215,21 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
                 traceLocation.locationLatitude = location.coordinate.latitude
                 traceLocation.locationLongitude = location.coordinate.longitude
                 traceLocation.eventId = self.traceEvent!.id
+                if index < self.blackBox.altitudes.count
+                {
+                    traceLocation.locationAltitude = self.blackBox.altitudes[index]
+                }
                 self.traceEvent!.traceLocations.append(traceLocation)
 
             }
+            index++
         }
 
     }
     
-    func stopUpdateTime()
+    func stopRecording()
     {
-        locationManager.stopUpdatingLocation()
-        timer?.invalidate()
-        timer = nil
+        self.blackBox.stopRecording()
     }
     
     func presentFlightEditView()
@@ -294,16 +261,51 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
             self.traceEvent?.distance = 0.0
             self.traceEvent?.duration = 0.0
         }
-        seconds = -1;
-        heading = 0
-        speed = 0;
-        distance = 0;
-        relativeAltitude = 0;
-        eachSecond()
+        self.blackBox.discardAllData()
         self.loggingStatus = 1
         updateButtonWithStatus()
         
     }
+    
+    //MARK: -IBActions
+    
+    @IBAction func loggingButtonPressed(sender:UIButton){
+        if self.loggingStatus == 2
+        {
+            stopRecording()
+            self.loggingStatus = 3
+            updateButtonWithStatus()
+            stopSwingAnimation()
+        }else if self.loggingStatus == 1
+        {
+            self.startRecording()
+            self.loggingStatus = 2
+            updateButtonWithStatus()
+            startSwingAnimation()
+        }
+    }
+    
+    @IBAction func resumeButtonPressed(sender:UIButton)
+    {
+        self.loggingStatus = 2
+        updateButtonWithStatus()
+        startRecording()
+        startSwingAnimation()
+    }
+    
+    @IBAction func finishButtonPressed(sender:UIButton)
+    {
+        presentFlightEditView();
+    }
+    
+    
+    func debugLongPress(guesture: UILongPressGestureRecognizer)
+    {
+        if guesture.state == UIGestureRecognizerState.Began {
+            debugView?.hidden = !debugView!.hidden
+        }
+    }
+
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -319,27 +321,4 @@ class SessionViewController: UIViewController,EditFlightViewDelegate {
     
 }
 
-extension SessionViewController:CLLocationManagerDelegate{
-    
-    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        print(newLocation.altitude);
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        for location in locations {
-            if location.horizontalAccuracy < 20 {
-                // update distance, heading, and speed
-                if self.locations.count > 0 {
-                    let firstLocation = self.locations.last
-                    distance += location.distanceFromLocation(firstLocation!)
-                    speed = Util.mps2Knot(location.speed)
-                    heading = location.course
-                }
-                //sace location
-                self.locations.append(location)
-            }
-        }
-    }
-    
- 
-}
+
