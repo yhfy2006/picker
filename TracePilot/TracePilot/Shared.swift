@@ -37,6 +37,46 @@ class Util:NSObject{
 
     static var observables:AppObservables = AppObservables()
     
+    static func getNearestAirport(lat:Double,longt:Double) -> AirPort?
+    {
+        let realm = try! Realm()
+        
+        let predicate = NSPredicate(format: "latitude BETWEEN {%f, %f} AND longtitude BETWEEN {%f, %f}",
+            lat - 0.01,
+            lat + 0.01,
+            longt - 0.01,
+            longt + 0.01
+        )
+        
+        let airPort = realm.objects(AirPort).filter(predicate).first
+        return airPort
+    }
+    
+    static func getEventdAirports(event:TraceEvent?) -> [(AirPort,TraceLocation)]
+    {
+        var resultArray = Array<(AirPort,TraceLocation)>()
+        if let event = event
+        {
+            let locationList = event.traceLocations
+            var airPortCheckSet = Set<Int>()
+            for location in locationList
+            {
+                let airport  = Util.getNearestAirport(location.locationLatitude, longt: location.locationLongitude)
+                if let airport = airport
+                {
+                    if !airPortCheckSet.contains(airport.id)
+                    {
+                        let tuple = (airport,location)
+                        resultArray.append(tuple)
+                        airPortCheckSet.insert(airport.id)
+                    }
+                }
+            }
+
+        }
+        return resultArray;
+    }
+    
     static func processAirportData()
     {
         let realm = try! Realm()

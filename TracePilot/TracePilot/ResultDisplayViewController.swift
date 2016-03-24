@@ -31,6 +31,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     {
         super.viewDidLoad()
         configureView()
+        print(Util.getEventdAirports(self.traceEvent))
         // Do any additional setup after loading the view.
     }
 

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = GlobalVariables.appThemeColorColor
         print(Util.getAudioDirectory())
         
-        Util.processAirportData()
+        //Util.processAirportData()
         
 
 //        

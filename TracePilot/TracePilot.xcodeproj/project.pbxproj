@@ -141,7 +141,6 @@
 				FC6684A61C88FB65007DF2F9 /* R.generated.swift */,
 				FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */,
 				4533B4C91C8648BF00CCBE63 /* Extensions.swift */,
-				4533B4CB1C8648D500CCBE63 /* Shared.swift */,
 				45FC609E1C98ED5100ADBBB8 /* BlackBox.swift */,
 				4533B4BB1C86439C00CCBE63 /* Main.storyboard */,
 				4533B4BE1C86439C00CCBE63 /* Assets.xcassets */,
@@ -209,6 +208,7 @@
 		FCFB066E1C8E9DA100A90FBF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4533B4CB1C8648D500CCBE63 /* Shared.swift */,
 				FC9A6E9B1C90059A009686C5 /* MotionKit.swift */,
 				FCFB066F1C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift */,
 			);
