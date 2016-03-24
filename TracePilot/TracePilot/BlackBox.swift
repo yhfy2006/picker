@@ -35,6 +35,9 @@ class BlackBox: NSObject {
     //altimeter
     let altimeter = CMAltimeter()
     
+    //base altitude
+    var baseAltitude = DBL_MAX
+    
     // tracking
     var seconds = 0.0
     var distance = 0.0
@@ -121,7 +124,7 @@ class BlackBox: NSObject {
     func eachSecond()
     {
         seconds++
-        delegate?.blackBoxEachSecondUpdate(seconds,distance:distance, speed: speed, heading: heading, altitude: relativeAltitude);
+        delegate?.blackBoxEachSecondUpdate(seconds,distance:distance, speed: speed, heading: heading, altitude: relativeAltitude + baseAltitude);
         
     }
     
@@ -168,6 +171,12 @@ extension BlackBox:CLLocationManagerDelegate{
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for location in locations {
             if location.horizontalAccuracy < 20 {
+                // update base
+                if baseAltitude == DBL_MAX && location.verticalAccuracy >= 0
+                {
+                    baseAltitude = location.altitude
+                }
+                
                 // update distance, heading, and speed
                 if self.locations.count > 0
                 {

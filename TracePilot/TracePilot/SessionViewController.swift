@@ -180,7 +180,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         
         if CMAltimeter.isRelativeAltitudeAvailable()
         {
-            self.altitudeValueLabel?.text = String(format: "%.2f", altitude);
+            self.altitudeValueLabel?.text = altitude == DBL_MAX ? "-" : String(format: "%.2f", altitude);
         }else
         {
             self.altitudeValueLabel?.text = "-"
@@ -193,7 +193,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     {
         // debugView
         self.debugLocationLabel?.text = "lo:\(newestLocations.coordinate.latitude) \(newestLocations.coordinate.longitude)"
-        self.debugLocationAlti?.text = "loAl:\(self.blackBox.relativeAltitude)"
+        self.debugLocationAlti?.text = "loAl:\(self.blackBox.baseAltitude) + \(self.blackBox.relativeAltitude)"
     }
     
     func saveFlight()
