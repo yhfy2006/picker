@@ -88,9 +88,11 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
 
 }
 
-class AirportsDisplayCell:UICollectionViewCell
+class AirportsDisplayCell:UICollectionViewCell,ABSteppedProgressBarDelegate
 {
     var passedAirPorts:[(AirPort,TraceLocation)]?
+    var delegate:ResultCellDelegate?
+
     @IBOutlet var stepperView:ABSteppedProgressBar?
     
     func loadCell()
@@ -99,36 +101,19 @@ class AirportsDisplayCell:UICollectionViewCell
         {
             stepperView?.radius = (stepperView?.frame.height)!/4.0
             stepperView?.progressRadius = (stepperView?.frame.height)!/4.0 - 5
+            stepperView?.progressLineHeight = 5
             stepperView?.numberOfPoints = airPorts.count
             stepperView?.lineHeight  = 10
             stepperView?.backgroundShapeColor = GlobalVariables.appThemeColorColor
             stepperView?.selectedBackgoundColor = UIColor.whiteColor()
-            
-            if stepperView == nil
-            {
-//                var titles = Array<String>()
-//                
-//                for airport in airPorts
-//                {
-//                    titles.append(airport.0.fourLetterCode)
-//                }
-//                stepperView = AYStepperView(frame: CGRectMake(0, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height), titles: titles)
-//                //stepperView?.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin,.FlexibleHeight]
-//                stepperView?.userInteractionEnabled = true
-//                self.contentView.addSubview(stepperView!)
-//                
-//                
-//                let hConstraint = NSLayoutConstraint(item: stepperView!, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: 0 )
-//                let vConstraint = NSLayoutConstraint(item: stepperView!, attribute: .Bottom, relatedBy: .Equal, toItem: self.contentView, attribute: .Bottom, multiplier: 1, constant: 0 )
-//                let lConstraint = NSLayoutConstraint(item: stepperView!, attribute: .Leading, relatedBy: .Equal, toItem: self.contentView, attribute: .Leading, multiplier: 1, constant: 0 )
-//                let rConstraint = NSLayoutConstraint(item: stepperView!, attribute: .Trailing, relatedBy: .Equal, toItem: self.contentView, attribute: .Trailing, multiplier: 1, constant: 0 )
-//                stepperView!.translatesAutoresizingMaskIntoConstraints = false
-//                
-//                NSLayoutConstraint.activateConstraints([hConstraint,vConstraint,lConstraint,rConstraint])
-                
-            }
+            stepperView?.delegate = self
         }
         
+    }
+    
+    func progressBar(progressBar: ABSteppedProgressBar, didSelectItemAtIndex index: Int)
+    {
+        self.delegate?.didTabOnAirportViewAtIndex(index)
     }
 }
 
@@ -147,7 +132,7 @@ class ChartCellSpeedCell: UICollectionViewCell,ChartViewDelegate{
     var traceEvent:TraceEvent?
     var dataEntries: [BarChartDataEntry] = []
     var x:[Int] = []
-    var delegate:ResultChartCellDelegate?
+    var delegate:ResultCellDelegate?
     // true = speed  false = altitude
     var drawSpeedOrAltitude:Bool { get { return true } }
     var descripLabelString:String { get { return "Speed(kts)" } }
@@ -230,14 +215,17 @@ class ChartCellSpeedCell: UICollectionViewCell,ChartViewDelegate{
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight)
     {
         print("\(entry.value) in \(entry.xIndex)")
-        self.delegate?.didTapAtIndex(entry.xIndex)
+        self.delegate?.didTapOnChartViewAtIndex(entry.xIndex)
     }
     
 }
 
-protocol ResultChartCellDelegate
+
+
+protocol ResultCellDelegate
 {
-    func didTapAtIndex(index:Int)
+    func didTapOnChartViewAtIndex(index:Int)
+    func didTabOnAirportViewAtIndex(index:Int)
 }
 
 

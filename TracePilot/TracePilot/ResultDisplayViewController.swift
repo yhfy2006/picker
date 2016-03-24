@@ -12,17 +12,23 @@ import HealthKit
 import CoreMotion
 
 
-class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ResultChartCellDelegate{
+class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ResultCellDelegate{
 
     var traceEvent:TraceEvent?
     @IBOutlet var mapView: MKMapView!
     var mapAnotationView:MKAnnotationView?
     @IBOutlet var collectionView:UICollectionView?
     
-    lazy var airPlanePin:AirPlanPointAnnotation = {
-        var _airPlanePin = AirPlanPointAnnotation()
+    lazy var airPlanePin:PointAnnotation = {
+        var _airPlanePin = PointAnnotation()
         _airPlanePin.imageName = "transport"
         return _airPlanePin
+    }()
+    
+    lazy var airportPin:PointAnnotation = {
+        var _airportPin = PointAnnotation()
+        _airportPin.imageName = "traffic"
+        return _airportPin
     }()
     
     var resultCelltypes:Array<ResultDisplayCellType> = Array()
@@ -51,6 +57,12 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         {
             airPlanePin.coordinate = CLLocationCoordinate2DMake((firstLocation.locationLatitude), (firstLocation.locationLongitude))
             mapView.addAnnotation(airPlanePin)
+        }
+        
+        if let firstAirPort = self.passedAirPorts.first
+        {
+            airportPin.coordinate = CLLocationCoordinate2DMake((firstAirPort.1.locationLatitude), (firstAirPort.1.locationLongitude))
+            mapView.addAnnotation(airportPin)
         }
         
         resultCelltypes.append(ResultDisplayCellType.metaData)
@@ -122,7 +134,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
     {
-        if !(annotation is AirPlanPointAnnotation)
+        if !(annotation is PointAnnotation)
         {
             return nil
         }
@@ -141,7 +153,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         //Set annotation-specific properties **AFTER**
         //the view is dequeued or created...
         
-        let cpa = annotation as! AirPlanPointAnnotation
+        let cpa = annotation as! PointAnnotation
         anView!.image = UIImage(named:cpa.imageName)
         mapAnotationView = anView
         return anView
@@ -201,6 +213,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("airportsCell",forIndexPath: indexPath) as! AirportsDisplayCell
             cell.passedAirPorts = passedAirPorts
             cell.loadCell()
+            cell.delegate = self
             return cell
         }
         else
@@ -220,7 +233,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     }
 
     // MARK: -ResulstDiaplay chat delegate
-    func didTapAtIndex(index: Int) {
+    func didTapOnChartViewAtIndex(index: Int) {
         let location = self.traceEvent?.traceLocations[index]
         airPlanePin.coordinate = CLLocationCoordinate2DMake((location?.locationLatitude)!, (location?.locationLongitude)!)
         // handle image rotation
@@ -229,6 +242,13 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
 //            mapAnotationView.image = 
 //        }
         
+    }
+    
+    func didTabOnAirportViewAtIndex(index: Int) {
+        let airport = self.passedAirPorts[index]
+        let location = airport.1
+        airportPin.coordinate = CLLocationCoordinate2DMake((location.locationLatitude), (location.locationLongitude))
+
     }
 
     /*
@@ -243,6 +263,6 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
 
 }
 
-class AirPlanPointAnnotation: MKPointAnnotation {
+class PointAnnotation: MKPointAnnotation {
     var imageName: String!
 }

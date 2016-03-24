@@ -306,7 +306,7 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
-                  timestampString = "480542799.434758"
+                  timestampString = "480547379.742274"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "248"
@@ -321,7 +321,7 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
-                  timestampString = "480542799.43495"
+                  timestampString = "480547379.742477"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "249"
@@ -354,11 +354,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/ResultDisplayViewController.swift"
-            timestampString = "480542799.297928"
+            timestampString = "480547309.947602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "loadMap()"
             landmarkType = "5">
          </BreakpointContent>
@@ -402,11 +402,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/ResultDisplayViewController.swift"
-            timestampString = "480542799.297928"
+            timestampString = "480547160.419044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -418,12 +418,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/ResultDisplayViewController.swift"
-            timestampString = "480542799.297928"
+            timestampString = "480547309.947602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "configureView()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/ResultDisplayViewController.swift"
+            timestampString = "480547378.683637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "didTabOnAirportViewAtIndex(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
