@@ -27,11 +27,14 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     
     var resultCelltypes:Array<ResultDisplayCellType> = Array()
     
+    var passedAirPorts:[(AirPort,TraceLocation)]  = Array()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        passedAirPorts = Util.getEventdAirports(self.traceEvent)
         configureView()
-        print(Util.getEventdAirports(self.traceEvent))
+        
         // Do any additional setup after loading the view.
     }
 
@@ -43,6 +46,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     func configureView()
     {
         loadMap()
+        
         if let firstLocation = self.traceEvent?.traceLocations.first
         {
             airPlanePin.coordinate = CLLocationCoordinate2DMake((firstLocation.locationLatitude), (firstLocation.locationLongitude))
@@ -56,6 +60,10 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
             resultCelltypes.append(ResultDisplayCellType.altitudeChart)
         }
         
+        if passedAirPorts.count > 0
+        {
+            resultCelltypes.append(ResultDisplayCellType.airports)
+        }
     }
     
     
@@ -186,6 +194,13 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
             cell.delegate = self
             cell.loadCell()
             
+            return cell
+        }
+        else if resultType == ResultDisplayCellType.airports
+        {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("airportsCell",forIndexPath: indexPath) as! AirportsDisplayCell
+            cell.passedAirPorts = passedAirPorts
+            cell.loadCell()
             return cell
         }
         else

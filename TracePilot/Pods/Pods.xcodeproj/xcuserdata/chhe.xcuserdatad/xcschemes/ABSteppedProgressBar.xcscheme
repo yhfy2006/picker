@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "938041E7FE431CB554BF5D43"
-               BuildableName = "EasyAnimation.framework"
-               BlueprintName = "EasyAnimation"
+               BlueprintIdentifier = "AE06A06C2BFA868AE572A651"
+               BuildableName = "ABSteppedProgressBar.framework"
+               BlueprintName = "ABSteppedProgressBar"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 import Charts
-
+import ABSteppedProgressBar
 
 class ResultDiaplayCellBasicInfo: UICollectionViewCell {
     @IBOutlet var distanceValueLabel:UILabel?
@@ -86,6 +86,50 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
         return avgAltitude
     }
 
+}
+
+class AirportsDisplayCell:UICollectionViewCell
+{
+    var passedAirPorts:[(AirPort,TraceLocation)]?
+    @IBOutlet var stepperView:ABSteppedProgressBar?
+    
+    func loadCell()
+    {
+        if let airPorts = passedAirPorts
+        {
+            stepperView?.radius = (stepperView?.frame.height)!/4.0
+            stepperView?.progressRadius = (stepperView?.frame.height)!/4.0 - 5
+            stepperView?.numberOfPoints = airPorts.count
+            stepperView?.lineHeight  = 10
+            stepperView?.backgroundShapeColor = GlobalVariables.appThemeColorColor
+            stepperView?.selectedBackgoundColor = UIColor.whiteColor()
+            
+            if stepperView == nil
+            {
+//                var titles = Array<String>()
+//                
+//                for airport in airPorts
+//                {
+//                    titles.append(airport.0.fourLetterCode)
+//                }
+//                stepperView = AYStepperView(frame: CGRectMake(0, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height), titles: titles)
+//                //stepperView?.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin,.FlexibleHeight]
+//                stepperView?.userInteractionEnabled = true
+//                self.contentView.addSubview(stepperView!)
+//                
+//                
+//                let hConstraint = NSLayoutConstraint(item: stepperView!, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1, constant: 0 )
+//                let vConstraint = NSLayoutConstraint(item: stepperView!, attribute: .Bottom, relatedBy: .Equal, toItem: self.contentView, attribute: .Bottom, multiplier: 1, constant: 0 )
+//                let lConstraint = NSLayoutConstraint(item: stepperView!, attribute: .Leading, relatedBy: .Equal, toItem: self.contentView, attribute: .Leading, multiplier: 1, constant: 0 )
+//                let rConstraint = NSLayoutConstraint(item: stepperView!, attribute: .Trailing, relatedBy: .Equal, toItem: self.contentView, attribute: .Trailing, multiplier: 1, constant: 0 )
+//                stepperView!.translatesAutoresizingMaskIntoConstraints = false
+//                
+//                NSLayoutConstraint.activateConstraints([hConstraint,vConstraint,lConstraint,rConstraint])
+                
+            }
+        }
+        
+    }
 }
 
 class ChartCellAltitudeCell:ChartCellSpeedCell{

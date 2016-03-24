@@ -4,12 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ABSteppedProgressBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CSwiftV.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>EasyAnimation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Observable-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,12 +57,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1E686B219BF8117DFAF13CEEB53A225B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3CE2E3CE8319B185E1F3E46C3D3B9202</key>
+		<key>0912CE098FE4123A8DB8AFF60AECF394</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,17 +67,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>56B3D5BCC205F5DBAA981A7338AF8DFF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5AEC3DC928D0C06C805E480A1782935F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>643EFDB3BB12DA01D58D8351AF44505E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8AEF93D2091D4659242B37FF9CF76AF3</key>
+		<key>6BB7FB68C4F57D154D4B598A9EFB89AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9005D9BCFB738434CFA1B68AF25CAA18</key>
+		<key>D344B7A67FCC858711E947096E966E91</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D774EBBFFC466337A5D122F2347872CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD06E0AB2AE21BA21E34E9BDF87003DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

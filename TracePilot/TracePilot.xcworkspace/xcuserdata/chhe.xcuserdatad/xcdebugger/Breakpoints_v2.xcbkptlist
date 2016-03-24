@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "270"
             endingLineNumber = "270"
-            landmarkName = "presentFlightEditView()"
-            landmarkType = "5">
+            landmarkName = "SessionViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "189"
             endingLineNumber = "189"
-            landmarkName = "startUpdateTime()"
+            landmarkName = "blackBoxEachSecondUpdate(_:distance:speed:heading:altitude:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
             endingLineNumber = "194"
-            landmarkName = "startUpdateTime()"
+            landmarkName = "locationManagerGetUpdated(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
             endingLineNumber = "221"
-            landmarkName = "eachSecond()"
+            landmarkName = "saveFlight()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "223"
             endingLineNumber = "223"
-            landmarkName = "eachSecond()"
+            landmarkName = "saveFlight()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -94,9 +94,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "330"
-            endingLineNumber = "330"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "5">
+            endingLineNumber = "330">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,9 +108,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "329"
-            endingLineNumber = "329"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "5">
+            endingLineNumber = "329">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,9 +122,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "325"
-            endingLineNumber = "325"
-            landmarkName = "locationManager(_:didUpdateToLocation:fromLocation:)"
-            landmarkType = "5">
+            endingLineNumber = "325">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -143,7 +137,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "238"
             endingLineNumber = "238"
-            landmarkName = "saveFlight()"
+            landmarkName = "presentFlightEditView()"
             landmarkType = "5">
             <Locations>
                <Location
@@ -190,9 +184,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "331"
-            endingLineNumber = "331"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "5">
+            endingLineNumber = "331">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -207,7 +199,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "254"
             endingLineNumber = "254"
-            landmarkName = "saveFlight()"
+            landmarkName = "editDidCommit(_:flightComment:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -223,7 +215,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "246"
             endingLineNumber = "246"
-            landmarkName = "saveFlight()"
+            landmarkName = "editDidCommit(_:flightComment:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -271,40 +263,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
             endingLineNumber = "281"
-            landmarkName = "editDidCommit(_:flightComment:)"
+            landmarkName = "loggingButtonPressed(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TracePilot.SessionViewController.editDidCommit (TracePilot.SessionViewController)(Swift.Optional&lt;Swift.String&gt;, flightComment : Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "TracePilot"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
-                  timestampString = "479374868.883729"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "281"
-                  endingLineNumber = "281"
-                  offsetFromSymbolStart = "180">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TracePilot.SessionViewController.(editDidCommit (TracePilot.SessionViewController) -&gt; (Swift.Optional&lt;Swift.String&gt;, flightComment : Swift.Optional&lt;Swift.String&gt;) -&gt; ()).(closure #1)"
-                  moduleName = "TracePilot"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
-                  timestampString = "479374868.883929"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "282"
-                  endingLineNumber = "282"
-                  offsetFromSymbolStart = "108">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -319,7 +279,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "244"
             endingLineNumber = "244"
-            landmarkName = "saveFlight()"
+            landmarkName = "presentFlightEditView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -335,8 +295,40 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "248"
             endingLineNumber = "248"
-            landmarkName = "saveFlight()"
+            landmarkName = "editDidCommit(_:flightComment:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TracePilot.SessionViewController.editDidCommit (TracePilot.SessionViewController)(Swift.Optional&lt;Swift.String&gt;, flightComment : Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "TracePilot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
+                  timestampString = "480542799.434758"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "183">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TracePilot.SessionViewController.(editDidCommit (TracePilot.SessionViewController) -&gt; (Swift.Optional&lt;Swift.String&gt;, flightComment : Swift.Optional&lt;Swift.String&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "TracePilot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
+                  timestampString = "480542799.43495"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "249"
+                  endingLineNumber = "249"
+                  offsetFromSymbolStart = "103">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -351,23 +343,23 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
             endingLineNumber = "258"
-            landmarkName = "saveFlight()"
+            landmarkName = "editDidDiscard()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/ResultDisplayViewController.swift"
-            timestampString = "479373926.947864"
+            timestampString = "480542799.297928"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "mapView(_:viewForAnnotation:)"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "loadMap()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -399,7 +391,39 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "viewWillAppear(_:)"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/ResultDisplayViewController.swift"
+            timestampString = "480542799.297928"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/ResultDisplayViewController.swift"
+            timestampString = "480542799.297928"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "configureView()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

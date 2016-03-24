@@ -1,4 +1,5 @@
 PODS:
+  - ABSteppedProgressBar (0.0.3)
   - Charts (2.2.3):
     - Charts/Core (= 2.2.3)
   - Charts/Core (2.2.3)
@@ -16,6 +17,7 @@ PODS:
   - TransitionTreasury/Core (3.0.2)
 
 DEPENDENCIES:
+  - ABSteppedProgressBar
   - Charts
   - CSwiftV
   - EasyAnimation
@@ -35,6 +37,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  ABSteppedProgressBar: 2f4f51ad45a9610f15fb696e2447482e690210c5
   Charts: f54267bb3f0f0e74520c6f248517cf5074dfd6fc
   CSwiftV: 93e3d4e1501f2a9b1eac3ae51d53a5edf41beb5b
   EasyAnimation: 4aabd439b4038f48d72939cc19d6220363b3206e
@@ -44,4 +47,4 @@ SPEC CHECKSUMS:
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   TransitionTreasury: a2e119081432d5905a858f01713f93cb1a36bec7
 
-COCOAPODS: 0.39.0
+COCOAPODS: 0.38.2

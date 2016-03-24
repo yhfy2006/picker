@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="S1d-hf-3Mt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="S1d-hf-3Mt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -76,8 +76,33 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AltitudeChartCell" id="9Pw-qp-SFc" customClass="ChartCellAltitudeCell" customModule="TracePilot" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="airportsCell" id="GHF-AB-oCy" customClass="AirportsDisplayCell" customModule="TracePilot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1.5" width="320" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXA-CW-Hrh" customClass="ABSteppedProgressBar" customModule="ABSteppedProgressBar">
+                                                    <rect key="frame" x="15" y="51" width="290" height="85"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="centerY" secondItem="GHF-AB-oCy" secondAttribute="centerY" id="57z-BH-1qU"/>
+                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="leading" secondItem="GHF-AB-oCy" secondAttribute="leading" constant="15" id="NRv-dZ-inL"/>
+                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="centerX" secondItem="GHF-AB-oCy" secondAttribute="centerX" id="Ofv-3O-aVH"/>
+                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="height" secondItem="GHF-AB-oCy" secondAttribute="height" multiplier="0.45" id="jLs-pv-cDX"/>
+                                            <constraint firstAttribute="trailing" secondItem="aXA-CW-Hrh" secondAttribute="trailing" constant="15" id="xDe-Me-85I"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="stepperView" destination="aXA-CW-Hrh" id="Hhx-9Y-HoD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AltitudeChartCell" id="9Pw-qp-SFc" customClass="ChartCellAltitudeCell" customModule="TracePilot" customModuleProvider="target">
+                                        <rect key="frame" x="320" y="1.5" width="320" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
@@ -102,7 +127,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpeedChartCell" id="o4W-Bc-oc9" customClass="ChartCellSpeedCell" customModule="TracePilot" customModuleProvider="target">
-                                        <rect key="frame" x="320" y="1.5" width="320" height="188"/>
+                                        <rect key="frame" x="640" y="1.5" width="320" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
@@ -127,7 +152,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BasicInfoCell" id="Oqj-YU-C5i" customClass="ResultDiaplayCellBasicInfo" customModule="TracePilot" customModuleProvider="target">
-                                        <rect key="frame" x="640" y="1.5" width="320" height="188"/>
+                                        <rect key="frame" x="960" y="1.5" width="320" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
@@ -506,7 +531,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaI-qK-uK3">
                                                     <rect key="frame" x="8" y="38" width="304" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

@@ -18,6 +18,7 @@ enum ResultDisplayCellType {
     case metaData
     case speedChart
     case altitudeChart
+    case airports
 }
 
 

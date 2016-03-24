@@ -8,6 +8,6 @@ pod 'TransitionTreasury', '~> 3.0.1'
 pod 'Charts'
 pod 'Observable-Swift'
 pod 'CSwiftV'
-
+pod 'ABSteppedProgressBar'
 
 
