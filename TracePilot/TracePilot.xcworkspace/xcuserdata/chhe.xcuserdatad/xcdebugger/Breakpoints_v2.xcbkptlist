@@ -306,7 +306,7 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
-                  timestampString = "480547379.742274"
+                  timestampString = "480633968.819307"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "248"
@@ -321,7 +321,7 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
-                  timestampString = "480547379.742477"
+                  timestampString = "480633968.819566"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "249"
@@ -414,7 +414,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/ResultDisplayViewController.swift"
@@ -430,7 +430,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/ResultDisplayViewController.swift"
@@ -440,6 +440,22 @@
             startingLineNumber = "248"
             endingLineNumber = "248"
             landmarkName = "didTabOnAirportViewAtIndex(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/ABSteppedProgressBar/Sources/ABSteppedProgessBar.swift"
+            timestampString = "480632024.865534"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "commonInit()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

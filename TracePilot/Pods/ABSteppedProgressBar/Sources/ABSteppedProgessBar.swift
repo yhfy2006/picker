@@ -97,8 +97,12 @@ import CoreGraphics
     @IBInspectable public var progressLineHeight: CGFloat = 0.0 {
         didSet {
             self.setNeedsDisplay()
+            
         }
     }
+    
+    private var decreationImage: UIImageView = UIImageView(image: UIImage(named: "airplane2.png"))
+
     
     private var _progressLineHeight: CGFloat {
         get {
@@ -111,7 +115,13 @@ import CoreGraphics
     
     @IBInspectable public var stepAnimationDuration: CFTimeInterval = 0.4
     
-    @IBInspectable public var displayNumbers: Bool = true {
+    @IBInspectable public var texts:Array<String> = []{
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    @IBInspectable public var displayText: Bool = true {
         didSet {
             self.setNeedsDisplay()
         }
@@ -178,10 +188,15 @@ import CoreGraphics
         progressLayer.mask = maskLayer
         
         self.contentMode = UIViewContentMode.Redraw
+        
+        self.decreationImage.contentMode = .ScaleAspectFill
+        self.decreationImage.clipsToBounds = true
+        
+        self.addSubview(self.decreationImage)
     }
     
     
-    override public func drawRect(rect: CGRect) {        
+    override public func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
         let largerRadius = fmax(_radius, _progressRadius)
@@ -194,6 +209,9 @@ import CoreGraphics
             centerPoints.append(CGPointMake(xCursor, bounds.height / 2))
             xCursor += 2 * largerRadius + distanceBetweenCircles
         }
+        
+        self.decreationImage.frame = CGRectMake((self.centerPoints.first?.x)!-22, (self.centerPoints.first?.y)! - 30 - _radius, 44, 44)
+
         
         let progressCenterPoints = Array<CGPoint>(centerPoints[0..<(currentIndex+1)])
         
@@ -209,12 +227,12 @@ import CoreGraphics
                 progressLayer.fillColor = selectedBackgoundColor.CGColor
             }
             
-            if(displayNumbers) {
+            if(displayText) {
                 for i in 0...(numberOfPoints - 1) {
                     let centerPoint = centerPoints[i]
                     let textLayer = CATextLayer()
                     
-                    var textLayerFont = UIFont.boldSystemFontOfSize(_progressRadius)
+                    var textLayerFont = UIFont.boldSystemFontOfSize(_progressRadius*2/3)
                     textLayer.contentsScale = UIScreen.mainScreen().scale
                     
                     if let nFont = self.numbersFont {
@@ -230,7 +248,7 @@ import CoreGraphics
                     if let text = self.delegate?.progressBar?(self, textAtIndex: i) {
                         textLayer.string = text
                     } else {
-                        textLayer.string = "\(i)"
+                        textLayer.string = "\(texts[i])"
                     }
                     
                     textLayer.sizeWidthToFit()
@@ -247,13 +265,14 @@ import CoreGraphics
             let maskPath = self.maskPath(currentProgressCenterPoint)
             maskLayer.path = maskPath.CGPath
             
+            
             CATransaction.begin()
             let progressAnimation = CABasicAnimation(keyPath: "path")
             progressAnimation.duration = stepAnimationDuration * CFTimeInterval(abs(currentIndex - previousIndex))
             progressAnimation.toValue = maskPath
             progressAnimation.removedOnCompletion = false
             progressAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            
+
             
             CATransaction.setCompletionBlock { () -> Void in
                 if(self.animationRendering) {

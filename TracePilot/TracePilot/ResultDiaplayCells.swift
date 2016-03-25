@@ -92,6 +92,7 @@ class AirportsDisplayCell:UICollectionViewCell,ABSteppedProgressBarDelegate
 {
     var passedAirPorts:[(AirPort,TraceLocation)]?
     var delegate:ResultCellDelegate?
+    
 
     @IBOutlet var stepperView:ABSteppedProgressBar?
     
@@ -99,13 +100,20 @@ class AirportsDisplayCell:UICollectionViewCell,ABSteppedProgressBarDelegate
     {
         if let airPorts = passedAirPorts
         {
+            var airportNames = Array<String>();
+            for airport in airPorts
+            {
+                airportNames.append(airport.0.fourLetterCode)
+            }
+            
             stepperView?.radius = (stepperView?.frame.height)!/4.0
             stepperView?.progressRadius = (stepperView?.frame.height)!/4.0 - 5
             stepperView?.progressLineHeight = 5
             stepperView?.numberOfPoints = airPorts.count
             stepperView?.lineHeight  = 10
+            stepperView?.texts  = airportNames
             stepperView?.backgroundShapeColor = GlobalVariables.appThemeColorColor
-            stepperView?.selectedBackgoundColor = UIColor.whiteColor()
+            stepperView?.selectedBackgoundColor = UIColor(hex: "FE9604")
             stepperView?.delegate = self
         }
         

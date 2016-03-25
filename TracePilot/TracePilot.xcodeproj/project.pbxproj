@@ -34,6 +34,7 @@
 		FC6684A51C88FB24007DF2F9 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A41C88FB24007DF2F9 /* FeedViewController.swift */; };
 		FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A61C88FB65007DF2F9 /* R.generated.swift */; };
 		FC6BBDCD1CA4926E00F3D959 /* traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6BBDCC1CA4926E00F3D959 /* traffic.png */; };
+		FC6BBDD51CA5D94900F3D959 /* airplane2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6BBDD41CA5D94900F3D959 /* airplane2.png */; };
 		FC9A6E961C8FEE4E009686C5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
 		FC9A6E971C8FEE4E009686C5 /* Pods.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC9A6E9A1C8FFB34009686C5 /* ResultDiaplayCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */; };
@@ -90,6 +91,7 @@
 		FC6684A41C88FB24007DF2F9 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		FC6684A61C88FB65007DF2F9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		FC6BBDCC1CA4926E00F3D959 /* traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = traffic.png; sourceTree = "<group>"; };
+		FC6BBDD41CA5D94900F3D959 /* airplane2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane2.png; sourceTree = "<group>"; };
 		FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDiaplayCells.swift; sourceTree = "<group>"; };
 		FC9A6E9B1C90059A009686C5 /* MotionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionKit.swift; sourceTree = "<group>"; };
 		FC9A6EC41C929060009686C5 /* transport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transport.png; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				FC6BBDCC1CA4926E00F3D959 /* traffic.png */,
 				4533B4D41C8667E600CCBE63 /* speedometer.png */,
 				4533B4D21C86584E00CCBE63 /* plane-front-view.png */,
+				FC6BBDD41CA5D94900F3D959 /* airplane2.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				4533B4D51C8667E600CCBE63 /* speedometer.png in Resources */,
 				4533B4D91C868AC000CCBE63 /* mountain-range.png in Resources */,
 				FC6BBDCD1CA4926E00F3D959 /* traffic.png in Resources */,
+				FC6BBDD51CA5D94900F3D959 /* airplane2.png in Resources */,
 				45FC60A11C990A6300ADBBB8 /* 10sec.mp3 in Resources */,
 				FC9A6EC51C929060009686C5 /* transport.png in Resources */,
 				4533B4D11C86570400CCBE63 /* Circle.png in Resources */,

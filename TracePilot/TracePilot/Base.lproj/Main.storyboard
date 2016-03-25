@@ -87,13 +87,21 @@
                                                     <rect key="frame" x="15" y="51" width="290" height="85"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyC-Su-cY4">
+                                                    <rect key="frame" x="8" y="8" width="54" height="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" white="0.0" alpha="0.52000000000000002" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="aXA-CW-Hrh" firstAttribute="centerY" secondItem="GHF-AB-oCy" secondAttribute="centerY" id="57z-BH-1qU"/>
+                                            <constraint firstItem="cyC-Su-cY4" firstAttribute="top" secondItem="GHF-AB-oCy" secondAttribute="top" constant="8" id="6yJ-BR-Ak4"/>
                                             <constraint firstItem="aXA-CW-Hrh" firstAttribute="leading" secondItem="GHF-AB-oCy" secondAttribute="leading" constant="15" id="NRv-dZ-inL"/>
                                             <constraint firstItem="aXA-CW-Hrh" firstAttribute="centerX" secondItem="GHF-AB-oCy" secondAttribute="centerX" id="Ofv-3O-aVH"/>
+                                            <constraint firstItem="cyC-Su-cY4" firstAttribute="leading" secondItem="GHF-AB-oCy" secondAttribute="leading" constant="8" id="cBw-zJ-f0w"/>
                                             <constraint firstItem="aXA-CW-Hrh" firstAttribute="height" secondItem="GHF-AB-oCy" secondAttribute="height" multiplier="0.45" id="jLs-pv-cDX"/>
                                             <constraint firstAttribute="trailing" secondItem="aXA-CW-Hrh" secondAttribute="trailing" constant="15" id="xDe-Me-85I"/>
                                         </constraints>
@@ -101,58 +109,8 @@
                                             <outlet property="stepperView" destination="aXA-CW-Hrh" id="Hhx-9Y-HoD"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AltitudeChartCell" id="9Pw-qp-SFc" customClass="ChartCellAltitudeCell" customModule="TracePilot" customModuleProvider="target">
-                                        <rect key="frame" x="320" y="1.5" width="320" height="188"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIx-hJ-QLm" customClass="LineChartView" customModule="Charts">
-                                                    <rect key="frame" x="5" y="5" width="310" height="178"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="eIx-hJ-QLm" firstAttribute="top" secondItem="9Pw-qp-SFc" secondAttribute="top" constant="5" id="6jU-Zs-hTG"/>
-                                            <constraint firstItem="eIx-hJ-QLm" firstAttribute="leading" secondItem="9Pw-qp-SFc" secondAttribute="leading" constant="5" id="YSD-7p-VmW"/>
-                                            <constraint firstAttribute="trailing" secondItem="eIx-hJ-QLm" secondAttribute="trailing" constant="5" id="jUt-g2-IMy"/>
-                                            <constraint firstAttribute="bottom" secondItem="eIx-hJ-QLm" secondAttribute="bottom" constant="5" id="rYw-8a-W6z"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="lineChartView" destination="eIx-hJ-QLm" id="j40-S2-Oep"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpeedChartCell" id="o4W-Bc-oc9" customClass="ChartCellSpeedCell" customModule="TracePilot" customModuleProvider="target">
-                                        <rect key="frame" x="640" y="1.5" width="320" height="188"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byS-Zt-edB" customClass="LineChartView" customModule="Charts">
-                                                    <rect key="frame" x="5" y="5" width="310" height="178"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="byS-Zt-edB" firstAttribute="leading" secondItem="o4W-Bc-oc9" secondAttribute="leading" constant="5" id="53L-eZ-V8A"/>
-                                            <constraint firstItem="byS-Zt-edB" firstAttribute="top" secondItem="o4W-Bc-oc9" secondAttribute="top" constant="5" id="TQc-M0-p9I"/>
-                                            <constraint firstAttribute="trailing" secondItem="byS-Zt-edB" secondAttribute="trailing" constant="5" id="UJJ-7r-nG5"/>
-                                            <constraint firstAttribute="bottom" secondItem="byS-Zt-edB" secondAttribute="bottom" constant="5" id="XYt-97-ZZh"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="lineChartView" destination="byS-Zt-edB" id="5xj-b7-qSM"/>
-                                        </connections>
-                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BasicInfoCell" id="Oqj-YU-C5i" customClass="ResultDiaplayCellBasicInfo" customModule="TracePilot" customModuleProvider="target">
-                                        <rect key="frame" x="960" y="1.5" width="320" height="188"/>
+                                        <rect key="frame" x="320" y="1.5" width="320" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
@@ -329,6 +287,56 @@
                                             <outlet property="distanceUnitLabel" destination="91G-9r-LhI" id="bty-eE-y8N"/>
                                             <outlet property="distanceValueLabel" destination="ejv-cn-jjr" id="ds8-J6-dMJ"/>
                                             <outlet property="totalTimeLabel" destination="nAd-LR-Aqe" id="4Y4-4q-U5b"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AltitudeChartCell" id="9Pw-qp-SFc" customClass="ChartCellAltitudeCell" customModule="TracePilot" customModuleProvider="target">
+                                        <rect key="frame" x="640" y="1.5" width="320" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIx-hJ-QLm" customClass="LineChartView" customModule="Charts">
+                                                    <rect key="frame" x="5" y="5" width="310" height="178"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="eIx-hJ-QLm" firstAttribute="top" secondItem="9Pw-qp-SFc" secondAttribute="top" constant="5" id="6jU-Zs-hTG"/>
+                                            <constraint firstItem="eIx-hJ-QLm" firstAttribute="leading" secondItem="9Pw-qp-SFc" secondAttribute="leading" constant="5" id="YSD-7p-VmW"/>
+                                            <constraint firstAttribute="trailing" secondItem="eIx-hJ-QLm" secondAttribute="trailing" constant="5" id="jUt-g2-IMy"/>
+                                            <constraint firstAttribute="bottom" secondItem="eIx-hJ-QLm" secondAttribute="bottom" constant="5" id="rYw-8a-W6z"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="lineChartView" destination="eIx-hJ-QLm" id="j40-S2-Oep"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SpeedChartCell" id="o4W-Bc-oc9" customClass="ChartCellSpeedCell" customModule="TracePilot" customModuleProvider="target">
+                                        <rect key="frame" x="960" y="1.5" width="320" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byS-Zt-edB" customClass="LineChartView" customModule="Charts">
+                                                    <rect key="frame" x="5" y="5" width="310" height="178"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="byS-Zt-edB" firstAttribute="leading" secondItem="o4W-Bc-oc9" secondAttribute="leading" constant="5" id="53L-eZ-V8A"/>
+                                            <constraint firstItem="byS-Zt-edB" firstAttribute="top" secondItem="o4W-Bc-oc9" secondAttribute="top" constant="5" id="TQc-M0-p9I"/>
+                                            <constraint firstAttribute="trailing" secondItem="byS-Zt-edB" secondAttribute="trailing" constant="5" id="UJJ-7r-nG5"/>
+                                            <constraint firstAttribute="bottom" secondItem="byS-Zt-edB" secondAttribute="bottom" constant="5" id="XYt-97-ZZh"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="lineChartView" destination="byS-Zt-edB" id="5xj-b7-qSM"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
