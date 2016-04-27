@@ -30,3 +30,25 @@ class FeedViewNormalCell: UICollectionViewCell {
     }
     
 }
+
+class FeedViewSummaryView: UICollectionViewCell {
+    @IBOutlet var dateLabel:UILabel?
+    
+    // DB store
+    var traceEvent:TraceEvent?
+    
+    func loadCell(){
+        self.contentView.backgroundColor = UIColor.whiteColor()
+        if let traceEvent = self.traceEvent
+        {
+            let date = traceEvent.createdTimeStampe
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy hh:mm:ss"
+            let stringDate = dateFormatter.stringFromDate(date)
+            dateLabel?.text = stringDate
+        }
+        
+    }
+    
+}
+

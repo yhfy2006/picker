@@ -192,8 +192,9 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     func locationManagerGetUpdated(newestLocations: CLLocation)
     {
         // debugView
-        self.debugLocationLabel?.text = "lo:\(newestLocations.coordinate.latitude) \(newestLocations.coordinate.longitude)"
-        self.debugLocationAlti?.text = "loAl:\(self.blackBox.baseAltitude) + \(self.blackBox.relativeAltitude)"
+        self.debugLocationLabel?.text = "lo:" + String(format: "%.4f", newestLocations.coordinate.latitude) + " " + String(format: "%.4f", newestLocations.coordinate.longitude)
+        
+        self.debugLocationAlti?.text = "loAl:" + String(format: "%.2f", self.blackBox.baseAltitude) + "+" + String(format: "%.2f", self.blackBox.relativeAltitude)
     }
     
     func saveFlight()

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="S1d-hf-3Mt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="S1d-hf-3Mt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -76,41 +76,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="airportsCell" id="GHF-AB-oCy" customClass="AirportsDisplayCell" customModule="TracePilot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1.5" width="320" height="188"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXA-CW-Hrh" customClass="ABSteppedProgressBar" customModule="ABSteppedProgressBar">
-                                                    <rect key="frame" x="15" y="51" width="290" height="85"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyC-Su-cY4">
-                                                    <rect key="frame" x="8" y="8" width="54" height="17"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                                    <color key="textColor" white="0.0" alpha="0.52000000000000002" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="centerY" secondItem="GHF-AB-oCy" secondAttribute="centerY" id="57z-BH-1qU"/>
-                                            <constraint firstItem="cyC-Su-cY4" firstAttribute="top" secondItem="GHF-AB-oCy" secondAttribute="top" constant="8" id="6yJ-BR-Ak4"/>
-                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="leading" secondItem="GHF-AB-oCy" secondAttribute="leading" constant="15" id="NRv-dZ-inL"/>
-                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="centerX" secondItem="GHF-AB-oCy" secondAttribute="centerX" id="Ofv-3O-aVH"/>
-                                            <constraint firstItem="cyC-Su-cY4" firstAttribute="leading" secondItem="GHF-AB-oCy" secondAttribute="leading" constant="8" id="cBw-zJ-f0w"/>
-                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="height" secondItem="GHF-AB-oCy" secondAttribute="height" multiplier="0.45" id="jLs-pv-cDX"/>
-                                            <constraint firstAttribute="trailing" secondItem="aXA-CW-Hrh" secondAttribute="trailing" constant="15" id="xDe-Me-85I"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="stepperView" destination="aXA-CW-Hrh" id="Hhx-9Y-HoD"/>
-                                        </connections>
-                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BasicInfoCell" id="Oqj-YU-C5i" customClass="ResultDiaplayCellBasicInfo" customModule="TracePilot" customModuleProvider="target">
-                                        <rect key="frame" x="320" y="1.5" width="320" height="188"/>
+                                        <rect key="frame" x="0.0" y="1.5" width="320" height="188"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
@@ -286,7 +253,41 @@
                                             <outlet property="avgSpeed" destination="58n-hY-80T" id="wpT-ka-Qja"/>
                                             <outlet property="distanceUnitLabel" destination="91G-9r-LhI" id="bty-eE-y8N"/>
                                             <outlet property="distanceValueLabel" destination="ejv-cn-jjr" id="ds8-J6-dMJ"/>
+                                            <outlet property="flightDateLabel" destination="Oor-nu-Qgu" id="21Z-2Y-Tsg"/>
                                             <outlet property="totalTimeLabel" destination="nAd-LR-Aqe" id="4Y4-4q-U5b"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="airportsCell" id="GHF-AB-oCy" customClass="AirportsDisplayCell" customModule="TracePilot" customModuleProvider="target">
+                                        <rect key="frame" x="320" y="1.5" width="320" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXA-CW-Hrh" customClass="ABSteppedProgressBar" customModule="ABSteppedProgressBar">
+                                                    <rect key="frame" x="15" y="51" width="290" height="85"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Airports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyC-Su-cY4">
+                                                    <rect key="frame" x="8" y="8" width="54" height="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="textColor" white="0.0" alpha="0.52000000000000002" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="centerY" secondItem="GHF-AB-oCy" secondAttribute="centerY" id="57z-BH-1qU"/>
+                                            <constraint firstItem="cyC-Su-cY4" firstAttribute="top" secondItem="GHF-AB-oCy" secondAttribute="top" constant="8" id="6yJ-BR-Ak4"/>
+                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="leading" secondItem="GHF-AB-oCy" secondAttribute="leading" constant="15" id="NRv-dZ-inL"/>
+                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="centerX" secondItem="GHF-AB-oCy" secondAttribute="centerX" id="Ofv-3O-aVH"/>
+                                            <constraint firstItem="cyC-Su-cY4" firstAttribute="leading" secondItem="GHF-AB-oCy" secondAttribute="leading" constant="8" id="cBw-zJ-f0w"/>
+                                            <constraint firstItem="aXA-CW-Hrh" firstAttribute="height" secondItem="GHF-AB-oCy" secondAttribute="height" multiplier="0.45" id="jLs-pv-cDX"/>
+                                            <constraint firstAttribute="trailing" secondItem="aXA-CW-Hrh" secondAttribute="trailing" constant="15" id="xDe-Me-85I"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="stepperView" destination="aXA-CW-Hrh" id="Hhx-9Y-HoD"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AltitudeChartCell" id="9Pw-qp-SFc" customClass="ChartCellAltitudeCell" customModule="TracePilot" customModuleProvider="target">
@@ -529,8 +530,68 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dwr-Pa-XFL">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8z-JH-fzI">
+                                                    <rect key="frame" x="0.0" y="141" width="320" height="47"/>
+                                                    <subviews>
+                                                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5EI-2H-UMx">
+                                                            <rect key="frame" x="16" y="10" width="288" height="29"/>
+                                                            <segments>
+                                                                <segment title="Daily"/>
+                                                                <segment title="Monthly"/>
+                                                                <segment title="Annually"/>
+                                                            </segments>
+                                                        </segmentedControl>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSw-WW-RFa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8d-QB-aDc" customClass="BarChartView" customModule="Charts">
+                                                            <rect key="frame" x="8" y="8" width="224" height="125"/>
+                                                            <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="0.7731034483" colorSpace="calibratedRGB"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUq-VU-x9L">
+                                                            <rect key="frame" x="237" y="8" width="75" height="125"/>
+                                                            <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="0.52737068970000001" colorSpace="calibratedRGB"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="H8d-QB-aDc" secondAttribute="bottom" constant="8" id="5uC-0n-Xi6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nUq-VU-x9L" secondAttribute="trailing" constant="8" id="BIU-TZ-iGW"/>
+                                                        <constraint firstAttribute="bottom" secondItem="nUq-VU-x9L" secondAttribute="bottom" constant="8" id="IMC-K0-S46"/>
+                                                        <constraint firstItem="H8d-QB-aDc" firstAttribute="leading" secondItem="CSw-WW-RFa" secondAttribute="leading" constant="8" id="PF1-ju-QFH"/>
+                                                        <constraint firstItem="H8d-QB-aDc" firstAttribute="top" secondItem="CSw-WW-RFa" secondAttribute="top" constant="8" id="dMP-Tp-afz"/>
+                                                        <constraint firstItem="nUq-VU-x9L" firstAttribute="top" secondItem="CSw-WW-RFa" secondAttribute="top" constant="8" id="lmc-8I-8Y4"/>
+                                                        <constraint firstItem="nUq-VU-x9L" firstAttribute="leading" secondItem="H8d-QB-aDc" secondAttribute="trailing" constant="5" id="nLd-kq-eFz"/>
+                                                        <constraint firstItem="H8d-QB-aDc" firstAttribute="width" secondItem="CSw-WW-RFa" secondAttribute="width" multiplier="0.7" id="yV1-oJ-OJB"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="G8z-JH-fzI" firstAttribute="height" secondItem="dwr-Pa-XFL" secondAttribute="height" multiplier="0.25" id="5zM-Yz-N2l"/>
+                                            <constraint firstAttribute="trailing" secondItem="CSw-WW-RFa" secondAttribute="trailing" id="9CT-w7-hFi"/>
+                                            <constraint firstAttribute="trailing" secondItem="G8z-JH-fzI" secondAttribute="trailing" id="CcY-b7-vIS"/>
+                                            <constraint firstItem="CSw-WW-RFa" firstAttribute="top" secondItem="dwr-Pa-XFL" secondAttribute="top" id="Rkh-77-NpR"/>
+                                            <constraint firstItem="CSw-WW-RFa" firstAttribute="height" secondItem="dwr-Pa-XFL" secondAttribute="height" multiplier="0.75" id="gbb-Nz-qcP"/>
+                                            <constraint firstItem="G8z-JH-fzI" firstAttribute="leading" secondItem="dwr-Pa-XFL" secondAttribute="leading" id="t85-f4-WiE"/>
+                                            <constraint firstAttribute="bottom" secondItem="G8z-JH-fzI" secondAttribute="bottom" id="tAH-8q-1jL"/>
+                                            <constraint firstItem="CSw-WW-RFa" firstAttribute="leading" secondItem="dwr-Pa-XFL" secondAttribute="leading" id="uvz-WZ-Xe2"/>
+                                        </constraints>
+                                        <size key="customSize" width="320" height="188"/>
+                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="traceEventCell" id="uMz-lb-OpH" customClass="FeedViewNormalCell" customModule="TracePilot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="98"/>
+                                        <rect key="frame" x="0.0" y="262" width="320" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="98"/>
@@ -985,6 +1046,6 @@
         <image name="speedometer.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fDk-KK-yrD"/>
+        <segue reference="Jb8-Hb-NiD"/>
     </inferredMetricsTieBreakers>
 </document>

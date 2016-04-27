@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ABSteppedProgressBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AFDateHelper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CSwiftV.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,7 +62,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1309D1A625CC16632B8E011F94F5B056</key>
+		<key>02E6E6CE751ACA2C4B88B3C0E38095FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0D05C150B6B76B637425B6914EB9CE10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2189FD20187E8D1F10048716FB2E7AC5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +82,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>759FE1A4A9155E90C4B184E1327A7A30</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>76183A5CBA20AA36B78BE453040C843C</key>
+		<key>51C972270F0AF7BA92BFF978BF487C88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BA40289E6EE5A10354D762E1CAD70506</key>
+		<key>A4CD27CC2825305ED543E1C06567E93E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,7 +107,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA18BC5E37560449B581A7C4FB516009</key>
+		<key>D2E180613C6E640BD4792AC9ED5A3E15</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F65B5FC465EEAE8D06DA022115DFDF17</key>
 		<dict>
 			<key>primary</key>
 			<true/>

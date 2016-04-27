@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import Charts
 import ABSteppedProgressBar
+import AFDateHelper
 
 class ResultDiaplayCellBasicInfo: UICollectionViewCell {
     @IBOutlet var distanceValueLabel:UILabel?
@@ -17,6 +18,7 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
     @IBOutlet var totalTimeLabel:UILabel?
     @IBOutlet var avgSpeed:UILabel?
     @IBOutlet var avgAltitude:UILabel?
+    @IBOutlet var flightDateLabel:UILabel?
     
     // DB store
     var traceEvent:TraceEvent?
@@ -44,6 +46,10 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
             {
                 avgAltitude?.text = "-"
             }
+            
+            let date = traceEvent.createdTimeStampe
+            flightDateLabel?.text = date.toString(dateStyle: .MediumStyle, timeStyle: .NoStyle, doesRelativeDateFormatting: true)
+            
         }
        
     }
@@ -59,7 +65,7 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
             if location.locationSpeed != 0
             {
                 totalSpeed += location.locationSpeed
-                validNumber++
+                validNumber += 1
             }
         }
         avgSpeed = totalSpeed / Double(validNumber)
