@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="S1d-hf-3Mt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="S1d-hf-3Mt">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -554,13 +554,33 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSw-WW-RFa">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
                                                     <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUq-VU-x9L">
+                                                            <rect key="frame" x="237" y="8" width="75" height="125"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWu-eP-xUT">
+                                                                    <rect key="frame" x="0.0" y="62" width="75" height="63"/>
+                                                                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </view>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hfa-Dz-ymL">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="62"/>
+                                                                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="0.52737068970000001" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="Hfa-Dz-ymL" firstAttribute="leading" secondItem="nUq-VU-x9L" secondAttribute="leading" id="8he-L3-PGw"/>
+                                                                <constraint firstItem="Hfa-Dz-ymL" firstAttribute="height" secondItem="nUq-VU-x9L" secondAttribute="height" multiplier="1/2" id="EVS-cB-tkJ"/>
+                                                                <constraint firstItem="yWu-eP-xUT" firstAttribute="top" secondItem="Hfa-Dz-ymL" secondAttribute="bottom" id="Hqh-M6-8C7"/>
+                                                                <constraint firstItem="Hfa-Dz-ymL" firstAttribute="top" secondItem="nUq-VU-x9L" secondAttribute="top" id="PF1-1U-Kup"/>
+                                                                <constraint firstAttribute="trailing" secondItem="yWu-eP-xUT" secondAttribute="trailing" id="Q8h-TA-MLz"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Hfa-Dz-ymL" secondAttribute="trailing" id="eH9-pH-NrM"/>
+                                                                <constraint firstAttribute="bottom" secondItem="yWu-eP-xUT" secondAttribute="bottom" id="xbh-Zz-kc8"/>
+                                                                <constraint firstItem="yWu-eP-xUT" firstAttribute="leading" secondItem="nUq-VU-x9L" secondAttribute="leading" id="xgn-By-2BY"/>
+                                                            </constraints>
+                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8d-QB-aDc" customClass="BarChartView" customModule="Charts">
                                                             <rect key="frame" x="8" y="8" width="224" height="125"/>
                                                             <color key="backgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="0.7731034483" colorSpace="calibratedRGB"/>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUq-VU-x9L">
-                                                            <rect key="frame" x="237" y="8" width="75" height="125"/>
-                                                            <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="0.52737068970000001" colorSpace="calibratedRGB"/>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

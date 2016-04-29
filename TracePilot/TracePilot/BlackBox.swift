@@ -47,6 +47,8 @@ class BlackBox: NSObject {
     
     // motion
     let motionKit = MotionKit()
+    var stalls:[Stall] = Array()
+    
     
     var isRecording = false
     
@@ -64,6 +66,11 @@ class BlackBox: NSObject {
     func startRecordingWithLoggingState(state:Int)
     {
         isRecording = true
+        
+        // clearup data
+        stalls.removeAll()
+        
+        
         if(state == 1)
         {
             startTime = NSDate.timeIntervalSinceReferenceDate()
@@ -91,6 +98,23 @@ class BlackBox: NSObject {
             if deviceMotion.userAcceleration.x>1 || deviceMotion.userAcceleration.y>1 || deviceMotion.userAcceleration.z>1
             {
                 print("bumped")
+            }
+        }
+        
+        motionKit.getAccelerationFromDeviceMotion { (x, y, z) -> () in
+            // record stalls
+            if((abs(x) < 0.1) && (abs(y) < 0.1) && (abs(z) < 0.1)){
+                let soundIdRing:SystemSoundID = 1000  // new-mail.caf
+                AudioServicesPlaySystemSound(soundIdRing)
+                if let lastStall = self.stalls.last
+                {
+                    if lastStall.occurTime! < self.seconds - 10
+                    {
+                        let newStall = Stall()
+                        newStall.occurTime = self.seconds
+                        self.stalls.append(newStall)
+                    }
+                }
             }
         }
         

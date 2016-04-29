@@ -297,38 +297,6 @@
             endingLineNumber = "248"
             landmarkName = "editDidCommit(_:flightComment:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TracePilot.SessionViewController.editDidCommit (TracePilot.SessionViewController)(Swift.Optional&lt;Swift.String&gt;, flightComment : Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "TracePilot"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
-                  timestampString = "480633968.819307"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "248"
-                  endingLineNumber = "248"
-                  offsetFromSymbolStart = "183">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TracePilot.SessionViewController.(editDidCommit (TracePilot.SessionViewController) -&gt; (Swift.Optional&lt;Swift.String&gt;, flightComment : Swift.Optional&lt;Swift.String&gt;) -&gt; ()).(closure #1)"
-                  moduleName = "TracePilot"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chhe/Documents/picker/TracePilot/TracePilot/SessionViewController.swift"
-                  timestampString = "480633968.819566"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "249"
-                  endingLineNumber = "249"
-                  offsetFromSymbolStart = "103">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
