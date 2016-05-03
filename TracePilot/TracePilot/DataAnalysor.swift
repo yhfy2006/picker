@@ -12,7 +12,7 @@ import Foundation
 //http://aviation.stackexchange.com/questions/2871/how-to-calculate-angular-velocity-and-radius-of-a-turn
 
 class DataAnalysor: NSObject {
-    static let sharedInstance = BlackBox()
+    static let sharedInstance = DataAnalysor()
 
     func generateReportWithTraceEvent(traceEvent:TraceEvent) -> DataAnalysorReport
     {
