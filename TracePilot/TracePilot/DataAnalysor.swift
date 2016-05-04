@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import MapKit
+
 
 //Steep turn angle formula:
 //http://aviation.stackexchange.com/questions/2871/how-to-calculate-angular-velocity-and-radius-of-a-turn
 
 class DataAnalysor: NSObject {
-    static let sharedInstance = BlackBox()
+    static let sharedInstance = DataAnalysor()
 
     func generateReportWithTraceEvent(traceEvent:TraceEvent) -> DataAnalysorReport
     {
@@ -63,15 +65,41 @@ class DataAnalysor: NSObject {
         return avgAltitude
     }
     
+    func AnalyzePassedAirports(mapView: MKMapView!, completionHandler:([MKMapItem]?,NSError?)->Void)
+    {
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = "Airport"
+        request.region = mapView.region
+        let search = MKLocalSearch(request: request)
+        search.startWithCompletionHandler { (response, error) -> Void in
+            if error != nil
+            {
+                print("error:\(error?.localizedDescription)")
+                completionHandler(nil,error)
+            }else
+            {
+                for item in response!.mapItems{
+                    print("Name = \(item.name)")
+                    print("Phone = \(item.phoneNumber)")
+                    completionHandler(response?.mapItems,error)
+                }
+            }
+        }
+        
+    }
+    
+
+    
+    
     func AnalyzeSteepTurns(traceEvent:TraceEvent) -> [SteepTurn]
     {
         let locationList = traceEvent.traceLocations
         var lastLocation = locationList.first
         var steepTurnBegins = false
-        
+    
         var overallSteepTurns:[SteepTurn] = Array()
     
-        
+    
         if lastLocation == nil
         {
             return Array()

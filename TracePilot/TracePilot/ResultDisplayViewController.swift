@@ -11,7 +11,6 @@ import MapKit
 import HealthKit
 import CoreMotion
 
-
 class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ResultCellDelegate{
 
     var traceEvent:TraceEvent?
@@ -33,12 +32,12 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     
     var resultCelltypes:Array<ResultDisplayCellType> = Array()
     
-    var passedAirPorts:[(AirPort,TraceLocation)]  = Array()
+    var passedAirPorts:[MKMapItem]  = Array()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        passedAirPorts = Util.getEventdAirports(self.traceEvent)
+        //passedAirPorts = Util.getEventdAirports(self.traceEvent)
         configureView()
         
         // Do any additional setup after loading the view.
@@ -59,11 +58,11 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
             mapView.addAnnotation(airPlanePin)
         }
         
-        if let firstAirPort = self.passedAirPorts.first
-        {
-            airportPin.coordinate = CLLocationCoordinate2DMake((firstAirPort.1.locationLatitude), (firstAirPort.1.locationLongitude))
-            mapView.addAnnotation(airportPin)
-        }
+//        if let firstAirPort = self.passedAirPorts.first
+//        {
+//            airportPin.coordinate = CLLocationCoordinate2DMake((firstAirPort.1.locationLatitude), (firstAirPort.1.locationLongitude))
+//            mapView.addAnnotation(airportPin)
+//        }
         
         resultCelltypes.append(ResultDisplayCellType.metaData)
         resultCelltypes.append(ResultDisplayCellType.speedChart)
@@ -109,6 +108,9 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
             
             // Set the map bounds
             mapView.region = mapRegion()
+            
+            // start local search
+            startLocalSearch()
             
             // Make the line(s!) on the map
             let colorSegments = MulticolorPolylineSegment.colorSegments(forLocations: (traceEvent?.traceLocations)!)
@@ -211,7 +213,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         else if resultType == ResultDisplayCellType.airports
         {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("airportsCell",forIndexPath: indexPath) as! AirportsDisplayCell
-            cell.passedAirPorts = passedAirPorts
+            //cell.passedAirPorts = passedAirPorts
             cell.loadCell()
             cell.delegate = self
             return cell
@@ -245,10 +247,20 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     }
     
     func didTabOnAirportViewAtIndex(index: Int) {
-        let airport = self.passedAirPorts[index]
-        let location = airport.1
-        airportPin.coordinate = CLLocationCoordinate2DMake((location.locationLatitude), (location.locationLongitude))
+//        let airport = self.passedAirPorts[index]
+//        let location = airport.1
+//        airportPin.coordinate = CLLocationCoordinate2DMake((location.locationLatitude), (location.locationLongitude))
 
+    }
+    
+    func startLocalSearch()
+    {
+      DataAnalysor.sharedInstance.AnalyzePassedAirports(self.mapView) { (mapItems, error) -> Void in
+            if let items = mapItems
+            {
+                self.passedAirPorts = items
+            }
+        }
     }
 
     /*
