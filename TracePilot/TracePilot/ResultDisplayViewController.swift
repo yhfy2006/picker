@@ -38,6 +38,12 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     {
         super.viewDidLoad()
         //passedAirPorts = Util.getEventdAirports(self.traceEvent)
+        if let event = self.traceEvent{
+           let report = DataAnalysor.sharedInstance.generateReportWithTraceEvent(event)
+        
+        }
+        
+        
         configureView()
         
         // Do any additional setup after loading the view.

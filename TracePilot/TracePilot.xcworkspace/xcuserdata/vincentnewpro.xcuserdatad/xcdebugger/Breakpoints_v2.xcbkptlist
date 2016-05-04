@@ -32,7 +32,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/BlackBox.swift"
@@ -41,7 +41,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
             endingLineNumber = "181"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkName = "setupMusicPlayer()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -84,7 +84,7 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "481432467.33961"
+                  timestampString = "483938960.288826"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -99,7 +99,7 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "481432467.339748"
+                  timestampString = "483938960.289004"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -114,7 +114,7 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "481432467.339873"
+                  timestampString = "483938960.289166"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -129,7 +129,7 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "481432467.339997"
+                  timestampString = "483938960.289328"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -152,6 +152,22 @@
             startingLineNumber = "195"
             endingLineNumber = "195"
             landmarkName = "locationManagerGetUpdated(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/ResultDisplayViewController.swift"
+            timestampString = "483846876.023432"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
