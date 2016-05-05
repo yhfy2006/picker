@@ -27,7 +27,7 @@ class DataAnalysor: NSObject {
     
      let realm = try! Realm()
     
-    func gerateReportWithTimeWindow(timeWindow:DataReportWindow)
+    func gerateReportWithTimeWindow(timeWindow:DataReportWindow) -> [DataAnalysorReport]
     {
         let todayDate = NSDate()
         
@@ -89,9 +89,8 @@ class DataAnalysor: NSObject {
             }
             break
             
-            default :break
-            
         }
+        return finalReports
     }
 
     func generateReportWithTraceEvent(traceEvent:TraceEvent) -> DataAnalysorReport
