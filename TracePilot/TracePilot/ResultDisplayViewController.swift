@@ -261,7 +261,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     
     func startLocalSearch()
     {
-      DataAnalysor.sharedInstance.AnalyzePassedAirports(self.mapView) { (mapItems, error) -> Void in
+      DataAnalysor.sharedInstance.analyzePassedAirports(self.mapView, traceEvent: self.traceEvent!) { (mapItems, error) -> Void in
             if let items = mapItems
             {
                 self.passedAirPorts = items

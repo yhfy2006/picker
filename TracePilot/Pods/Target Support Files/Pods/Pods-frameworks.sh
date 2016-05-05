@@ -93,6 +93,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
   install_framework "Pods/Spring.framework"
+  install_framework "Pods/SwiftDate.framework"
   install_framework "Pods/TransitionTreasury.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -105,5 +106,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
   install_framework "Pods/Spring.framework"
+  install_framework "Pods/SwiftDate.framework"
   install_framework "Pods/TransitionTreasury.framework"
 fi

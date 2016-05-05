@@ -8,27 +8,105 @@
 
 import Foundation
 import MapKit
+import SwiftDate
+import RealmSwift
+
 
 
 //Steep turn angle formula:
 //http://aviation.stackexchange.com/questions/2871/how-to-calculate-angular-velocity-and-radius-of-a-turn
 
+enum DataReportWindow {
+    case ThisMonth
+    case PastThreeMonth
+    case PastYear
+}
+
 class DataAnalysor: NSObject {
     static let sharedInstance = DataAnalysor()
+    
+     let realm = try! Realm()
+    
+    func gerateReportWithTimeWindow(timeWindow:DataReportWindow)
+    {
+        let todayDate = NSDate()
+        
+        var finalReports:[DataAnalysorReport] = Array()
+        
+        switch timeWindow {
+            
+        case .ThisMonth :
+            let monthStartDate = todayDate.startOf(.Month)
+            let predicate = NSPredicate(format: "createdTimeStampe > %@", monthStartDate)
+            let results = realm.objects(TraceEvent).filter(predicate)
+            for result in results
+            {
+                let report = DataAnalysorReport()
+                report.duration = result.duration
+                report.date = result.createdTimeStampe
+                report.reportDescription = "\(result.createdTimeStampe.month)/\(result.createdTimeStampe.day)"
+                finalReports.append(report)
+            }
+            break
+            
+        case .PastThreeMonth:
+            for i in 1...3
+            {
+                let monthStartDate = todayDate.startOf(.Month)
+                let lastMonthStartDate = monthStartDate - i.months
+                let lastMonthEndDate = lastMonthStartDate.endOf(.Month)
+                let predicate = NSPredicate(format: "createdTimeStampe > %@ AND createdTimeStampe > %@" , lastMonthStartDate,lastMonthEndDate)
+                let results = realm.objects(TraceEvent).filter(predicate)
+                var totalDuration = 0.0
+                for result in results
+                {
+                    totalDuration += result.duration
+                }
+                
+                let report = DataAnalysorReport()
+                report.reportDescription = "\(lastMonthStartDate.monthName)"
+                finalReports.append(report)
+            }
+            break
+            
+        case .PastYear :
+            for i in 1...12
+            {
+                let monthStartDate = todayDate.startOf(.Month)
+                let lastMonthStartDate = monthStartDate - i.months
+                let lastMonthEndDate = lastMonthStartDate.endOf(.Month)
+                let predicate = NSPredicate(format: "createdTimeStampe > %@ AND createdTimeStampe > %@" , lastMonthStartDate,lastMonthEndDate)
+                let results = realm.objects(TraceEvent).filter(predicate)
+                var totalDuration = 0.0
+                for result in results
+                {
+                    totalDuration += result.duration
+                }
+                
+                let report = DataAnalysorReport()
+                report.reportDescription = "\(lastMonthStartDate.monthName)"
+                finalReports.append(report)
+            }
+            break
+            
+            default :break
+            
+        }
+    }
 
     func generateReportWithTraceEvent(traceEvent:TraceEvent) -> DataAnalysorReport
     {
         let report = DataAnalysorReport()
-        report.avgSpeed = self.AnalyzeAveSpeed(traceEvent)
-        report.avgAltitude = self.AnalyeAveAltitude(traceEvent)
-        report.steepTurns = self.AnalyzeSteepTurns(traceEvent)
+        report.avgSpeed = self.analyzeAveSpeed(traceEvent)
+        report.avgAltitude = self.analyeAveAltitude(traceEvent)
+        report.steepTurns = self.analyzeSteepTurns(traceEvent)
         report.stalls = BlackBox.sharedInstance.stalls
         
         return report
     }
     
     
-    func AnalyzeAveSpeed(traceEvent:TraceEvent) -> Double
+    func analyzeAveSpeed(traceEvent:TraceEvent) -> Double
     {
         let locationList = traceEvent.traceLocations
         var validNumber = 0
@@ -46,7 +124,7 @@ class DataAnalysor: NSObject {
         return avgSpeed
     }
     
-    func AnalyeAveAltitude(traceEvent:TraceEvent) -> Double
+    func analyeAveAltitude(traceEvent:TraceEvent) -> Double
     {
         let locationList = traceEvent.traceLocations
         var validNumber = 0
@@ -65,7 +143,7 @@ class DataAnalysor: NSObject {
         return avgAltitude
     }
     
-    func AnalyzePassedAirports(mapView: MKMapView!, completionHandler:([MKMapItem]?,NSError?)->Void)
+    func analyzePassedAirports(mapView: MKMapView!, traceEvent:TraceEvent ,completionHandler:([MKMapItem]?,NSError?)->Void)
     {
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = "Airport"
@@ -83,15 +161,33 @@ class DataAnalysor: NSObject {
                     print("Phone = \(item.phoneNumber)")
                     completionHandler(response?.mapItems,error)
                 }
+                completionHandler(self.filterPassedAirports((response?.mapItems)!, traceEvent: traceEvent),error)
+                
             }
         }
         
     }
     
-
+    private func filterPassedAirports(airports:[MKMapItem],traceEvent:TraceEvent) -> [MKMapItem]
+    {
+        var filteredMapitems:[MKMapItem] = Array()
+        let locationList = traceEvent.traceLocations
+        for location in locationList
+        {
+            for mapitem in airports
+            {
+                let myLocation = CLLocation(latitude: location.locationLatitude, longitude: location.locationLongitude)
+                if mapitem.placemark.location?.distanceFromLocation(myLocation) < 500 // less than 500 m
+                {
+                    filteredMapitems.append(mapitem)
+                }
+            }
+        }
+        return filteredMapitems
+    }
     
     
-    func AnalyzeSteepTurns(traceEvent:TraceEvent) -> [SteepTurn]
+    func analyzeSteepTurns(traceEvent:TraceEvent) -> [SteepTurn]
     {
         let locationList = traceEvent.traceLocations
         var lastLocation = locationList.first

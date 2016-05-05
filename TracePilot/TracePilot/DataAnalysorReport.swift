@@ -13,4 +13,8 @@ class DataAnalysorReport: NSObject {
     var avgAltitude:Double?
     var steepTurns:[SteepTurn]?
     var stalls:[Stall]?
+    var duration:Double?
+    var window:DataReportWindow?
+    var reportDescription:String?
+    var date:NSDate?
 }

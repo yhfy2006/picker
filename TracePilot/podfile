@@ -10,5 +10,6 @@ pod 'Observable-Swift'
 pod 'CSwiftV'
 pod 'ABSteppedProgressBar'
 pod 'AFDateHelper'
+pod 'SwiftDate'
 
 
