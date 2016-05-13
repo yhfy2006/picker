@@ -84,27 +84,12 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "483938960.288826"
+                  timestampString = "484341247.241272"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "48">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TracePilot.ResultDisplayViewController.resultCelltypes.setter : Swift.Array&lt;TracePilot.ResultDisplayCellType&gt;"
-                  moduleName = "TracePilot"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "483938960.289004"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "76">
+                  offsetFromSymbolStart = "35">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -114,12 +99,12 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "483938960.289166"
+                  timestampString = "484341247.241643"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "196">
+                  offsetFromSymbolStart = "157">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -129,12 +114,12 @@
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "483938960.289328"
+                  timestampString = "484341247.241878"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
                   endingLineNumber = "34"
-                  offsetFromSymbolStart = "156">
+                  offsetFromSymbolStart = "118">
                </Location>
             </Locations>
          </BreakpointContent>

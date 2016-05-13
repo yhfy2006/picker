@@ -94,6 +94,32 @@ class ResultDiaplayCellBasicInfo: UICollectionViewCell {
 
 }
 
+class ResultDiaplayCellBasicInfo2: UICollectionViewCell {
+    @IBOutlet var stallLabel:UILabel?
+    @IBOutlet var steepTurnsLabel:UILabel?
+    @IBOutlet var slowflightLabel:UILabel?
+    
+    var report:DataAnalysorReport?
+    // DB store
+    var traceEvent:TraceEvent?
+    
+    func loadCell()
+    {
+        self.contentView.backgroundColor = UIColor.whiteColor()
+        if let report = self.report
+        {
+          
+            stallLabel?.text = String(report.stalls?.count)
+            steepTurnsLabel?.text = String(report.steepTurns?.count)
+            slowflightLabel?.text = String("-")
+            
+        }
+        
+    }
+    
+    
+}
+
 class AirportsDisplayCell:UICollectionViewCell,ABSteppedProgressBarDelegate
 {
     var passedAirPorts:[(AirPort,TraceLocation)]?
