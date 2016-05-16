@@ -100,12 +100,10 @@ class BlackBox: NSObject {
                 print("bumped")
             }
         }
-        
+//
         motionKit.getAccelerationFromDeviceMotion { (x, y, z) -> () in
             // record stalls
             if((abs(x) < 0.1) && (abs(y) < 0.1) && (abs(z) < 0.1)){
-                let soundIdRing:SystemSoundID = 1000  // new-mail.caf
-                AudioServicesPlaySystemSound(soundIdRing)
                 if let lastStall = self.stalls.last
                 {
                     if lastStall.occurTime! < self.seconds - 10

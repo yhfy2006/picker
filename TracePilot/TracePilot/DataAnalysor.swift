@@ -209,7 +209,7 @@ class DataAnalysor: NSObject {
                 continue
             }else
             {
-                let headingChange = location.locationHeading - lastLocation!.locationHeading
+                let headingChange = abs(location.locationHeading - lastLocation!.locationHeading)
                 let avgSpeed = Util.mps2Knot((location.locationSpeed + lastLocation!.locationSpeed) / 2)
                 let elapsedTime = location.locationTimeStamp.timeIntervalSinceDate(lastLocation!.locationTimeStamp)
                 let duration = Int(elapsedTime)
@@ -223,7 +223,8 @@ class DataAnalysor: NSObject {
                 
                 let tanCurrent = w * avgSpeed / 1091
                 let angle = atan(tanCurrent)
-                if angle > 35  // Steep turn!!
+                let absAngle = angle*360/2.0/3.14
+                if absAngle > 35  // Steep turn!!
                 {
                     if(steepTurnBegins == false)
                     {

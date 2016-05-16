@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/BlackBox.swift"
-            timestampString = "479791851.951209"
+            timestampString = "485057993.196172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "setupMusicPlayer()"
             landmarkType = "5">
          </BreakpointContent>
@@ -64,7 +64,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TracePilot/ResultDisplayViewController.swift"
@@ -77,49 +77,49 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "TracePilot.ResultDisplayViewController.resultCelltypes.getter : Swift.Array&lt;TracePilot.ResultDisplayCellType&gt;"
+                  symbolName = "TracePilot.ResultDisplayViewController.passedAirPorts.getter : Swift.Array&lt;__ObjC.MKMapItem&gt;"
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "484341247.241272"
+                  timestampString = "485060721.775851"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
                   offsetFromSymbolStart = "35">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TracePilot.ResultDisplayViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; TracePilot.ResultDisplayViewController"
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "484341247.241643"
+                  timestampString = "485060721.776416"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "157">
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "222">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "TracePilot.ResultDisplayViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;TracePilot.ResultDisplayViewController&gt;"
                   moduleName = "TracePilot"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
-                  timestampString = "484341247.241878"
+                  timestampString = "485060721.776612"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "118">
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "149">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -153,6 +153,197 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/DataAnalysor.swift"
+            timestampString = "485060709.358083"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "generateReportWithTraceEvent(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/ResultDisplayViewController.swift"
+            timestampString = "485060728.978013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "ResultDisplayViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TracePilot.ResultDisplayViewController.resultCelltypes.getter : Swift.Array&lt;TracePilot.ResultDisplayCellType&gt;"
+                  moduleName = "TracePilot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
+                  timestampString = "485060729.014623"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TracePilot.ResultDisplayViewController.resultCelltypes.setter : Swift.Array&lt;TracePilot.ResultDisplayCellType&gt;"
+                  moduleName = "TracePilot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
+                  timestampString = "485060729.014944"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TracePilot.ResultDisplayViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; TracePilot.ResultDisplayViewController"
+                  moduleName = "TracePilot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
+                  timestampString = "485060729.015119"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TracePilot.ResultDisplayViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;TracePilot.ResultDisplayViewController&gt;"
+                  moduleName = "TracePilot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vincentnewpro/Documents/picker/TracePilot/TracePilot/ResultDisplayViewController.swift"
+                  timestampString = "485060729.015299"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "156">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/DataAnalysor.swift"
+            timestampString = "485063528.575419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "analyzeSteepTurns(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/DataAnalysor.swift"
+            timestampString = "485061040.658365"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "analyzeSteepTurns(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/DataAnalysor.swift"
+            timestampString = "485061043.549976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "analyzeSteepTurns(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            condition = "w &gt; 0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/DataAnalysor.swift"
+            timestampString = "485061136.756459"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "analyzeSteepTurns(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/DataAnalysor.swift"
+            timestampString = "485063528.575419"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "analyzeSteepTurns(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TracePilot/DataAnalysor.swift"
+            timestampString = "485063591.522752"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "analyzeSteepTurns(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
