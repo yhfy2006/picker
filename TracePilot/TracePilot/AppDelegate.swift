@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Util.processAirportData()
         
-        DataAnalysor.sharedInstance.gerateReportWithTimeWindow(DataReportWindow.thisMonth)
+        let _ = DataAnalysor.sharedInstance.gerateReportWithTimeWindow(DataReportWindow.thisMonth)
         
 
 //        
@@ -65,12 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        //Util.observables.goingtoBackGroundNotice.value = "Sleep!"
+        Util.observables.goingtoBackGroundNotice.value = "Sleep!"
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        //Util.observables.wakeUpFromBackGroundNotice.value = "wakeUp!"
+        Util.observables.wakeUpFromBackGroundNotice.value = "wakeUp!"
 
     }
 
