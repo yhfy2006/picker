@@ -109,8 +109,8 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     }
     
     func loadMap() {
-        if traceEvent?.traceLocations.count > 0 {
-            mapView.hidden = false
+        if (traceEvent?.traceLocations.count)! > 0 {
+            mapView.isHidden = false
             
             // Set the map bounds
             mapView.region = mapRegion()
@@ -123,7 +123,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
             mapView.addOverlays(colorSegments)
         } else {
             // No locations were found!
-            mapView.hidden = true
+            mapView.isHidden = true
             
             UIAlertView(title: "Error",
                 message: "This flight has no locations saved",
@@ -132,7 +132,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         }
     }
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polyline = overlay as! MulticolorPolylineSegment
         let renderer = MKPolylineRenderer(polyline: polyline)
         renderer.strokeColor = polyline.color
@@ -140,7 +140,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         return renderer
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView?
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
         if !(annotation is PointAnnotation)
         {
@@ -149,7 +149,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         
         let reuseId = "test"
         
-        var anView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if anView == nil {
             anView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             anView!.canShowCallout = true
@@ -181,26 +181,26 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
     
     
     //Mark: - CollectionView
-     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
      {
        return resultCelltypes.count
      }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
      {
-        let resultType = resultCelltypes[indexPath.row];
+        let resultType = resultCelltypes[(indexPath as NSIndexPath).row];
         
         if resultType == ResultDisplayCellType.metaData
         {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BasicInfoCell",forIndexPath: indexPath) as! ResultDiaplayCellBasicInfo
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BasicInfoCell",for: indexPath) as! ResultDiaplayCellBasicInfo
             cell.traceEvent = self.traceEvent
             cell.loadCell()
             return cell
         }
         else if resultType == ResultDisplayCellType.speedChart
         {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SpeedChartCell",forIndexPath: indexPath) as! ChartCellSpeedCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpeedChartCell",for: indexPath) as! ChartCellSpeedCell
             cell.traceEvent = self.traceEvent
             cell.delegate = self
             cell.loadCell()
@@ -209,7 +209,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         }
         else if resultType == ResultDisplayCellType.altitudeChart
         {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("AltitudeChartCell",forIndexPath: indexPath) as! ChartCellAltitudeCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AltitudeChartCell",for: indexPath) as! ChartCellAltitudeCell
             cell.traceEvent = self.traceEvent
             cell.delegate = self
             cell.loadCell()
@@ -218,7 +218,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         }
         else if resultType == ResultDisplayCellType.airports
         {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("airportsCell",forIndexPath: indexPath) as! AirportsDisplayCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "airportsCell",for: indexPath) as! AirportsDisplayCell
             //cell.passedAirPorts = passedAirPorts
             cell.loadCell()
             cell.delegate = self
@@ -230,18 +230,18 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         }
     }
     
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize{
+    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: IndexPath!) -> CGSize{
 
-        return CGSizeMake(collectionView.bounds.width, collectionView.bounds.height)
+        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+    func numberOfSections(in collectionView: UICollectionView) -> Int
     {
         return 1
     }
 
     // MARK: -ResulstDiaplay chat delegate
-    func didTapOnChartViewAtIndex(index: Int) {
+    func didTapOnChartViewAtIndex(_ index: Int) {
         let location = self.traceEvent?.traceLocations[index]
         airPlanePin.coordinate = CLLocationCoordinate2DMake((location?.locationLatitude)!, (location?.locationLongitude)!)
         // handle image rotation
@@ -252,7 +252,7 @@ class ResultDisplayViewController: UIViewController,MKMapViewDelegate,UICollecti
         
     }
     
-    func didTabOnAirportViewAtIndex(index: Int) {
+    func didTabOnAirportViewAtIndex(_ index: Int) {
 //        let airport = self.passedAirPorts[index]
 //        let location = airport.1
 //        airportPin.coordinate = CLLocationCoordinate2DMake((location.locationLatitude), (location.locationLongitude))

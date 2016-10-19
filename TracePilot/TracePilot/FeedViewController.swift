@@ -17,49 +17,49 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
     }
     
     //Mark: - CollectionView
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return traceEvents.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("traceEventCell",forIndexPath: indexPath) as! FeedViewNormalCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "traceEventCell",for: indexPath) as! FeedViewNormalCell
         let traceEvent = traceEvents[indexPath.row]
         cell.traceEvent = traceEvent
         cell.loadCell()
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize{
+    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: IndexPath!) -> CGSize{
         
-        return CGSizeMake(collectionView.bounds.width, 50)
+        return CGSize(width: collectionView.bounds.width, height: 50)
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+    func numberOfSectionsInCollectionView(_ collectionView: UICollectionView) -> Int
     {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath)
     {
         let traceEvent = traceEvents[indexPath.row]
-        self.performSegueWithIdentifier("goToResultView", sender:traceEvent)
+        self.performSegue(withIdentifier: "goToResultView", sender:traceEvent)
 
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if(segue.identifier == "goToResultView")
         {
             
-            let controller = (segue.destinationViewController as! ResultDisplayViewController)
+            let controller = (segue.destination as! ResultDisplayViewController)
             controller.traceEvent = sender as? TraceEvent
         }
     }

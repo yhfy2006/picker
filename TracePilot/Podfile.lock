@@ -1,56 +1,86 @@
 PODS:
-  - ABSteppedProgressBar (0.0.3)
-  - AFDateHelper (3.3.0)
-  - Charts (2.2.3):
-    - Charts/Core (= 2.2.3)
-  - Charts/Core (2.2.3)
-  - CSwiftV (0.0.3)
-  - EasyAnimation (1.0.4)
-  - Observable-Swift (0.5.0)
-  - Realm (0.98.3):
-    - Realm/Headers (= 0.98.3)
-  - Realm/Headers (0.98.3)
-  - RealmSwift (0.98.3):
-    - Realm (= 0.98.3)
+  - AFDateHelper (3.5.3)
+  - Charts (3.0.0):
+    - Charts/Core (= 3.0.0)
+  - Charts/Core (3.0.0)
+  - CSwiftV (0.0.5)
+  - EasyAnimation (1.0.5)
+  - Realm (2.0.2):
+    - Realm/Headers (= 2.0.2)
+  - Realm/Headers (2.0.2)
+  - RealmSwift (2.0.2):
+    - Realm (= 2.0.2)
   - Spring (1.0.3)
-  - SwiftDate (3.0.8)
-  - TransitionTreasury (3.0.2):
-    - TransitionTreasury/Core (= 3.0.2)
-  - TransitionTreasury/Core (3.0.2)
+  - SwiftDate (4.0.6)
+  - TransitionTreasury (3.1.0)
 
 DEPENDENCIES:
-  - ABSteppedProgressBar
-  - AFDateHelper
-  - Charts
-  - CSwiftV
-  - EasyAnimation
-  - Observable-Swift
-  - RealmSwift
-  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
-  - SwiftDate
-  - TransitionTreasury (~> 3.0.1)
+  - AFDateHelper (from `https://github.com/melvitax/DateHelper.git`, branch `master`)
+  - Charts (from `https://github.com/danielgindi/Charts.git`, branch `master`)
+  - CSwiftV (from `https://github.com/Daniel1of1/CSwiftV`, branch `master`)
+  - EasyAnimation (from `https://github.com/icanzilb/EasyAnimation`, branch `swift3`)
+  - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
+  - SwiftDate (~> 4.0)
+  - TransitionTreasury (from `https://github.com/DianQK/TransitionTreasury.git`, branch
+    `swift3`)
 
 EXTERNAL SOURCES:
+  AFDateHelper:
+    :branch: master
+    :git: https://github.com/melvitax/DateHelper.git
+  Charts:
+    :branch: master
+    :git: https://github.com/danielgindi/Charts.git
+  CSwiftV:
+    :branch: master
+    :git: https://github.com/Daniel1of1/CSwiftV
+  EasyAnimation:
+    :branch: swift3
+    :git: https://github.com/icanzilb/EasyAnimation
+  RealmSwift:
+    :branch: master
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
   Spring:
-    :branch: swift2
+    :branch: swift3
     :git: https://github.com/MengTo/Spring.git
+  TransitionTreasury:
+    :branch: swift3
+    :git: https://github.com/DianQK/TransitionTreasury.git
 
 CHECKOUT OPTIONS:
+  AFDateHelper:
+    :commit: 4bbc3cd37f961115529e45298767459c9fb45439
+    :git: https://github.com/melvitax/DateHelper.git
+  Charts:
+    :commit: e89676c6b7e8481c363415e19b28c9b61d74d984
+    :git: https://github.com/danielgindi/Charts.git
+  CSwiftV:
+    :commit: e43e381d30c2bbc3967d1bf31e13076608095544
+    :git: https://github.com/Daniel1of1/CSwiftV
+  EasyAnimation:
+    :commit: 2c6e46c05778a2de75e5e69fb0cbcdb48e294b37
+    :git: https://github.com/icanzilb/EasyAnimation
+  RealmSwift:
+    :commit: 69b4144c71d0224a82f2948884286906c173c2fc
+    :git: https://github.com/realm/realm-cocoa.git
   Spring:
-    :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
+    :commit: 3a9227c6e9157e7b47f5ac1ee5abab2a56b50002
     :git: https://github.com/MengTo/Spring.git
+  TransitionTreasury:
+    :commit: 880201a323c7fd40a569d443739b94fb54830c23
+    :git: https://github.com/DianQK/TransitionTreasury.git
 
 SPEC CHECKSUMS:
-  ABSteppedProgressBar: 2f4f51ad45a9610f15fb696e2447482e690210c5
-  AFDateHelper: 137b5b9d70fe13b810e1817fa2d8c116d7988f5c
-  Charts: f54267bb3f0f0e74520c6f248517cf5074dfd6fc
-  CSwiftV: 93e3d4e1501f2a9b1eac3ae51d53a5edf41beb5b
-  EasyAnimation: 4aabd439b4038f48d72939cc19d6220363b3206e
-  Observable-Swift: aecd04920b22e890f528d42f557c51c525ca79ee
-  Realm: c6a7d00221a2d5177810a674aebd40c5e0b70b0f
-  RealmSwift: d6ecad6e4c2a645d6ac956c2c7e9efb375f39c31
+  AFDateHelper: e64bcc4a88a07e1d3e62442741b2a164adc02d77
+  Charts: 3f0da988b104c8e5f069fcef55da699f597dac67
+  CSwiftV: 2560532e2e5b04d95c36b0f49a8dc745071fa525
+  EasyAnimation: 32821f37dd39187e7364369a3d8f65d38405cf1d
+  Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
+  RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
-  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
-  TransitionTreasury: a2e119081432d5905a858f01713f93cb1a36bec7
+  SwiftDate: 549729eaa54bd9f64fd80abfd12ddd3d44ff5098
+  TransitionTreasury: d2e901181a157719d4b275638a40ca2d794bc601
 
 COCOAPODS: 0.39.0

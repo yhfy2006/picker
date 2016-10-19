@@ -3,7 +3,7 @@
 //  TransitionTreasury
 //
 //  Created by DianQK on 12/20/15.
-//  Copyright © 2015 TransitionTreasury. All rights reserved.
+//  Copyright © 2016 TransitionTreasury. All rights reserved.
 //
 
 import UIKit
@@ -21,37 +21,37 @@ public class TRViewControllerTransitionDelegate: NSObject, UIViewControllerTrans
      
      - returns: Transition Animation Delegate Object
      */
-    public init(method: TransitionAnimationable, status: TransitionStatus = .Present) {
+    public init(method: TransitionAnimationable, status: TransitionStatus = .present) {
         transition = method.transitionAnimation()
         super.init()
     }
     /**
      Update transition status
      
-     - parameter status: .Present or .Dismiss
+     - parameter status: .Present or .dismiss
      */
-    public func updateStatus(status: TransitionStatus) {
+    public func updateStatus(_ status: TransitionStatus) {
         transition.transitionStatus = status
     }
     
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionStatus = .Present
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionStatus = .present
         return transition
     }
     
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.transitionStatus = .Dismiss
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionStatus = .dismiss
         return transition
     }
     
-    public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         guard let transition = transition as? TransitionInteractiveable else {
             return nil
         }
         return transition.interacting ? transition.percentTransition : nil
     }
     
-    public func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         guard let transition = transition as? TransitionInteractiveable else {
             return nil
         }

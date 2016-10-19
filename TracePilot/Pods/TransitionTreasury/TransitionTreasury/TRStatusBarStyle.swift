@@ -11,39 +11,39 @@ import UIKit
  TransitionTreasury Status Bar Style.
  */
 public enum TRStatusBarStyle {
-    case Default
+    case `default`
     @available(iOS 7.0, *)
-    case LightContent
-    case Hide
+    case lightContent
+    case hide
     
-    func updateStatusBarStyle(animated: Bool = true) {
+    func updateStatusBarStyle(_ animated: Bool = true) {
         switch self {
-        case .Default :
-            UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
-            UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: animated)
-        case .LightContent :
-            UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
-            UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: animated)
-        case .Hide :
-            UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
+        case .default :
+            UIApplication.shared.setStatusBarHidden(false, with: .fade)
+            UIApplication.shared.setStatusBarStyle(.default, animated: animated)
+        case .lightContent :
+            UIApplication.shared.setStatusBarHidden(false, with: .fade)
+            UIApplication.shared.setStatusBarStyle(.lightContent, animated: animated)
+        case .hide :
+            UIApplication.shared.setStatusBarHidden(true, with: .fade)
         }
     }
     
-    static func ConvertToTRStatusBarStyle(statusBarStyle: UIStatusBarStyle, statusBarHidden: Bool = UIApplication.sharedApplication().statusBarHidden) -> TRStatusBarStyle {
+    static func convertTo(statusBarStyle: UIStatusBarStyle, statusBarHidden: Bool = UIApplication.shared.isStatusBarHidden) -> TRStatusBarStyle {
         guard statusBarHidden == false else {
-            return .Hide
+            return .hide
         }
         switch statusBarStyle {
-        case .LightContent :
-            return .LightContent
-        case .Default :
-            return .Default
+        case .lightContent :
+            return .lightContent
+        case .default :
+            return .default
         default :
             fatalError("No support this status bar style")
         }
     }
     
-    static func CurrentlyTRStatusBarStyle() -> TRStatusBarStyle {
-        return ConvertToTRStatusBarStyle(UIApplication.sharedApplication().statusBarStyle)
+    static func currentlyTRStatusBarStyle() -> TRStatusBarStyle {
+        return convertTo(statusBarStyle: UIApplication.shared.statusBarStyle)
     }
 }

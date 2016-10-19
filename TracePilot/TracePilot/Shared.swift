@@ -8,7 +8,6 @@
 
 import UIKit
 import HealthKit
-import Observable
 import CoreMotion
 import RealmSwift
 import CSwiftV
@@ -29,8 +28,8 @@ struct GlobalVariables{
 }
 
 struct AppObservables {
-    var wakeUpFromBackGroundNotice: Observable<String>= Observable("")
-    var goingtoBackGroundNotice:Observable<String>= Observable("")
+//    var wakeUpFromBackGroundNotice: Observable<String>= Observable("")
+//    var goingtoBackGroundNotice:Observable<String>= Observable("")
 }
 
 
@@ -38,7 +37,7 @@ class Util:NSObject{
 
     static var observables:AppObservables = AppObservables()
     
-    static func getNearestAirport(lat:Double,longt:Double) -> AirPort?
+    static func getNearestAirport(_ lat:Double,longt:Double) -> AirPort?
     {
         let realm = try! Realm()
         
@@ -53,7 +52,7 @@ class Util:NSObject{
         return airPort
     }
     
-    static func getEventdAirports(event:TraceEvent?) -> [(AirPort,TraceLocation)]
+    static func getEventdAirports(_ event:TraceEvent?) -> [(AirPort,TraceLocation)]
     {
         var resultArray = Array<(AirPort,TraceLocation)>()
         if let event = event
@@ -84,10 +83,10 @@ class Util:NSObject{
         let airPorts = realm.objects(AirPort)
         if airPorts.count == 0
         {
-            let fileURL: NSURL! = NSBundle.mainBundle().URLForResource("airports", withExtension: "csv")
-            if let data = NSData(contentsOfURL: fileURL) {
-                if let content = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                    let csv = CSwiftV(String: String(content))
+            let fileURL: URL! = Bundle.main.url(forResource: "airports", withExtension: "csv")
+            if let data = try? Data(contentsOf: fileURL) {
+                if let content = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
+                    let csv = CSwiftV(with: String(content))
                     let rows = csv.rows
                     for row in rows
                     {
@@ -123,40 +122,40 @@ class Util:NSObject{
     
     static func getAudioDirectory()->String
     {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
         let audioPath = documentsDirectory
         return audioPath
     }
     
-    static func mps2kph(speed:Double)->Double
+    static func mps2kph(_ speed:Double)->Double
     {
         return speed*3.6
     }
     
-    static func mps2Knot(speed:Double)->Double
+    static func mps2Knot(_ speed:Double)->Double
     {
         return speed * 1.94384
     }
     
-    static func distanceInMiles(value:Double)->Double
+    static func distanceInMiles(_ value:Double)->Double
     {
-        let distanceQuantity = HKQuantity(unit: HKUnit.meterUnit(), doubleValue: value)
-        return distanceQuantity.doubleValueForUnit(HKUnit.mileUnit())
+        let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: value)
+        return distanceQuantity.doubleValue(for: HKUnit.mile())
     }
     
-    static func timeString(seconds:NSTimeInterval)->String
+    static func timeString(_ seconds:TimeInterval)->String
     {
-        var elapsedTime: NSTimeInterval = seconds
+        var elapsedTime: TimeInterval = seconds
         //calculate the minutes in elapsed time.
         let hours = UInt8(elapsedTime / 3600)
-        elapsedTime -= (NSTimeInterval(hours) * 3600)
+        elapsedTime -= (TimeInterval(hours) * 3600)
         
         let minutes = UInt8(elapsedTime / 60.0)
-        elapsedTime -= (NSTimeInterval(minutes) * 60)
+        elapsedTime -= (TimeInterval(minutes) * 60)
         
         let scend = UInt8(elapsedTime)
-        elapsedTime -= NSTimeInterval(seconds)
+        elapsedTime -= TimeInterval(seconds)
         
         let strHours = String(format: "%02d", hours)
         let strMinutes = String(format: "%02d", minutes)

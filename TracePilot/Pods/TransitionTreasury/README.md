@@ -35,7 +35,7 @@ TransitionTreasury is a viewController transition framework in Swift.
 ## Requirements   
 
 * iOS 8.0+
-* Xcode 7.1+
+* Xcode 7.3+
 
 ## Communication
 
@@ -58,7 +58,7 @@ To integrate TransitionTreasury into your Xcode project using CocoaPods, specify
 
 ```ruby
 use_frameworks!
-pod 'TransitionTreasury', '~> 3.0.1'
+pod 'TransitionTreasury', '~> 3.0.4'
 ```
 
 Then, run the following command:
@@ -72,10 +72,10 @@ In any file you'd like to use TransitionTreasury in, don't forget to import the 
 For TransitionAnimation extensions, this project will include them as dependencies. You can do this via CocoaPods subspecs.
 
 ```ruby
-pod 'TransitionTreasury/Animations'
+pod 'TransitionAnimation', '~>3.0.4'
 ```
 
-### Carthage    
+<s>### Carthage    
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager for Cocoa application. To install the carthage tool, you can use [Homebrew](http://brew.sh).
 
@@ -113,15 +113,18 @@ $(SRCROOT)/Carthage/Build/iOS/TransitionTreasury.framework
 $(SRCROOT)/Carthage/Build/iOS/TransitionAnimation.framework // If need
 ```
 
-For more information about how to use Carthage, please see its [project page](https://github.com/Carthage/Carthage).
+For more information about how to use Carthage, please see its [project page](https://github.com/Carthage/Carthage).</s>
 
-## Usage    
+## Usage   
+
+> You can check out [Example](https://github.com/DianQK/TransitionTreasury/tree/master/Example) or [Demo](https://github.com/DianQK/TransitionTreasury/tree/master/Demo) .  
+> Don't forget `pod install` for [Example](https://github.com/DianQK/TransitionTreasury/tree/master/Example) .    
 
 ### Make a Push   
 
-If we need to push `FirstViewController` to `SecondViewController`, `SecondViewController` should conform `NavgationTransitionable`, and add code `var tr_transition: TRNavgationTransitionDelegate?`, I need use this property to retain animation object. Of course, you can use this do more, but it is dangerous.   
+If we need to push `FirstViewController` to `SecondViewController`, `SecondViewController` should conform `NavgationTransitionable`, and add code `var tr_pushTransition: TRNavgationTransitionDelegate?`, I need use this property to retain animation object. Of course, you can use this do more, but it is dangerous.   
 
-When you need to push, just call `public func tr_pushViewController(viewController: UIViewController, method: TRPushTransitionMethod, completion: (() -> Void)?)`, like Apple method. About `method` parameter, see [transitiontreasury.com](http://transitiontreasury.com).
+When you need to push, just call `public func tr_pushViewController<T : UIViewController where T : NavgationTransitionable>(viewController: T, method: TransitionAnimationable, statusBarStyle: TransitionTreasury.TRStatusBarStyle = default, completion: (() -> Void)? = default)`, like Apple method. About `method` parameter, see [transitiontreasury.com](http://transitiontreasury.com).
 
 Example：   
 
@@ -138,9 +141,9 @@ class FirstViewController: UIViewController {
 }
 
 /// SecondViewController.swift
-class SecondViewController: UIViewController, TRTransition {
+class SecondViewController: UIViewController, NavgationTransitionable {
 
-    var tr_transition: TRNavgationTransitionDelegate?
+    var tr_pushTransition: TRNavgationTransitionDelegate?
 
     func pop() {
         tr_popViewController()
@@ -154,7 +157,7 @@ When you need to pop, just call `public func tr_popViewController(completion: ((
 
 If we present `MainViewController` to `ModalViewController`:     
 
-* `MainViewController` should conform `ModalTransitionDelegate`, and add `var tr_transition: TRViewControllerTransitionDelegate?`
+* `MainViewController` should conform `ModalTransitionDelegate`, and add `var tr_presentTransition: TRViewControllerTransitionDelegate?`
 * Add `weak var modalDelegate: ModalViewControllerDelegate?` for `ModalViewController`.
 
 Example：       
@@ -163,7 +166,7 @@ Example：
 /// MainViewController.swift
 class MainViewController: UIViewController, ModalTransitionDelegate {
 
-    var tr_transition: TRViewControllerTransitionDelegate?
+    var tr_presentTransition: TRViewControllerTransitionDelegate?
 
     func present() {
         let vc = ModalViewController()
@@ -205,7 +208,7 @@ func modalViewControllerDismiss(callbackData data:AnyObject?)
 
 ## Advanced Usage
 
-### Create Your Transition Enum (Recommend!!!!)
+### Create Your Transition Enum (Recommended!!!!)
 
 Maybe like this:
 
@@ -237,20 +240,20 @@ tr_pushViewController(viewController: viewController, method: DemoTransition.Fad
 tr_presentViewController(viewControllerToPresent: viewController, method: DemoTransition.TwitterPresent)
 ```
 
-Well, you can create your animation, see **Custom Animation**.
+Well, you can create your own animation, see **Custom Animation**.
 
 ### Custom Animation   
 
-Just conform `TRViewControllerAnimatedTransitioning`. If you need interactive, conform `TransitionInteractiveable`.
+Just conform to `TRViewControllerAnimatedTransitioning`. If you need interactive functionality, conform to `TransitionInteractiveable`.
 
-About write your animation, you can read [Animation-Guide](https://github.com/DianQK/TransitionTreasury/wiki/Animation-Guide), I am happy that you will share your animation for this project.
-Also, you can see `TransitionTreasury/TransitionAnimation`, there are some Animations. You can write follow this.  
+About writing your own animation, you can read [Animation-Guide](https://github.com/DianQK/TransitionTreasury/wiki/Animation-Guide), I would be happy if you would share your animation for this project.
+Also, check out `TransitionTreasury/TransitionAnimation`, there are some Animations there. You can write follow this.  
 
 ### Status Bar Style     
 
-If you want to update status bar style, you should add key `View controller-based status bar appearance` in **info.plist**, and set value is `false`.   
+If you want to update the status bar style, you should add the key `View controller-based status bar appearance` in your **info.plist**, and set its value to `false`.   
 
-Then like **Basic Usage**, just add param `statusBarStyle`:       
+Then, like in **Basic Usage**, just add param `statusBarStyle`:       
 
 ```swift
 // Push & Pop
@@ -285,7 +288,7 @@ func interactiveTransition(sender: UIPanGestureRecognizer) {
 
 ### TabBar Transition Animation
 
-Just Add this code:
+Just add this code:
 
 ```swift
 tabBarController.tr_transitionDelegate = TRTabBarTransitionDelegate(method: TRTabBarTransitionDelegate.Slide)

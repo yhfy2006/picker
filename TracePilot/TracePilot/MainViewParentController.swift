@@ -30,22 +30,22 @@ class ViewController: UIPageViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func segmentedControlChanged(sender: UISegmentedControl) {
+    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
         setVCForIndex(sender.selectedSegmentIndex)
     }
     
-    func setVCForIndex(index: Int) {
-        setViewControllers([index == 0 ? sessionVC! : historyVC!], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+    func setVCForIndex(_ index: Int) {
+        setViewControllers([index == 0 ? sessionVC! : historyVC!], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
     }
 }
 
 
 extension ViewController : UIPageViewControllerDataSource {
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if viewController == sessionVC { return historyVC } else { return nil }
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if viewController == historyVC { return sessionVC } else { return nil }
     }
 }

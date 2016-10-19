@@ -17,13 +17,13 @@ class FeedViewNormalCell: UICollectionViewCell {
     var traceEvent:TraceEvent?
     
     func loadCell(){
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = UIColor.white
         if let traceEvent = self.traceEvent
         {
             let date = traceEvent.createdTimeStampe
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy hh:mm:ss"
-            let stringDate = dateFormatter.stringFromDate(date)
+            let stringDate = dateFormatter.string(from: date as Date)
             dateLabel?.text = stringDate
         }
         
@@ -38,13 +38,13 @@ class FeedViewSummaryView: UICollectionViewCell {
     var traceEvent:TraceEvent?
     
     func loadCell(){
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = UIColor.white
         if let traceEvent = self.traceEvent
         {
             let date = traceEvent.createdTimeStampe
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy hh:mm:ss"
-            let stringDate = dateFormatter.stringFromDate(date)
+            let stringDate = dateFormatter.string(from: date as Date)
             dateLabel?.text = stringDate
         }
         

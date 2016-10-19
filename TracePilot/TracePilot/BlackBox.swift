@@ -19,7 +19,7 @@ class BlackBox: NSObject {
         var _locationManager = CLLocationManager()
         _locationManager.delegate = self
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        _locationManager.activityType = .Fitness
+        _locationManager.activityType = .fitness
         
         // Movement threshold for new events
         _locationManager.distanceFilter = 10.0
@@ -29,8 +29,8 @@ class BlackBox: NSObject {
     lazy var altitudes = [Double]()
     
     // Timer
-    var startTime = NSTimeInterval()
-    var timer:NSTimer?
+    var startTime = TimeInterval()
+    var timer:Timer?
     
     //altimeter
     let altimeter = CMAltimeter()
@@ -63,7 +63,7 @@ class BlackBox: NSObject {
         self.setupMusicPlayer()
     }
     
-    func startRecordingWithLoggingState(state:Int)
+    func startRecordingWithLoggingState(_ state:Int)
     {
         isRecording = true
         
@@ -73,19 +73,19 @@ class BlackBox: NSObject {
         
         if(state == 1)
         {
-            startTime = NSDate.timeIntervalSinceReferenceDate()
+            startTime = Date.timeIntervalSinceReferenceDate
         }else if(state == 2)
         {
-            seconds = NSDate.timeIntervalSinceReferenceDate() - startTime
+            seconds = Date.timeIntervalSinceReferenceDate - startTime
         }
-        let aSelector : Selector = "eachSecond"
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        let aSelector : Selector = #selector(BlackBox.eachSecond)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: aSelector, userInfo: nil, repeats: true)
         
         locationManager.startUpdatingLocation()
         // 1
         if CMAltimeter.isRelativeAltitudeAvailable() {
             // 2
-            altimeter.startRelativeAltitudeUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { data, error in
+            altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: { data, error in
                 // 3
                 if (error == nil) {
                     self.relativeAltitude = data!.relativeAltitude.doubleValue
@@ -145,7 +145,7 @@ class BlackBox: NSObject {
     // Everything each second should be doing
     func eachSecond()
     {
-        seconds++
+        seconds += 1
         delegate?.blackBoxEachSecondUpdate(seconds,distance:distance, speed: speed, heading: heading, altitude: relativeAltitude + baseAltitude);
         
     }
@@ -157,7 +157,7 @@ class BlackBox: NSObject {
         do {
             try AVAudioSession.sharedInstance().setCategory(
                 AVAudioSessionCategoryPlayAndRecord,
-                withOptions: .DefaultToSpeaker)
+                with: .defaultToSpeaker)
             success = true
         } catch let error1 as NSError {
             error = error1
@@ -170,9 +170,9 @@ class BlackBox: NSObject {
         //let songs = songNames.map { AVPlayerItem(URL:
         //    NSBundle.mainBundle().URLForResource($0, withExtension: "mp3")!) }
         
-        let fileURL: NSURL! = NSBundle.mainBundle().URLForResource("10sec", withExtension: "mp3")
+        let fileURL: URL! = Bundle.main.url(forResource: "10sec", withExtension: "mp3")
         do {
-            try self.player = AVAudioPlayer(contentsOfURL: fileURL, fileTypeHint: nil)
+            try self.player = AVAudioPlayer(contentsOf: fileURL, fileTypeHint: nil)
         } catch let error1 as NSError {
             error = error1
             success = false
@@ -184,13 +184,13 @@ class BlackBox: NSObject {
 
 protocol BlackBoxDelegate
 {
-    func blackBoxEachSecondUpdate(duration:Double,distance:Double,speed:Double,heading:Double,altitude:Double)
-    func locationManagerGetUpdated(newestLocations:CLLocation)
+    func blackBoxEachSecondUpdate(_ duration:Double,distance:Double,speed:Double,heading:Double,altitude:Double)
+    func locationManagerGetUpdated(_ newestLocations:CLLocation)
 }
 
 extension BlackBox:CLLocationManagerDelegate{
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         for location in locations {
             if location.horizontalAccuracy < 20 {
                 // update base
@@ -203,7 +203,7 @@ extension BlackBox:CLLocationManagerDelegate{
                 if self.locations.count > 0
                 {
                     let firstLocation = self.locations.last
-                    distance += location.distanceFromLocation(firstLocation!)
+                    distance += location.distance(from: firstLocation!)
                     speed = Util.mps2Knot(location.speed)
                     heading = location.course
                 }

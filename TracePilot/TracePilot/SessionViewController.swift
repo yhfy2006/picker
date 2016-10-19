@@ -73,27 +73,28 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         updateButtonWithStatus()
         
         //Observables
-        Util.observables.wakeUpFromBackGroundNotice.afterChange.add { (_) -> () in
-            // resume logging if status ==2
-            if self.loggingStatus == 2
-            {
-                self.resumeButtonPressed(UIButton())
-            }
-        }
+        //TODO
+//        Util.observables.wakeUpFromBackGroundNotice.afterChange.add { (_) -> () in
+//            // resume logging if status ==2
+//            if self.loggingStatus == 2
+//            {
+//                self.resumeButtonPressed(UIButton())
+//            }
+//        }
         
-        Util.observables.goingtoBackGroundNotice.afterChange.add { (_) -> () in
-            self.blackBox.timer?.invalidate()
-            self.blackBox.timer = nil
-        }
+//        Util.observables.goingtoBackGroundNotice.afterChange.add { (_) -> () in
+//            self.blackBox.timer?.invalidate()
+//            self.blackBox.timer = nil
+//        }
         
         
         //debug settings
-        debugView?.hidden = true
-        let longPress = UILongPressGestureRecognizer(target: self, action: "debugLongPress:")
+        debugView?.isHidden = true
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(SessionViewController.debugLongPress(_:)))
         self.debugButton!.addGestureRecognizer(longPress)
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         self.blackBox.locationManager.requestAlwaysAuthorization()
@@ -103,27 +104,27 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
     func startSwingAnimation()
     {
         stopSwingAnimation()
-        UIView.animateWithDuration(0.5, delay: 0.0,
+        UIView.animate(withDuration: 0.5, delay: 0.0,
             options: [],
             animations: {
-                self.airplaneImageView?.transform =  CGAffineTransformMakeRotation(CGFloat(-M_PI_4/2))
+                self.airplaneImageView?.transform =  CGAffineTransform(rotationAngle: CGFloat(-M_PI_4/2))
                 
             }, completion: { (finished) -> Void in
-                UIView.animateWithDuration(1.0, delay: 0.0,
-                    options: [.Repeat, .Autoreverse, .CurveLinear],
+                UIView.animate(withDuration: 1.0, delay: 0.0,
+                    options: [.repeat, .autoreverse, .curveLinear],
                     animations: {
-                        self.airplaneImageView?.transform =  CGAffineTransformMakeRotation(CGFloat(M_PI_4/2))
+                        self.airplaneImageView?.transform =  CGAffineTransform(rotationAngle: CGFloat(M_PI_4/2))
                         
                     }, completion: { (finished) -> Void in
                         print("a")
-                        self.airplaneImageView?.transform =  CGAffineTransformMakeRotation(CGFloat(0))
+                        self.airplaneImageView?.transform =  CGAffineTransform(rotationAngle: CGFloat(0))
                 })
         })
     }
@@ -137,22 +138,22 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     {
         if self.loggingStatus == 1
         {
-            loggingButton?.hidden = false
-            resumeButton?.hidden  = true
-            finishButton?.hidden = true
-            self.loggingButton?.setTitle("Start logging", forState: .Normal)
+            loggingButton?.isHidden = false
+            resumeButton?.isHidden  = true
+            finishButton?.isHidden = true
+            self.loggingButton?.setTitle("Start logging", for: UIControlState())
         }else if self.loggingStatus == 2
         {
-           self.loggingButton?.setTitle("Pause logging", forState: .Normal)
-            loggingButton?.hidden = false
-            resumeButton?.hidden  = true
-            finishButton?.hidden = true
+           self.loggingButton?.setTitle("Pause logging", for: UIControlState())
+            loggingButton?.isHidden = false
+            resumeButton?.isHidden  = true
+            finishButton?.isHidden = true
         }else
         {
-            self.loggingButton?.setTitle("Pause logging", forState: .Normal)
-            loggingButton?.hidden = true
-            resumeButton?.hidden  = false
-            finishButton?.hidden = false
+            self.loggingButton?.setTitle("Pause logging", for: UIControlState())
+            loggingButton?.isHidden = true
+            resumeButton?.isHidden  = false
+            finishButton?.isHidden = false
         }
         
     }
@@ -163,7 +164,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         self.blackBox.startRecordingWithLoggingState(self.loggingStatus)
     }
     
-    func blackBoxEachSecondUpdate(duration: Double, distance: Double, speed: Double, heading: Double, altitude: Double)
+    func blackBoxEachSecondUpdate(_ duration: Double, distance: Double, speed: Double, heading: Double, altitude: Double)
     {
         // distance
         let distanceInMiles = String(format: "%.2f", Util.distanceInMiles(distance))
@@ -189,7 +190,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         timeCountLabel?.text = Util.timeString(duration)
     }
     
-    func locationManagerGetUpdated(newestLocations: CLLocation)
+    func locationManagerGetUpdated(_ newestLocations: CLLocation)
     {
         // debugView
         self.debugLocationLabel?.text = "lo:" + String(format: "%.4f", newestLocations.coordinate.latitude) + " " + String(format: "%.4f", newestLocations.coordinate.longitude)
@@ -223,7 +224,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
                 self.traceEvent!.traceLocations.append(traceLocation)
 
             }
-            index++
+            index += 1
         }
 
     }
@@ -237,20 +238,20 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     {
         if self.flightEidtViewController == nil
         {
-            self.flightEidtViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("EditSessionView") as? EditFlightViewController
+            self.flightEidtViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditSessionView") as? EditFlightViewController
         }
         self.flightEidtViewController?.traceEvent = self.traceEvent
         self.flightEidtViewController?.delegate = self
-        self.presentViewController(self.flightEidtViewController!, animated: true, completion: nil)
+        self.present(self.flightEidtViewController!, animated: true, completion: nil)
         
     }
-    func editDidCommit(flightName: String?, flightComment: String?) {
+    func editDidCommit(_ flightName: String?, flightComment: String?) {
         saveFlight()
         try! realm.write{
             self.traceEvent?.title = flightName!
             self.traceEvent?.selfDecsription = flightComment!
         }
-        self.performSegueWithIdentifier("goToResultView", sender:nil)
+        self.performSegue(withIdentifier: "goToResultView", sender:nil)
         editDidDiscard()
     }
     
@@ -270,7 +271,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     
     //MARK: -IBActions
     
-    @IBAction func loggingButtonPressed(sender:UIButton){
+    @IBAction func loggingButtonPressed(_ sender:UIButton){
         if self.loggingStatus == 2
         {
             stopRecording()
@@ -286,7 +287,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         }
     }
     
-    @IBAction func resumeButtonPressed(sender:UIButton)
+    @IBAction func resumeButtonPressed(_ sender:UIButton)
     {
         self.loggingStatus = 2
         updateButtonWithStatus()
@@ -294,27 +295,27 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         startSwingAnimation()
     }
     
-    @IBAction func finishButtonPressed(sender:UIButton)
+    @IBAction func finishButtonPressed(_ sender:UIButton)
     {
         presentFlightEditView();
     }
     
     
-    func debugLongPress(guesture: UILongPressGestureRecognizer)
+    func debugLongPress(_ guesture: UILongPressGestureRecognizer)
     {
-        if guesture.state == UIGestureRecognizerState.Began {
-            debugView?.hidden = !debugView!.hidden
+        if guesture.state == UIGestureRecognizerState.began {
+            debugView?.isHidden = !debugView!.isHidden
         }
     }
 
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if(segue.identifier == "goToResultView")
         {
             
-            let controller = (segue.destinationViewController as! ResultDisplayViewController)
+            let controller = (segue.destination as! ResultDisplayViewController)
             controller.traceEvent = self.traceEvent
         }
     }

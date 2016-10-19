@@ -16,5 +16,5 @@ class DataAnalysorReport: NSObject {
     var duration:Double?
     var window:DataReportWindow?
     var reportDescription:String?
-    var date:NSDate?
+    var date:Date?
 }

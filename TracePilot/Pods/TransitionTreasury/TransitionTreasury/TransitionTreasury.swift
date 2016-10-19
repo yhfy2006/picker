@@ -3,7 +3,7 @@
 //  TransitionTreasury
 //
 //  Created by DianQK on 12/20/15.
-//  Copyright © 2015 TransitionTreasury. All rights reserved.
+//  Copyright © 2016 TransitionTreasury. All rights reserved.
 //
 
 import UIKit
@@ -16,11 +16,11 @@ import UIKit
  - Dismiss: ViewController will dismiss
  */
 public enum TransitionStatus {
-    case Push
-    case Pop
-    case Present
-    case Dismiss
-    case TabBar
+    case push
+    case pop
+    case present
+    case dismiss
+    case tabBar
 }
 
 public protocol TransitionAnimationable {
@@ -28,14 +28,14 @@ public protocol TransitionAnimationable {
 }
 
 public enum TabBarTransitionDirection {
-    case Left
-    case Right
+    case left
+    case right
     
-    public static func TransitionDirection(fromVCindex: ViewControllerIndex, toVCIndex: ViewControllerIndex) -> TabBarTransitionDirection {
+    public static func TransitionDirection(_ fromVCindex: ViewControllerIndex, toVCIndex: ViewControllerIndex) -> TabBarTransitionDirection {
         if fromVCindex > toVCIndex {
-            return .Left
+            return .left
         } else {
-            return .Right
+            return .right
         }
     }
 }
@@ -44,9 +44,9 @@ extension TabBarTransitionDirection : CustomStringConvertible {
     public var description: String {
         get {
             switch self {
-            case .Left :
+            case .left :
                 return "Transition to Left"
-            case .Right :
+            case .right :
                 return "Transition to Right"
             }
         }

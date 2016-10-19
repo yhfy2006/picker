@@ -3,7 +3,7 @@
 //  TransitionTreasury
 //
 //  Created by DianQK on 12/20/15.
-//  Copyright © 2015 TransitionTreasury. All rights reserved.
+//  Copyright © 2016 TransitionTreasury. All rights reserved.
 //
 
 import UIKit
@@ -21,13 +21,13 @@ public extension ViewControllerTransitionable where Self: UIViewController {
     /**
      Transition treasury present viewController.
      */
-    public func tr_presentViewController(viewControllerToPresent: UIViewController, method: TransitionAnimationable, statusBarStyle: TRStatusBarStyle = .Default, completion: (() -> Void)? = nil) {
+    public func tr_presentViewController(_ viewControllerToPresent: UIViewController, method: TransitionAnimationable, statusBarStyle: TRStatusBarStyle = .default, completion: (() -> Void)? = nil) {
         let transitionDelegate = TRViewControllerTransitionDelegate(method: method)
         
         tr_presentTransition = transitionDelegate
         
         viewControllerToPresent.transitioningDelegate = transitionDelegate
-        transitionDelegate.previousStatusBarStyle = TRStatusBarStyle.CurrentlyTRStatusBarStyle()
+        transitionDelegate.previousStatusBarStyle = TRStatusBarStyle.currentlyTRStatusBarStyle()
         let fullCompletion = {
             completion?()
             statusBarStyle.updateStatusBarStyle()
@@ -39,18 +39,18 @@ public extension ViewControllerTransitionable where Self: UIViewController {
         /**
         *  http://stackoverflow.com/questions/21075540/presentviewcontrolleranimatedyes-view-will-not-appear-until-user-taps-again
         */
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async { 
             if transitionDelegate.transition.completion != nil { // Choose who deal completion
-                self.presentViewController(viewControllerToPresent, animated: true, completion: nil)
+                self.present(viewControllerToPresent, animated: true, completion: nil)
             } else {
-                self.presentViewController(viewControllerToPresent, animated: true, completion: fullCompletion)
+                self.present(viewControllerToPresent, animated: true, completion: fullCompletion)
             }
-            });
+        }
     }
     /**
      Transition treasury dismiss ViewController.
      */
-    public func tr_dismissViewController(interactive interactive: Bool = false, completion: (() -> Void)? = nil) {
+    public func tr_dismissViewController(_ interactive: Bool = false, completion: (() -> Void)? = nil) {
         let transitionDelegate = tr_presentTransition
         if var interactiveTransition = transitionDelegate?.transition as? TransitionInteractiveable {
             interactiveTransition.interacting = interactive
@@ -63,14 +63,14 @@ public extension ViewControllerTransitionable where Self: UIViewController {
         }
         transitionDelegate?.transition.completion = fullCompletion
         if transitionDelegate?.transition.completion != nil {
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
         } else {
-            dismissViewControllerAnimated(true, completion: fullCompletion)
+            dismiss(animated: true, completion: fullCompletion)
         }
     }
 }
 /// Modal Transition & Delegate.
-public typealias ModalTransitionDelegate = protocol<ViewControllerTransitionable,ModalViewControllerDelegate>
+public typealias ModalTransitionDelegate = ViewControllerTransitionable & ModalViewControllerDelegate
 
 /**
  *  Your `MianViewController` should conform this delegate.
@@ -81,18 +81,18 @@ public protocol ModalViewControllerDelegate: class, NSObjectProtocol {
      
      - parameter data: callback data
      */
-    func modalViewControllerDismiss(interactive interactive: Bool, callbackData data:AnyObject?)
+    func modalViewControllerDismiss(_ interactive: Bool, callbackData data:AnyObject?)
     func modalViewControllerDismiss(callbackData data:AnyObject?)
 }
 
 
 // MARK: - Implement dismiss
 public extension ModalViewControllerDelegate where Self: ViewControllerTransitionable, Self: UIViewController {
-    func modalViewControllerDismiss(interactive interactive: Bool = false, callbackData data:AnyObject? = nil) {
+    func modalViewControllerDismiss(_ interactive: Bool = false, callbackData data:AnyObject? = nil) {
         if data != nil {
             debugPrint("WARNING: You set callbackData, but you forget implement this `modalViewControllerDismiss(_:_:)` to get data.")
         }
-        tr_dismissViewController(interactive: interactive, completion: nil)
+        tr_dismissViewController(interactive, completion: nil)
     }
     
     func modalViewControllerDismiss(callbackData data:AnyObject? = nil) {

@@ -84,12 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods/ABSteppedProgressBar.framework"
   install_framework "Pods/AFDateHelper.framework"
   install_framework "Pods/CSwiftV.framework"
   install_framework "Pods/Charts.framework"
   install_framework "Pods/EasyAnimation.framework"
-  install_framework "Pods/Observable.framework"
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
   install_framework "Pods/Spring.framework"
@@ -97,12 +95,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/TransitionTreasury.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods/ABSteppedProgressBar.framework"
   install_framework "Pods/AFDateHelper.framework"
   install_framework "Pods/CSwiftV.framework"
   install_framework "Pods/Charts.framework"
   install_framework "Pods/EasyAnimation.framework"
-  install_framework "Pods/Observable.framework"
   install_framework "Pods/Realm.framework"
   install_framework "Pods/RealmSwift.framework"
   install_framework "Pods/Spring.framework"

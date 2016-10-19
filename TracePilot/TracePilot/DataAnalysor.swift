@@ -17,9 +17,9 @@ import RealmSwift
 //http://aviation.stackexchange.com/questions/2871/how-to-calculate-angular-velocity-and-radius-of-a-turn
 
 enum DataReportWindow {
-    case ThisMonth
-    case PastThreeMonth
-    case PastYear
+    case thisMonth
+    case pastThreeMonth
+    case pastYear
 }
 
 class DataAnalysor: NSObject {
@@ -27,17 +27,17 @@ class DataAnalysor: NSObject {
     
      let realm = try! Realm()
     
-    func gerateReportWithTimeWindow(timeWindow:DataReportWindow) -> [DataAnalysorReport]
+    func gerateReportWithTimeWindow(_ timeWindow:DataReportWindow) -> [DataAnalysorReport]
     {
-        let todayDate = NSDate()
+        let todayDate = Date()
         
         var finalReports:[DataAnalysorReport] = Array()
         
         switch timeWindow {
             
-        case .ThisMonth :
-            let monthStartDate = todayDate.startOf(.Month)
-            let predicate = NSPredicate(format: "createdTimeStampe > %@", monthStartDate)
+        case .thisMonth :
+            let monthStartDate = todayDate.startOf(component: .month)
+            let predicate = NSPredicate(format: "createdTimeStampe > %@", monthStartDate as CVarArg)
             let results = realm.objects(TraceEvent).filter(predicate)
             for result in results
             {
@@ -49,13 +49,13 @@ class DataAnalysor: NSObject {
             }
             break
             
-        case .PastThreeMonth:
+        case .pastThreeMonth:
             for i in 1...3
             {
-                let monthStartDate = todayDate.startOf(.Month)
+                let monthStartDate = todayDate.startOf(component: .month)
                 let lastMonthStartDate = monthStartDate - i.months
-                let lastMonthEndDate = lastMonthStartDate.endOf(.Month)
-                let predicate = NSPredicate(format: "createdTimeStampe > %@ AND createdTimeStampe > %@" , lastMonthStartDate,lastMonthEndDate)
+                let lastMonthEndDate = lastMonthStartDate.endOf(component: .month)
+                let predicate = NSPredicate(format: "createdTimeStampe > %@ AND createdTimeStampe > %@" , lastMonthStartDate as CVarArg,lastMonthEndDate as CVarArg)
                 let results = realm.objects(TraceEvent).filter(predicate)
                 var totalDuration = 0.0
                 for result in results
@@ -69,13 +69,13 @@ class DataAnalysor: NSObject {
             }
             break
             
-        case .PastYear :
+        case .pastYear :
             for i in 1...12
             {
-                let monthStartDate = todayDate.startOf(.Month)
+                let monthStartDate = todayDate.startOf(component: .month)
                 let lastMonthStartDate = monthStartDate - i.months
-                let lastMonthEndDate = lastMonthStartDate.endOf(.Month)
-                let predicate = NSPredicate(format: "createdTimeStampe > %@ AND createdTimeStampe > %@" , lastMonthStartDate,lastMonthEndDate)
+                let lastMonthEndDate = lastMonthStartDate.endOf(component: .month)
+                let predicate = NSPredicate(format: "createdTimeStampe > %@ AND createdTimeStampe > %@" , lastMonthStartDate as CVarArg,lastMonthEndDate as CVarArg)
                 let results = realm.objects(TraceEvent).filter(predicate)
                 var totalDuration = 0.0
                 for result in results
@@ -93,7 +93,7 @@ class DataAnalysor: NSObject {
         return finalReports
     }
 
-    func generateReportWithTraceEvent(traceEvent:TraceEvent) -> DataAnalysorReport
+    func generateReportWithTraceEvent(_ traceEvent:TraceEvent) -> DataAnalysorReport
     {
         let report = DataAnalysorReport()
         report.avgSpeed = self.analyzeAveSpeed(traceEvent)
@@ -105,7 +105,7 @@ class DataAnalysor: NSObject {
     }
     
     
-    func analyzeAveSpeed(traceEvent:TraceEvent) -> Double
+    func analyzeAveSpeed(_ traceEvent:TraceEvent) -> Double
     {
         let locationList = traceEvent.traceLocations
         var validNumber = 0
@@ -123,7 +123,7 @@ class DataAnalysor: NSObject {
         return avgSpeed
     }
     
-    func analyeAveAltitude(traceEvent:TraceEvent) -> Double
+    func analyeAveAltitude(_ traceEvent:TraceEvent) -> Double
     {
         let locationList = traceEvent.traceLocations
         var validNumber = 0
@@ -134,7 +134,7 @@ class DataAnalysor: NSObject {
             if location.locationAltitude != 0
             {
                 totalAlt += location.locationAltitude
-                validNumber++
+                validNumber += 1
             }
         }
         avgAltitude = totalAlt / Double(validNumber)
@@ -142,32 +142,32 @@ class DataAnalysor: NSObject {
         return avgAltitude
     }
     
-    func analyzePassedAirports(mapView: MKMapView!, traceEvent:TraceEvent ,completionHandler:([MKMapItem]?,NSError?)->Void)
+    func analyzePassedAirports(_ mapView: MKMapView!, traceEvent:TraceEvent ,completionHandler:@escaping ([MKMapItem]?,NSError?)->Void)
     {
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = "Airport"
         request.region = mapView.region
         let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { (response, error) -> Void in
+        search.start { (response, error) -> Void in
             if error != nil
             {
                 print("error:\(error?.localizedDescription)")
-                completionHandler(nil,error)
+                completionHandler(nil,error as NSError?)
             }else
             {
                 for item in response!.mapItems{
                     print("Name = \(item.name)")
                     print("Phone = \(item.phoneNumber)")
-                    completionHandler(response?.mapItems,error)
+                    completionHandler(response?.mapItems,error as NSError?)
                 }
-                completionHandler(self.filterPassedAirports((response?.mapItems)!, traceEvent: traceEvent),error)
+                completionHandler(self.filterPassedAirports((response?.mapItems)!, traceEvent: traceEvent),error as NSError?)
                 
             }
         }
         
     }
     
-    private func filterPassedAirports(airports:[MKMapItem],traceEvent:TraceEvent) -> [MKMapItem]
+    fileprivate func filterPassedAirports(_ airports:[MKMapItem],traceEvent:TraceEvent) -> [MKMapItem]
     {
         var filteredMapitems:[MKMapItem] = Array()
         let locationList = traceEvent.traceLocations
@@ -176,7 +176,7 @@ class DataAnalysor: NSObject {
             for mapitem in airports
             {
                 let myLocation = CLLocation(latitude: location.locationLatitude, longitude: location.locationLongitude)
-                if mapitem.placemark.location?.distanceFromLocation(myLocation) < 500 // less than 500 m
+                if (mapitem.placemark.location?.distance(from: myLocation))! < Double(500) // less than 500 m
                 {
                     filteredMapitems.append(mapitem)
                 }
@@ -186,7 +186,7 @@ class DataAnalysor: NSObject {
     }
     
     
-    func analyzeSteepTurns(traceEvent:TraceEvent) -> [SteepTurn]
+    func analyzeSteepTurns(_ traceEvent:TraceEvent) -> [SteepTurn]
     {
         let locationList = traceEvent.traceLocations
         var lastLocation = locationList.first
@@ -211,7 +211,7 @@ class DataAnalysor: NSObject {
             {
                 let headingChange = abs(location.locationHeading - lastLocation!.locationHeading)
                 let avgSpeed = Util.mps2Knot((location.locationSpeed + lastLocation!.locationSpeed) / 2)
-                let elapsedTime = location.locationTimeStamp.timeIntervalSinceDate(lastLocation!.locationTimeStamp)
+                let elapsedTime = location.locationTimeStamp.timeIntervalSince(lastLocation!.locationTimeStamp)
                 let duration = Int(elapsedTime)
                 let w = headingChange / Double(duration)
 

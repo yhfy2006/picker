@@ -3,7 +3,7 @@
 //  TransitionTreasury
 //
 //  Created by DianQK on 12/20/15.
-//  Copyright © 2015 TransitionTreasury. All rights reserved.
+//  Copyright © 2016 TransitionTreasury. All rights reserved.
 //
 
 import UIKit
@@ -22,7 +22,7 @@ public protocol TRViewControllerAnimatedTransitioning: UIViewControllerAnimatedT
      
      - parameter index: index of navgationViewController.viewcontrollers
      */
-    func popToVCIndex(index: Int)
+    func popToVCIndex(_ index: Int)
 }
 
 public protocol TransitionInteractiveable {
@@ -49,7 +49,7 @@ public extension TRViewControllerAnimatedTransitioning {
         set {}
     }
     
-    func popToVCIndex(index: Int) {}
+    func popToVCIndex(_ index: Int) {}
     
 }
 
