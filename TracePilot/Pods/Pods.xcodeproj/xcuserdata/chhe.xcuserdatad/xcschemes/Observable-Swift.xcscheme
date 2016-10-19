@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '96A74841D7DD8787C4E42E78'
-               BlueprintName = 'TransitionTreasury'
+               BlueprintIdentifier = '543B1E95835755A604BBCB5E'
+               BlueprintName = 'Observable-Swift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'TransitionTreasury.framework'>
+               BuildableName = 'Observable.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

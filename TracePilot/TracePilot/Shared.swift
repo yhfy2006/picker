@@ -11,6 +11,7 @@ import HealthKit
 import CoreMotion
 import RealmSwift
 import CSwiftV
+import Observable
 
 
 enum ResultDisplayCellType {
@@ -28,8 +29,8 @@ struct GlobalVariables{
 }
 
 struct AppObservables {
-//    var wakeUpFromBackGroundNotice: Observable<String>= Observable("")
-//    var goingtoBackGroundNotice:Observable<String>= Observable("")
+    var wakeUpFromBackGroundNotice: Observable<String>= Observable("")
+    var goingtoBackGroundNotice:Observable<String>= Observable("")
 }
 
 

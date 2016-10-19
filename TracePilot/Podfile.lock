@@ -5,6 +5,7 @@ PODS:
   - Charts/Core (3.0.0)
   - CSwiftV (0.0.5)
   - EasyAnimation (1.0.5)
+  - Observable-Swift (0.6.0)
   - Realm (2.0.2):
     - Realm/Headers (= 2.0.2)
   - Realm/Headers (2.0.2)
@@ -19,6 +20,8 @@ DEPENDENCIES:
   - Charts (from `https://github.com/danielgindi/Charts.git`, branch `master`)
   - CSwiftV (from `https://github.com/Daniel1of1/CSwiftV`, branch `master`)
   - EasyAnimation (from `https://github.com/icanzilb/EasyAnimation`, branch `swift3`)
+  - Observable-Swift (from `https://github.com/Vaseltior/Observable-Swift.git`, branch
+    `master`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - SwiftDate (~> 4.0)
@@ -38,6 +41,9 @@ EXTERNAL SOURCES:
   EasyAnimation:
     :branch: swift3
     :git: https://github.com/icanzilb/EasyAnimation
+  Observable-Swift:
+    :branch: master
+    :git: https://github.com/Vaseltior/Observable-Swift.git
   RealmSwift:
     :branch: master
     :git: https://github.com/realm/realm-cocoa.git
@@ -62,6 +68,9 @@ CHECKOUT OPTIONS:
   EasyAnimation:
     :commit: 2c6e46c05778a2de75e5e69fb0cbcdb48e294b37
     :git: https://github.com/icanzilb/EasyAnimation
+  Observable-Swift:
+    :commit: e6d712dd7fc7a7dfac5457e9e122dcf040839811
+    :git: https://github.com/Vaseltior/Observable-Swift.git
   RealmSwift:
     :commit: 69b4144c71d0224a82f2948884286906c173c2fc
     :git: https://github.com/realm/realm-cocoa.git
@@ -77,6 +86,7 @@ SPEC CHECKSUMS:
   Charts: 3f0da988b104c8e5f069fcef55da699f597dac67
   CSwiftV: 2560532e2e5b04d95c36b0f49a8dc745071fa525
   EasyAnimation: 32821f37dd39187e7364369a3d8f65d38405cf1d
+  Observable-Swift: c63b9fc990703b135450cb5bd3541022384867ae
   Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
   RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7

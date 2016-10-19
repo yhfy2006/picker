@@ -74,18 +74,18 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         
         //Observables
         //TODO
-//        Util.observables.wakeUpFromBackGroundNotice.afterChange.add { (_) -> () in
-//            // resume logging if status ==2
-//            if self.loggingStatus == 2
-//            {
-//                self.resumeButtonPressed(UIButton())
-//            }
-//        }
+        Util.observables.wakeUpFromBackGroundNotice.afterChange.add { (_) -> () in
+            // resume logging if status ==2
+            if self.loggingStatus == 2
+            {
+                self.resumeButtonPressed(UIButton())
+            }
+        }
         
-//        Util.observables.goingtoBackGroundNotice.afterChange.add { (_) -> () in
-//            self.blackBox.timer?.invalidate()
-//            self.blackBox.timer = nil
-//        }
+        Util.observables.goingtoBackGroundNotice.afterChange.add { (_) -> () in
+            self.blackBox.timer?.invalidate()
+            self.blackBox.timer = nil
+        }
         
         
         //debug settings

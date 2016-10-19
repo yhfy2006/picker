@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Observable-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,22 +62,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>474527B6A765B3A85568EFE0773C73E0</key>
+		<key>1F3633ED7EED1FEEC8706B0117578F81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38D682E5FB254E21C142092926FA0FF8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>42E67C1FCFFDEDA8AF2424044AB41910</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6F07C94BDCAC06A893D650F288745F63</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>852BE4B348879555833774872B613C0B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>909ED2F977F88D9F0901710ADCA5B6EB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>951192221FB8D088A40079ED8DDB9ED2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A1F86F6731ECAECF920CFCFB23E3B54A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,22 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AFC56ED806CE143FCAEE25E0363A281E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C9289771C9E400167D4D291E44982A06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DDA5E8720D779D9D1EAD8303C936990E</key>
+		<key>E09A9B7ACA49CF3E489188BC65E9F783</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9BDD75123970F8689D4F826F9F11E01</key>
+		<key>F0B8918A6B1AD3209C543F01BF55C2F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
