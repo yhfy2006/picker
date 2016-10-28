@@ -38,6 +38,12 @@
 		FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A61C88FB65007DF2F9 /* R.generated.swift */; };
 		FC6BBDCD1CA4926E00F3D959 /* traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6BBDCC1CA4926E00F3D959 /* traffic.png */; };
 		FC6BBDD51CA5D94900F3D959 /* airplane2.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6BBDD41CA5D94900F3D959 /* airplane2.png */; };
+		FC6CE21B1DC3EF8300D322ED /* CCAllDrectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE21A1DC3EF8300D322ED /* CCAllDrectionViewController.swift */; };
+		FC6CE21D1DC3F09500D322ED /* CCSubviewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE21C1DC3F09500D322ED /* CCSubviewTableCell.swift */; };
+		FC6CE21F1DC3F14700D322ED /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE21E1DC3F14700D322ED /* CollectionViewController.swift */; };
+		FC6CE2211DC3F46F00D322ED /* CCPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE2201DC3F46F00D322ED /* CCPage.swift */; };
+		FC6CE2241DC4052B00D322ED /* AllDirectionMainViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE2231DC4052B00D322ED /* AllDirectionMainViewPage.swift */; };
+		FC6CE2261DC408F100D322ED /* CCAllDicctionViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE2251DC408F100D322ED /* CCAllDicctionViewFactory.swift */; };
 		FC9A6E961C8FEE4E009686C5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
 		FC9A6E9A1C8FFB34009686C5 /* ResultDiaplayCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */; };
 		FC9A6E9C1C90059A009686C5 /* MotionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E9B1C90059A009686C5 /* MotionKit.swift */; };
@@ -96,6 +102,12 @@
 		FC6684A61C88FB65007DF2F9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		FC6BBDCC1CA4926E00F3D959 /* traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = traffic.png; sourceTree = "<group>"; };
 		FC6BBDD41CA5D94900F3D959 /* airplane2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane2.png; sourceTree = "<group>"; };
+		FC6CE21A1DC3EF8300D322ED /* CCAllDrectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCAllDrectionViewController.swift; path = CCAllDirectionViewController/CCAllDrectionViewController.swift; sourceTree = "<group>"; };
+		FC6CE21C1DC3F09500D322ED /* CCSubviewTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCSubviewTableCell.swift; path = CCAllDirectionViewController/CCSubviewTableCell.swift; sourceTree = "<group>"; };
+		FC6CE21E1DC3F14700D322ED /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = CCAllDirectionViewController/CollectionViewController.swift; sourceTree = "<group>"; };
+		FC6CE2201DC3F46F00D322ED /* CCPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPage.swift; sourceTree = "<group>"; };
+		FC6CE2231DC4052B00D322ED /* AllDirectionMainViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDirectionMainViewPage.swift; sourceTree = "<group>"; };
+		FC6CE2251DC408F100D322ED /* CCAllDicctionViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCAllDicctionViewFactory.swift; path = CCAllDirectionViewController/CCAllDicctionViewFactory.swift; sourceTree = "<group>"; };
 		FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDiaplayCells.swift; sourceTree = "<group>"; };
 		FC9A6E9B1C90059A009686C5 /* MotionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionKit.swift; sourceTree = "<group>"; };
 		FC9A6EC41C929060009686C5 /* transport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transport.png; sourceTree = "<group>"; };
@@ -138,6 +150,8 @@
 		4533B4B61C86439C00CCBE63 /* TracePilot */ = {
 			isa = PBXGroup;
 			children = (
+				FC6CE2221DC4050500D322ED /* Compontents */,
+				FC6CE2151DC3E2B200D322ED /* CCAllDirectionViewController */,
 				FC0B92BC1CD3F898008E2ED7 /* DataModule */,
 				FC9A6EC61C92A18A009686C5 /* Cells */,
 				FCFB066E1C8E9DA100A90FBF /* Utils */,
@@ -213,6 +227,26 @@
 				FC0B92C11CD40F64008E2ED7 /* DataAnalysorReport.swift */,
 			);
 			name = DataModule;
+			sourceTree = "<group>";
+		};
+		FC6CE2151DC3E2B200D322ED /* CCAllDirectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC6CE21A1DC3EF8300D322ED /* CCAllDrectionViewController.swift */,
+				FC6CE2251DC408F100D322ED /* CCAllDicctionViewFactory.swift */,
+				FC6CE21C1DC3F09500D322ED /* CCSubviewTableCell.swift */,
+				FC6CE21E1DC3F14700D322ED /* CollectionViewController.swift */,
+				FC6CE2201DC3F46F00D322ED /* CCPage.swift */,
+			);
+			name = CCAllDirectionViewController;
+			sourceTree = "<group>";
+		};
+		FC6CE2221DC4050500D322ED /* Compontents */ = {
+			isa = PBXGroup;
+			children = (
+				FC6CE2231DC4052B00D322ED /* AllDirectionMainViewPage.swift */,
+			);
+			name = Compontents;
 			sourceTree = "<group>";
 		};
 		FC9A6EC61C92A18A009686C5 /* Cells */ = {
@@ -380,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6CE2241DC4052B00D322ED /* AllDirectionMainViewPage.swift in Sources */,
 				FC9A6EC81C92A1AD009686C5 /* FeedViewCells.swift in Sources */,
 				FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */,
 				4533B4BA1C86439C00CCBE63 /* MainViewParentController.swift in Sources */,
@@ -387,13 +422,18 @@
 				FC0B92BE1CD3F8BF008E2ED7 /* Maneuvers.swift in Sources */,
 				FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */,
 				4533B4CA1C8648BF00CCBE63 /* Extensions.swift in Sources */,
+				FC6CE21D1DC3F09500D322ED /* CCSubviewTableCell.swift in Sources */,
 				FC0B92C21CD40F64008E2ED7 /* DataAnalysorReport.swift in Sources */,
+				FC6CE2261DC408F100D322ED /* CCAllDicctionViewFactory.swift in Sources */,
 				FCFB06701C8E9DAA00A90FBF /* MulticolorPolylineSegment.swift in Sources */,
+				FC6CE21F1DC3F14700D322ED /* CollectionViewController.swift in Sources */,
 				FC9A6E9C1C90059A009686C5 /* MotionKit.swift in Sources */,
 				45FC609F1C98ED5100ADBBB8 /* BlackBox.swift in Sources */,
 				FC0B92C01CD40128008E2ED7 /* DataAnalysor.swift in Sources */,
+				FC6CE2211DC3F46F00D322ED /* CCPage.swift in Sources */,
 				45FC60A51C9911BA00ADBBB8 /* AirPort.swift in Sources */,
 				4533B4CC1C8648D500CCBE63 /* Shared.swift in Sources */,
+				FC6CE21B1DC3EF8300D322ED /* CCAllDrectionViewController.swift in Sources */,
 				4533B4CE1C86557C00CCBE63 /* SessionViewController.swift in Sources */,
 				4533B4DD1C87F16000CCBE63 /* TraceEvent.swift in Sources */,
 				FC9A6E9A1C8FFB34009686C5 /* ResultDiaplayCells.swift in Sources */,

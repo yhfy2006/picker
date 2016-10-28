@@ -10,6 +10,7 @@ pod 'CSwiftV',:git => 'https://github.com/Daniel1of1/CSwiftV', :branch => 'maste
 pod 'AFDateHelper',:git => 'https://github.com/melvitax/DateHelper.git', :branch => 'master'
 pod 'SwiftDate', '~> 4.0'
 pod 'Observable-Swift',:git => 'https://github.com/Vaseltior/Observable-Swift.git', :branch => 'master'
+pod 'SnapKit', '~> 3.0.2'
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

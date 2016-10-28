@@ -44,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Spring.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,12 +67,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1F3633ED7EED1FEEC8706B0117578F81</key>
+		<key>10A4438219CB4C58F550C2FF29B32C5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38D682E5FB254E21C142092926FA0FF8</key>
+		<key>1641E14D14FDD87E45A907FB589F8F13</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1C8F3DB49374A89356B05A97D01AF884</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,17 +87,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F07C94BDCAC06A893D650F288745F63</key>
+		<key>69941DEAD2199443B7ED359F4089BEDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>852BE4B348879555833774872B613C0B</key>
+		<key>8EC5AD033764D0396D761F4C4BFD915B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>909ED2F977F88D9F0901710ADCA5B6EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9A159611ED7466CC5932CEF42323565E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +122,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E09A9B7ACA49CF3E489188BC65E9F783</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F0B8918A6B1AD3209C543F01BF55C2F0</key>
+		<key>D716BD217D855BDBCCE00C367A72D438</key>
 		<dict>
 			<key>primary</key>
 			<true/>

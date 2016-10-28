@@ -11,6 +11,7 @@ PODS:
   - Realm/Headers (2.0.2)
   - RealmSwift (2.0.2):
     - Realm (= 2.0.2)
+  - SnapKit (3.0.2)
   - Spring (1.0.3)
   - SwiftDate (4.0.6)
   - TransitionTreasury (3.1.0)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - Observable-Swift (from `https://github.com/Vaseltior/Observable-Swift.git`, branch
     `master`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
+  - SnapKit (~> 3.0.2)
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - SwiftDate (~> 4.0)
   - TransitionTreasury (from `https://github.com/DianQK/TransitionTreasury.git`, branch
@@ -89,6 +91,7 @@ SPEC CHECKSUMS:
   Observable-Swift: c63b9fc990703b135450cb5bd3541022384867ae
   Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
   RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftDate: 549729eaa54bd9f64fd80abfd12ddd3d44ff5098
   TransitionTreasury: d2e901181a157719d4b275638a40ca2d794bc601
