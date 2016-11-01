@@ -9,11 +9,15 @@
 import UIKit
 
 class CCAllDrectionViewController: UITableViewController {
+    
+    var viewFactory:CCAllDicctionViewFactory?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColor.white
         self.tableView.isPagingEnabled = true
+        self.componentViewConfig();
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,19 +38,18 @@ class CCAllDrectionViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
+        return CCAllDicctionViewFactory.sharedInstance.row
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ccTableViewCell", for: indexPath) as! CCSubviewTableCell
-        cell.setMiddle()
+        cell.rowIndex = indexPath.section
+        //cell.setMiddle()
         return cell
     }
  
@@ -100,5 +103,15 @@ class CCAllDrectionViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func componentViewConfig(){
+        let viewFactory = CCAllDicctionViewFactory.sharedInstance
+        viewFactory.row = 2
+        viewFactory.column = 2
+        let logginVC = LoggingViewController()
+        
+        self.addChildViewController(logginVC)
+        viewFactory.addVCTo(row: 0, col: 0, controller: logginVC)
+    }
 
 }

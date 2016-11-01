@@ -12,6 +12,8 @@ import SnapKit
 class CCSubviewTableCell: UITableViewCell {
 
     var collectionView:UICollectionView?
+    var rowIndex:Int?
+
     private let kCellReuse : String = "PackCell"
     
     override func awakeFromNib() {
@@ -33,6 +35,7 @@ class CCSubviewTableCell: UITableViewCell {
         }
         
         self.collectionView?.register(CCPage.self, forCellWithReuseIdentifier: kCellReuse)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -55,12 +58,17 @@ extension CCSubviewTableCell : UICollectionViewDataSource {
     
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 3
+        return CCAllDicctionViewFactory.sharedInstance.column
     }
     
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"PackCell", for: indexPath) as! CCPage
+        if let controller = CCAllDicctionViewFactory.sharedInstance.getVCAt(row: self.rowIndex!, col: indexPath.row)
+        {
+            print("row\(self.rowIndex!) col:\(indexPath.row)")
+            cell.customView = controller.view
+            cell.load()
+        }
         return cell
     }
 }

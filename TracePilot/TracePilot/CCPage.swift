@@ -7,12 +7,30 @@
 //
 
 import UIKit
+import SnapKit
+
 
 class CCPage: UICollectionViewCell {
     
+    var customView:UIView?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.backgroundColor = getRandomColor()
+    }
+    
+    func load(){
+        if let _ = customView
+        {
+            print("hey")
+        }else
+        {
+            customView = UIView(frame:self.contentView.bounds)
+            customView?.backgroundColor = UIColor.blue
+        }
+        addSubview(customView!)
+        customView!.snp.makeConstraints { (make) -> Void in
+            make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, 0))
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -44,6 +44,9 @@
 		FC6CE2211DC3F46F00D322ED /* CCPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE2201DC3F46F00D322ED /* CCPage.swift */; };
 		FC6CE2241DC4052B00D322ED /* AllDirectionMainViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE2231DC4052B00D322ED /* AllDirectionMainViewPage.swift */; };
 		FC6CE2261DC408F100D322ED /* CCAllDicctionViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6CE2251DC408F100D322ED /* CCAllDicctionViewFactory.swift */; };
+		FC8C3FD51DC8F27D00B4D5DC /* LoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8C3FD31DC8F27D00B4D5DC /* LoggingViewController.swift */; };
+		FC8C3FD61DC8F27D00B4D5DC /* LoggingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8C3FD41DC8F27D00B4D5DC /* LoggingViewController.xib */; };
+		FC8C3FD81DC8F5C100B4D5DC /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FC8C3FD71DC8F5C100B4D5DC /* StartButton.png */; };
 		FC9A6E961C8FEE4E009686C5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88BEA106A1B8DC0FBB31DC /* Pods.framework */; };
 		FC9A6E9A1C8FFB34009686C5 /* ResultDiaplayCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */; };
 		FC9A6E9C1C90059A009686C5 /* MotionKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A6E9B1C90059A009686C5 /* MotionKit.swift */; };
@@ -108,6 +111,9 @@
 		FC6CE2201DC3F46F00D322ED /* CCPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCPage.swift; sourceTree = "<group>"; };
 		FC6CE2231DC4052B00D322ED /* AllDirectionMainViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllDirectionMainViewPage.swift; sourceTree = "<group>"; };
 		FC6CE2251DC408F100D322ED /* CCAllDicctionViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CCAllDicctionViewFactory.swift; path = CCAllDirectionViewController/CCAllDicctionViewFactory.swift; sourceTree = "<group>"; };
+		FC8C3FD31DC8F27D00B4D5DC /* LoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingViewController.swift; sourceTree = "<group>"; };
+		FC8C3FD41DC8F27D00B4D5DC /* LoggingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoggingViewController.xib; sourceTree = "<group>"; };
+		FC8C3FD71DC8F5C100B4D5DC /* StartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButton.png; sourceTree = "<group>"; };
 		FC9A6E991C8FFB34009686C5 /* ResultDiaplayCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDiaplayCells.swift; sourceTree = "<group>"; };
 		FC9A6E9B1C90059A009686C5 /* MotionKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotionKit.swift; sourceTree = "<group>"; };
 		FC9A6EC41C929060009686C5 /* transport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transport.png; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 		4533B4CF1C8656F600CCBE63 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FC8C3FD71DC8F5C100B4D5DC /* StartButton.png */,
 				45FC60A21C99118D00ADBBB8 /* airports.csv */,
 				45FC60A01C990A6300ADBBB8 /* 10sec.mp3 */,
 				45FC60961C96512900ADBBB8 /* FeelinGood.mp3 */,
@@ -245,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				FC6CE2231DC4052B00D322ED /* AllDirectionMainViewPage.swift */,
+				FC8C3FD31DC8F27D00B4D5DC /* LoggingViewController.swift */,
+				FC8C3FD41DC8F27D00B4D5DC /* LoggingViewController.xib */,
 			);
 			name = Compontents;
 			sourceTree = "<group>";
@@ -344,11 +353,13 @@
 				4533B4D91C868AC000CCBE63 /* mountain-range.png in Resources */,
 				FC6BBDCD1CA4926E00F3D959 /* traffic.png in Resources */,
 				FC6BBDD51CA5D94900F3D959 /* airplane2.png in Resources */,
+				FC8C3FD81DC8F5C100B4D5DC /* StartButton.png in Resources */,
 				45FC60A11C990A6300ADBBB8 /* 10sec.mp3 in Resources */,
 				FC9A6EC51C929060009686C5 /* transport.png in Resources */,
 				4533B4D11C86570400CCBE63 /* Circle.png in Resources */,
 				FC66849F1C88EE29007DF2F9 /* TakePhotoRect.png in Resources */,
 				45FC60A31C99118D00ADBBB8 /* airports.csv in Resources */,
+				FC8C3FD61DC8F27D00B4D5DC /* LoggingViewController.xib in Resources */,
 				45FC60991C96512900ADBBB8 /* FeelinGood.mp3 in Resources */,
 				4533B4BF1C86439C00CCBE63 /* Assets.xcassets in Resources */,
 				4533B4D31C86584E00CCBE63 /* plane-front-view.png in Resources */,
@@ -420,6 +431,7 @@
 				4533B4BA1C86439C00CCBE63 /* MainViewParentController.swift in Sources */,
 				FCFB066D1C8E986900A90FBF /* ResultDisplayViewController.swift in Sources */,
 				FC0B92BE1CD3F8BF008E2ED7 /* Maneuvers.swift in Sources */,
+				FC8C3FD51DC8F27D00B4D5DC /* LoggingViewController.swift in Sources */,
 				FC6684A71C88FB65007DF2F9 /* R.generated.swift in Sources */,
 				4533B4CA1C8648BF00CCBE63 /* Extensions.swift in Sources */,
 				FC6CE21D1DC3F09500D322ED /* CCSubviewTableCell.swift in Sources */,

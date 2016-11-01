@@ -10,7 +10,9 @@ import UIKit
 
 class AllDirectionMainViewPage: CCPage {
     
-    var customView:UIView?
+    //static let cellIdentifier = "allDirectionMainView"
+    
+   // var customView:UIView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +24,5 @@ class AllDirectionMainViewPage: CCPage {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
- 
-    
 
 }
