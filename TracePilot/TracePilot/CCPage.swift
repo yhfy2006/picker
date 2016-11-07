@@ -31,6 +31,7 @@ class CCPage: UICollectionViewCell {
         customView!.snp.makeConstraints { (make) -> Void in
             make.edges.equalTo(self).inset(UIEdgeInsetsMake(0, 0, 0, 0))
         }
+        self.contentView.backgroundColor = getRandomColor()
     }
     
     required init?(coder aDecoder: NSCoder) {

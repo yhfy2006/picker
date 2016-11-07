@@ -27,7 +27,7 @@ class CCAllDrectionViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.tableView.scrollToRow(at: IndexPath.init(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
+ //       self.tableView.scrollToRow(at: IndexPath.init(row: 0, section: 1), at: UITableViewScrollPosition.none, animated: false)
     }
     
     override func didReceiveMemoryWarning() {
