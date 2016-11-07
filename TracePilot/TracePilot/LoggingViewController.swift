@@ -11,6 +11,7 @@ import UIKit
 class LoggingViewController: UIViewController {
 
     let centerRoundShape = CAShapeLayer()
+    let centerRoundGradinentShape = CAGradientLayer()
     var statusPointView = UIView()
     var startAnimation = CAKeyframeAnimation(keyPath: "position")
     
@@ -43,13 +44,22 @@ class LoggingViewController: UIViewController {
         let radis = launchButton!.bounds.size.width/2.0 + 10
         centerRoundShape.path = Util.makeCircleAtLocation(location: self.launchButton!.center, radius: radis).cgPath
         
-        centerRoundShape.strokeColor = self.buttonGrey
+        centerRoundShape.strokeColor = UIColor.white.cgColor
         centerRoundShape.fillColor = nil
         centerRoundShape.lineWidth = 3.0
+        
+//        centerRoundGradinentShape.colors = [Util.hexStringToUIColor(hex: "FF6F6F").cgColor,Util.hexStringToUIColor(hex: "419BF9").cgColor]
+        centerRoundGradinentShape.colors = [ringBlue,UIColor.red.cgColor]
+        centerRoundGradinentShape.frame = view.layer.frame
+        
+//        centerRoundGradinentShape.startPoint = CGPoint(x: 0.5, y: 1)
+//        centerRoundGradinentShape.endPoint = CGPoint(x:0.5,y:0)
+        view.layer.addSublayer(centerRoundGradinentShape)
+        centerRoundGradinentShape.mask = centerRoundShape
         //centerRoundShape.frame = CGRectMake(0, 0, launchButton!.bounds.size.width/2.0 + 10, launchButton!.bounds.size.width/2.0 + 10)
         //self.launchButton?.layer.addSublayer(centerRoundShape)
         
-        view.layer.addSublayer(centerRoundShape)
+        //view.layer.addSublayer(centerRoundShape)
         
         // start building animation path
         let startingPoint = CGPoint(x:self.launchButton!.center.x, y:self.launchButton!.center.y - radis)
