@@ -52,8 +52,6 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     // DB store
     var traceEvent:TraceEvent?
     
-    // status 1 = before start; 2=Recording; 3=Paused
-    var loggingStatus = 1
     
 
     
@@ -76,7 +74,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
         //TODO
         Util.observables.wakeUpFromBackGroundNotice.afterChange.add { (_) -> () in
             // resume logging if status ==2
-            if self.loggingStatus == 2
+            if self.blackBox.recordingStatus == 2
             {
                 self.resumeButtonPressed(UIButton())
             }
@@ -98,7 +96,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     {
         super.viewWillAppear(animated)
         self.blackBox.locationManager.requestAlwaysAuthorization()
-        if self.loggingStatus == 2
+        if self.blackBox.recordingStatus == 2
         {
             resumeButtonPressed(UIButton())
         }
@@ -136,13 +134,13 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     
     func updateButtonWithStatus()
     {
-        if self.loggingStatus == 1
+        if self.blackBox.recordingStatus == 1
         {
             loggingButton?.isHidden = false
             resumeButton?.isHidden  = true
             finishButton?.isHidden = true
             self.loggingButton?.setTitle("Start logging", for: UIControlState())
-        }else if self.loggingStatus == 2
+        }else if self.blackBox.recordingStatus == 2
         {
            self.loggingButton?.setTitle("Pause logging", for: UIControlState())
             loggingButton?.isHidden = false
@@ -161,7 +159,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     
     func startRecording()
     {
-        self.blackBox.startRecordingWithLoggingState(self.loggingStatus)
+        self.blackBox.startRecordingWithLoggingState()
     }
     
     func blackBoxEachSecondUpdate(_ duration: Double, distance: Double, speed: Double, heading: Double, altitude: Double)
@@ -264,7 +262,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
             self.traceEvent?.duration = 0.0
         }
         self.blackBox.discardAllData()
-        self.loggingStatus = 1
+        self.blackBox.recordingStatus = 1
         updateButtonWithStatus()
         
     }
@@ -272,16 +270,16 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     //MARK: -IBActions
     
     @IBAction func loggingButtonPressed(_ sender:UIButton){
-        if self.loggingStatus == 2
+        if self.blackBox.recordingStatus == 2
         {
             stopRecording()
-            self.loggingStatus = 3
+            self.blackBox.recordingStatus = 3
             updateButtonWithStatus()
             stopSwingAnimation()
-        }else if self.loggingStatus == 1
+        }else if self.blackBox.recordingStatus == 1
         {
             self.startRecording()
-            self.loggingStatus = 2
+            self.blackBox.recordingStatus = 2
             updateButtonWithStatus()
             startSwingAnimation()
         }
@@ -289,7 +287,7 @@ class SessionViewController: UIViewController,EditFlightViewDelegate,BlackBoxDel
     
     @IBAction func resumeButtonPressed(_ sender:UIButton)
     {
-        self.loggingStatus = 2
+        self.blackBox.recordingStatus = 2
         updateButtonWithStatus()
         startRecording()
         startSwingAnimation()

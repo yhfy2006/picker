@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 
-class LoggingViewController: UIViewController {
+
+class LoggingViewController: UIViewController,BlackBoxDelegate {
 
     let centerRoundShape = CAShapeLayer()
     let centerRoundGradinentShape = CAGradientLayer()
@@ -21,11 +23,15 @@ class LoggingViewController: UIViewController {
     let ringBlue = Util.hexStringToUIColor(hex: "25BFF0").cgColor
     let buttonGrey = Util.hexStringToUIColor(hex: "979797").cgColor
     
+    // recording functions
+    let blackBox = BlackBox.sharedInstance
+    
     @IBOutlet var launchButton:UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        blackBox.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -44,12 +50,12 @@ class LoggingViewController: UIViewController {
         let radis = launchButton!.bounds.size.width/2.0 + 10
         centerRoundShape.path = Util.makeCircleAtLocation(location: self.launchButton!.center, radius: radis).cgPath
         
-        centerRoundShape.strokeColor = UIColor.white.cgColor
+        centerRoundShape.strokeColor = UIColor.purple.cgColor
         centerRoundShape.fillColor = nil
         centerRoundShape.lineWidth = 3.0
         
 //        centerRoundGradinentShape.colors = [Util.hexStringToUIColor(hex: "FF6F6F").cgColor,Util.hexStringToUIColor(hex: "419BF9").cgColor]
-        centerRoundGradinentShape.colors = [ringBlue,UIColor.red.cgColor]
+        centerRoundGradinentShape.colors = [UIColor.red.cgColor,ringBlue]
         centerRoundGradinentShape.frame = view.layer.frame
         
 //        centerRoundGradinentShape.startPoint = CGPoint(x: 0.5, y: 1)
@@ -97,23 +103,16 @@ class LoggingViewController: UIViewController {
             self.statusPointView.isHidden = true
             
             
-            //            UIView.animateWithDuration(.5, animations: {
-            //                self.launchButton?.layer.position.y -= 100
-            //                self.centerRoundShape.position.y -= 100
-            //            })
-            
-            UIView.animate(withDuration: 1.0, delay: 0.0,
-                                       usingSpringWithDamping: 0.25,
-                                       initialSpringVelocity: 0.0,
-                                       options: [],
-                                       animations: {
-                                        //                                        self.centerRoundShape.transform = CATransform3DMakeScale(0.5, 0.5, 1.0)
-                                        //                                        self.launchButton?.layer.transform = CATransform3DMakeScale(0.5, 0.5, 1.0)
-                                        self.launchButton?.layer.position.y -= 100
-                                        self.centerRoundShape.position.y -= 100
-                                        
-                                        
-                }, completion: nil)
+//            UIView.animate(withDuration: 1.0, delay: 0.0,
+//                                       usingSpringWithDamping: 0.25,
+//                                       initialSpringVelocity: 0.0,
+//                                       options: [],
+//                                       animations: {
+//                                        self.launchButton?.layer.position.y -= 100
+//                                        self.centerRoundShape.position.y -= 100
+//                                        
+//                                        
+//                }, completion: nil)
         }else
         {
             
@@ -122,35 +121,39 @@ class LoggingViewController: UIViewController {
             self.centerRoundShape.strokeColor = self.ringBlue
             self.statusPointView.isHidden = false
             
-            UIView.animate(withDuration: 1.0, delay: 0.0,
-                                       usingSpringWithDamping: 0.25,
-                                       initialSpringVelocity: 0.0,
-                                       options: [],
-                                       animations: {
-                                        self.launchButton?.center = self.view.center
-                                        if(self.startRecording)
-                                        {
-                                            self.centerRoundShape.position.y += 100
-                                            //                                            self.launchButton?.layer.transform = CATransform3DMakeScale(1, 1, 1.0)
-                                            //                                            self.centerRoundShape.transform = CATransform3DMakeScale(1, 1, 1.0)
-                                            
-                                        }
-                                        
-                }, completion: nil)
-            
-            
-            //            UIView.animateWithDuration(1.0, animations: {
-            //                self.launchButton?.center = self.view.center
-            //                if(self.startRecording)
-            //                {
-            //                   self.centerRoundShape.position.y += 100
-            //                }
-            //            })
+//            UIView.animate(withDuration: 1.0, delay: 0.0,
+//                                       usingSpringWithDamping: 0.25,
+//                                       initialSpringVelocity: 0.0,
+//                                       options: [],
+//                                       animations: {
+//                                        self.launchButton?.center = self.view.center
+//                                        if(self.startRecording)
+//                                        {
+//                                            self.centerRoundShape.position.y += 100
+//                                            
+//                                        }
+//                                        
+//                }, completion: nil)
             
             self.startRecording = true
         }
         
     }
+    
+    //MARK: - BlackBox
+    func blackBoxEachSecondUpdate(_ duration: Double, distance: Double, speed: Double, heading: Double, altitude: Double)
+    {
+        // distance
+        //let distanceInMiles = String(format: "%.2f", Util.distanceInMiles(distance))
+        //print("distance:\(distanceInMiles)")
+        launchButton?.titleLabel?.text = Util.timeString(duration)
+    }
+    
+    func locationManagerGetUpdated(_ newestLocations:CLLocation)
+    {
+        
+    }
+    
 
     /*
     // MARK: - Navigation

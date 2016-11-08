@@ -15,6 +15,10 @@ import AVFoundation
 class BlackBox: NSObject {
    static let sharedInstance = BlackBox()
    
+    // status 1 = before start; 2=Recording; 3=Paused
+   var recordingStatus = 1
+    
+   
    lazy var locationManager:CLLocationManager = {
         var _locationManager = CLLocationManager()
         _locationManager.delegate = self
@@ -63,21 +67,23 @@ class BlackBox: NSObject {
         self.setupMusicPlayer()
     }
     
-    func startRecordingWithLoggingState(_ state:Int)
+    func startRecordingWithLoggingState()
     {
         isRecording = true
+        
         
         // clearup data
         stalls.removeAll()
         
         
-        if(state == 1)
+        if(recordingStatus == 1)
         {
             startTime = Date.timeIntervalSinceReferenceDate
-        }else if(state == 2)
+        }else if(recordingStatus == 2)
         {
             seconds = Date.timeIntervalSinceReferenceDate - startTime
         }
+        
         let aSelector : Selector = #selector(BlackBox.eachSecond)
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: aSelector, userInfo: nil, repeats: true)
         

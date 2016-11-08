@@ -24,13 +24,13 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="XFb-wF-yyB" secondAttribute="height" multiplier="1:1" id="yUL-Hh-EAb"/>
                     </constraints>
-                    <state key="normal" image="StartButton.png"/>
+                    <state key="normal" title="00:00:00"/>
                     <connections>
                         <action selector="launchButtonClicked" destination="-1" eventType="touchUpInside" id="cxV-v5-bvE"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.21568627450980393" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="XFb-wF-yyB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Umk-eJ-nOY"/>
                 <constraint firstItem="XFb-wF-yyB" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="1/2" id="YVf-E6-B8M"/>
@@ -39,7 +39,4 @@
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="StartButton.png" width="400" height="400"/>
-    </resources>
 </document>
