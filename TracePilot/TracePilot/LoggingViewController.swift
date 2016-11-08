@@ -97,6 +97,7 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
     @IBAction func launchButtonClicked(){
         if(self.animating)
         {
+            self.blackBox.stopRecording()
             self.statusPointView.layer.removeAllAnimations()
             self.animating = false
             self.centerRoundShape.strokeColor = self.buttonGrey
@@ -116,6 +117,7 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         }else
         {
             
+            self.blackBox.startRecordingWithLoggingState()
             self.statusPointView.layer.add(self.startAnimation, forKey: "Move7")
             self.animating = true
             self.centerRoundShape.strokeColor = self.ringBlue
@@ -147,6 +149,7 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         //let distanceInMiles = String(format: "%.2f", Util.distanceInMiles(distance))
         //print("distance:\(distanceInMiles)")
         launchButton?.titleLabel?.text = Util.timeString(duration)
+        //launchButton?.titleLabel?.textColor = UIColor.white
     }
     
     func locationManagerGetUpdated(_ newestLocations:CLLocation)
