@@ -25,6 +25,7 @@ class CCSubviewTableCell: UITableViewCell {
         collectionView?.dataSource = self
         collectionView?.delegate = self
         collectionView?.isPagingEnabled = true
+        collectionView?.backgroundColor = UIColor.black
         self.contentView.addSubview(collectionView!)
         
         collectionView?.snp.makeConstraints { (make) -> Void in
@@ -86,7 +87,7 @@ extension CCSubviewTableCell : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 0.0
     }
     
     func collectionView(_ collectionView: UICollectionView,

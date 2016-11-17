@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreMotion
 
 
 class LoggingViewController: UIViewController,BlackBoxDelegate {
@@ -27,6 +28,9 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
     let blackBox = BlackBox.sharedInstance
     
     @IBOutlet var launchButton:UIButton?
+    @IBOutlet var speedLabel:UILabel?
+    @IBOutlet var altitudeLabel:UILabel?
+    @IBOutlet var headingLabel:UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +153,18 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         //let distanceInMiles = String(format: "%.2f", Util.distanceInMiles(distance))
         //print("distance:\(distanceInMiles)")
         launchButton?.titleLabel?.text = Util.timeString(duration)
+        
+        self.speedLabel?.text =  String(format: "%.1f mph", speed)
+        
+        if CMAltimeter.isRelativeAltitudeAvailable()
+        {
+            self.altitudeLabel?.text = altitude == DBL_MAX ? "-" : String(format: "%.2f", altitude);
+        }else
+        {
+            self.altitudeLabel?.text = "-"
+        }
+        
+        self.headingLabel?.text = String(format: "%.1f °", heading);
         //launchButton?.titleLabel?.textColor = UIColor.white
     }
     

@@ -14,7 +14,7 @@ class CCAllDrectionViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = UIColor.white
+        self.tableView.backgroundColor = UIColor.black
         self.tableView.isPagingEnabled = true
         self.componentViewConfig();
         
@@ -109,9 +109,12 @@ class CCAllDrectionViewController: UITableViewController {
         viewFactory.row = 2
         viewFactory.column = 2
         let logginVC = LoggingViewController()
+        let cameraViewVC = CameraViewController()
         
-        self.addChildViewController(logginVC)
+        
+        //self.addChildViewController(logginVC)
         viewFactory.addVCTo(row: 0, col: 0, controller: logginVC)
+        viewFactory.addVCTo(row: 0, col: 1, controller: cameraViewVC)
     }
 
 }

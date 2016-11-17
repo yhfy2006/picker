@@ -210,7 +210,7 @@ extension BlackBox:CLLocationManagerDelegate{
                 {
                     let firstLocation = self.locations.last
                     distance += location.distance(from: firstLocation!)
-                    speed = Util.mps2Knot(location.speed)
+                    speed = Util.mps2mph(location.speed)
                     heading = location.course
                 }
                 //sace location

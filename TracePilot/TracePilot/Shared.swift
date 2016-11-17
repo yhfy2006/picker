@@ -139,6 +139,11 @@ class Util:NSObject{
         return speed * 1.94384
     }
     
+    static func mps2mph(_ speed:Double)->Double
+    {
+        return speed * 2.23694
+    }
+    
     static func distanceInMiles(_ value:Double)->Double
     {
         let distanceQuantity = HKQuantity(unit: HKUnit.meter(), doubleValue: value)
