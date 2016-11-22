@@ -15,8 +15,9 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
 
     let centerRoundShape = CAShapeLayer()
     let centerRoundGradinentShape = CAGradientLayer()
-    var statusPointView = UIView()
+    var statusPointView:UIImageView?
     var startAnimation = CAKeyframeAnimation(keyPath: "position")
+    var ringColorChangeAnimation = CABasicAnimation(keyPath: "colors")
     
     var startRecording = false
     var animating = false
@@ -41,7 +42,13 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        ringColorChangeAnimation.duration = 2.0
+        ringColorChangeAnimation.toValue = [ringBlue]
+        ringColorChangeAnimation.fillMode = kCAFillModeForwards
+        ringColorChangeAnimation.isRemovedOnCompletion = false
         initView()
+        
+        
         
     }
 
@@ -58,23 +65,18 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         centerRoundShape.fillColor = nil
         centerRoundShape.lineWidth = 3.0
         
-//        centerRoundGradinentShape.colors = [Util.hexStringToUIColor(hex: "FF6F6F").cgColor,Util.hexStringToUIColor(hex: "419BF9").cgColor]
         centerRoundGradinentShape.colors = [UIColor.red.cgColor,ringBlue]
         centerRoundGradinentShape.frame = view.layer.frame
+        centerRoundGradinentShape.backgroundColor = ringBlue
         
-//        centerRoundGradinentShape.startPoint = CGPoint(x: 0.5, y: 1)
-//        centerRoundGradinentShape.endPoint = CGPoint(x:0.5,y:0)
         view.layer.addSublayer(centerRoundGradinentShape)
         centerRoundGradinentShape.mask = centerRoundShape
-        //centerRoundShape.frame = CGRectMake(0, 0, launchButton!.bounds.size.width/2.0 + 10, launchButton!.bounds.size.width/2.0 + 10)
-        //self.launchButton?.layer.addSublayer(centerRoundShape)
-        
-        //view.layer.addSublayer(centerRoundShape)
+
         
         // start building animation path
         let startingPoint = CGPoint(x:self.launchButton!.center.x, y:self.launchButton!.center.y - radis)
         let orbit = CAKeyframeAnimation(keyPath:"position")
-        orbit.duration = 5
+        orbit.duration = 60
         
         orbit.path = CGPath(ellipseIn: centerRoundShape.path!.boundingBoxOfPath,transform: nil)
         orbit.calculationMode = kCAAnimationPaced
@@ -91,10 +93,12 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         aView.layer.borderColor = self.ringBlue
         aView.layer.borderWidth = 2.0
         
-        self.statusPointView = aView
-        self.statusPointView.center = startingPoint
-        self.view.addSubview(self.statusPointView)
-        self.statusPointView.isHidden = true
+        let icon_size = launchButton!.bounds.size.width/4.0
+        self.statusPointView = UIImageView(frame: CGRect(x: 0, y: 0, width: icon_size, height: icon_size))
+        self.statusPointView?.image = UIImage(named: "SmallAirPlane")
+        self.statusPointView!.center = startingPoint
+        self.view.addSubview(self.statusPointView!)
+        self.statusPointView!.isHidden = true
         
     }
 
@@ -102,46 +106,34 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         if(self.animating)
         {
             self.blackBox.stopRecording()
-            self.statusPointView.layer.removeAllAnimations()
+            self.statusPointView!.layer.removeAllAnimations()
             self.animating = false
             self.centerRoundShape.strokeColor = self.buttonGrey
-            self.statusPointView.isHidden = true
+            self.statusPointView!.isHidden = true
+            centerRoundGradinentShape.colors = [UIColor.red.cgColor,ringBlue]
             
-            
-//            UIView.animate(withDuration: 1.0, delay: 0.0,
-//                                       usingSpringWithDamping: 0.25,
-//                                       initialSpringVelocity: 0.0,
-//                                       options: [],
-//                                       animations: {
-//                                        self.launchButton?.layer.position.y -= 100
-//                                        self.centerRoundShape.position.y -= 100
-//                                        
-//                                        
-//                }, completion: nil)
         }else
         {
             
             self.blackBox.startRecordingWithLoggingState()
-            self.statusPointView.layer.add(self.startAnimation, forKey: "Move7")
+            self.statusPointView!.layer.add(self.startAnimation, forKey: "Move7")
             self.animating = true
             self.centerRoundShape.strokeColor = self.ringBlue
-            self.statusPointView.isHidden = false
-            
-//            UIView.animate(withDuration: 1.0, delay: 0.0,
-//                                       usingSpringWithDamping: 0.25,
-//                                       initialSpringVelocity: 0.0,
-//                                       options: [],
-//                                       animations: {
-//                                        self.launchButton?.center = self.view.center
-//                                        if(self.startRecording)
-//                                        {
-//                                            self.centerRoundShape.position.y += 100
-//                                            
-//                                        }
-//                                        
-//                }, completion: nil)
-            
+            self.statusPointView!.isHidden = false
             self.startRecording = true
+            centerRoundGradinentShape.colors = [ringBlue]
+            
+//            UIView.animate(withDuration: 2.0, delay: 0.0,
+//                                                   usingSpringWithDamping: 0.25,
+//                                                   initialSpringVelocity: 0.0,
+//                                                   options: [],
+//                                                   animations: {
+//                                                    self.centerRoundGradinentShape.colors = [self.ringBlue]
+//            
+//                                                    
+//                            }, completion: nil)
+            
+//            self.centerRoundGradinentShape.add(self.ringColorChangeAnimation, forKey: "colorChange")
         }
         
     }
@@ -152,6 +144,7 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         // distance
         //let distanceInMiles = String(format: "%.2f", Util.distanceInMiles(distance))
         //print("distance:\(distanceInMiles)")
+        launchButton?.setTitleColor(UIColor.white, for: .normal)
         launchButton?.titleLabel?.text = Util.timeString(duration)
         
         self.speedLabel?.text =  String(format: "%.1f mph", speed)
@@ -166,6 +159,7 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         
         self.headingLabel?.text = String(format: "%.1f °", heading);
         //launchButton?.titleLabel?.textColor = UIColor.white
+
     }
     
     func locationManagerGetUpdated(_ newestLocations:CLLocation)
