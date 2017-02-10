@@ -28,15 +28,20 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
     // recording functions
     let blackBox = BlackBox.sharedInstance
     
+    @IBOutlet var finishButtonView:UIView?
+    @IBOutlet var finisheButton:UIButton?
+    
     @IBOutlet var launchButton:UIButton?
     @IBOutlet var speedLabel:UILabel?
     @IBOutlet var altitudeLabel:UILabel?
     @IBOutlet var headingLabel:UILabel?
+    @IBOutlet var timeCountingLable:UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         blackBox.delegate = self
+        timeCountingLable?.text = "Start"
         // Do any additional setup after loading the view.
     }
     
@@ -118,7 +123,7 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
             self.blackBox.startRecordingWithLoggingState()
             self.statusPointView!.layer.add(self.startAnimation, forKey: "Move7")
             self.animating = true
-            self.centerRoundShape.strokeColor = self.ringBlue
+            //self.centerRoundShape.strokeColor = self.ringBlue
             self.statusPointView!.isHidden = false
             self.startRecording = true
             centerRoundGradinentShape.colors = [ringBlue]
@@ -144,9 +149,12 @@ class LoggingViewController: UIViewController,BlackBoxDelegate {
         // distance
         //let distanceInMiles = String(format: "%.2f", Util.distanceInMiles(distance))
         //print("distance:\(distanceInMiles)")
-        launchButton?.setTitleColor(UIColor.white, for: .normal)
-        launchButton?.titleLabel?.text = Util.timeString(duration)
-        
+        timeCountingLable?.text = Util.timeString(duration)
+        //launchButton?.titleLabel?.text = Util.timeString(duration)
+        //launchButton?.setTitleColor(UIColor.white)
+        //launchButton?.titleLabel?.textColor = UIColor.white
+
+
         self.speedLabel?.text =  String(format: "%.1f mph", speed)
         
         if CMAltimeter.isRelativeAltitudeAvailable()

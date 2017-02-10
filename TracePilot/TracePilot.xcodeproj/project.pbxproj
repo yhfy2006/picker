@@ -32,6 +32,7 @@
 		FC0B92BE1CD3F8BF008E2ED7 /* Maneuvers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0B92BD1CD3F8BF008E2ED7 /* Maneuvers.swift */; };
 		FC0B92C01CD40128008E2ED7 /* DataAnalysor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0B92BF1CD40128008E2ED7 /* DataAnalysor.swift */; };
 		FC0B92C21CD40F64008E2ED7 /* DataAnalysorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0B92C11CD40F64008E2ED7 /* DataAnalysorReport.swift */; };
+		FC4F88E41E4E62E800DE11AB /* Continue.png in Resources */ = {isa = PBXBuildFile; fileRef = FC4F88E31E4E62E800DE11AB /* Continue.png */; };
 		FC66849F1C88EE29007DF2F9 /* TakePhotoRect.png in Resources */ = {isa = PBXBuildFile; fileRef = FC66849E1C88EE29007DF2F9 /* TakePhotoRect.png */; };
 		FC6684A31C88F6FB007DF2F9 /* EditFlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */; };
 		FC6684A51C88FB24007DF2F9 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6684A41C88FB24007DF2F9 /* FeedViewController.swift */; };
@@ -170,6 +171,7 @@
 		FC0B92BD1CD3F8BF008E2ED7 /* Maneuvers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maneuvers.swift; sourceTree = "<group>"; };
 		FC0B92BF1CD40128008E2ED7 /* DataAnalysor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAnalysor.swift; sourceTree = "<group>"; };
 		FC0B92C11CD40F64008E2ED7 /* DataAnalysorReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAnalysorReport.swift; sourceTree = "<group>"; };
+		FC4F88E31E4E62E800DE11AB /* Continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Continue.png; sourceTree = "<group>"; };
 		FC66849E1C88EE29007DF2F9 /* TakePhotoRect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TakePhotoRect.png; sourceTree = "<group>"; };
 		FC6684A21C88F6FB007DF2F9 /* EditFlightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditFlightViewController.swift; sourceTree = "<group>"; };
 		FC6684A41C88FB24007DF2F9 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 		4533B4CF1C8656F600CCBE63 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FC4F88E31E4E62E800DE11AB /* Continue.png */,
 				FC7ED5951DDD1A6D00E34E7A /* ShutterIcon.png */,
 				FC7ED58F1DDD138500E34E7A /* HeadingIcon.png */,
 				FC7ED58D1DDD112700E34E7A /* SpeedIcon.png */,
@@ -489,6 +492,7 @@
 				FC8C3FD61DC8F27D00B4D5DC /* LoggingViewController.xib in Resources */,
 				45FC60991C96512900ADBBB8 /* FeelinGood.mp3 in Resources */,
 				4533B4BF1C86439C00CCBE63 /* Assets.xcassets in Resources */,
+				FC4F88E41E4E62E800DE11AB /* Continue.png in Resources */,
 				4533B4D31C86584E00CCBE63 /* plane-front-view.png in Resources */,
 				4533B4BD1C86439C00CCBE63 /* Main.storyboard in Resources */,
 				FC7ED58C1DDD106D00E34E7A /* AltitudeIcon.png in Resources */,
