@@ -1,16 +1,20 @@
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'RealmSwift', :git => 'https://github.com/realm/realm-cocoa.git', :branch => 'master', submodules: true
-pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
-pod 'EasyAnimation',:git => 'https://github.com/icanzilb/EasyAnimation', :branch => 'swift3'
-pod 'TransitionTreasury', :git => 'https://github.com/DianQK/TransitionTreasury.git', :branch => 'swift3'
-pod 'Charts',:git => 'https://github.com/danielgindi/Charts.git', :branch => 'master'
-pod 'CSwiftV',:git => 'https://github.com/Daniel1of1/CSwiftV', :branch => 'master'
-pod 'AFDateHelper',:git => 'https://github.com/melvitax/DateHelper.git', :branch => 'master'
-pod 'SwiftDate', '~> 4.0'
-pod 'Observable-Swift',:git => 'https://github.com/Vaseltior/Observable-Swift.git', :branch => 'master'
-pod 'SnapKit', '~> 3.0.2'
+
+target 'TracePilot' do
+    pod 'RealmSwift'
+    pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
+    pod 'EasyAnimation',:git => 'https://github.com/icanzilb/EasyAnimation', :branch => 'swift3'
+    pod 'Charts',:git => 'https://github.com/danielgindi/Charts.git', :branch => 'master'
+    pod 'CSwiftV',:git => 'https://github.com/Daniel1of1/CSwiftV', :branch => 'master'
+    pod 'AFDateHelper',:git => 'https://github.com/melvitax/DateHelper.git', :branch => 'master'
+    pod 'SwiftDate', '~> 4.0'
+    pod 'Observable-Swift',:git => 'https://github.com/Vaseltior/Observable-Swift.git', :branch => 'master'
+    pod 'SnapKit', '~> 3.0.2'
+    pod 'TransitionTreasury', :git => 'https://github.com/DianQK/TransitionTreasury.git', :branch => 'swift3'
+end
+
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

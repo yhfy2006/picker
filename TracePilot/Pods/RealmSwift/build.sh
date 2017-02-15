@@ -35,8 +35,6 @@ if ! [ -z "${JENKINS_HOME}" ]; then
     CODESIGN_PARAMS="CODE_SIGN_IDENTITY= CODE_SIGNING_REQUIRED=NO"
 fi
 
-export REALM_SKIP_DEBUGGER_CHECKS=YES
-
 usage() {
 cat <<EOF
 Usage: sh $0 command [argument]
@@ -291,14 +289,13 @@ kill_object_server() {
 }
 
 download_object_server() {
-    local archive_name="realm-object-server-bundled_node_darwin-$REALM_OBJECT_SERVER_VERSION.tar.gz"
+    local archive_name="realm-object-server-bundled_node_darwin-developer-$REALM_OBJECT_SERVER_VERSION.tar.gz"
     curl -L -O "https://static.realm.io/downloads/object-server/$archive_name"
     rm -rf sync
     mkdir sync
     tar xf $archive_name -C sync
     rm $archive_name
-    echo "\nenterprise:\n  skip_setup: true" >> "sync/object-server/configuration.yml"
-    sed -i '' -e "s/    listen_address: '0\.0\.0\.0'/    listen_address: '::'/" "sync/object-server/configuration.yml"
+    cp Configuration/object-server-config.yml sync/object-server/configuration.yml
     touch "sync/object-server/do_not_open_browser"
 }
 
@@ -409,6 +406,7 @@ case "$COMMAND" in
     "reset-object-server-between-tests")
         # Leave the server files alone to avoid 'bad_server_ident' errors
         rm -rf "~/Library/Application Support/xctest"
+        rm -rf "~/Library/Application Support/io.realm.TestHost"
         rm -rf "~/Library/Application Support/xctest-child"
         exit 0
         ;;
@@ -644,7 +642,7 @@ case "$COMMAND" in
         ;;
 
     "test-ios-devices-objc")
-        test_devices iphoneos "Realm iOS static" "$CONFIGURATION"
+        test_devices iphoneos "Realm" "$CONFIGURATION"
         exit $?
         ;;
 
@@ -865,6 +863,7 @@ case "$COMMAND" in
         xc "-workspace $workspace -scheme GroupedTableView -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
         xc "-workspace $workspace -scheme RACTableView -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
         xc "-workspace $workspace -scheme Encryption -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
+        xc "-workspace $workspace -scheme Draw -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
 
         if [ ! -z "${JENKINS_HOME}" ]; then
             xc "-workspace $workspace -scheme Extension -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
@@ -874,9 +873,6 @@ case "$COMMAND" in
         ;;
 
     "examples-ios-swift")
-        if [ "$REALM_SWIFT_VERSION" == "2.3" ]; then # Skip Swift 2.3 examples for now.
-            exit 0
-        fi
         sh build.sh prelaunch-simulator
         workspace="examples/ios/swift-$REALM_SWIFT_VERSION/RealmExamples.xcworkspace"
         xc "-workspace $workspace -scheme Simple -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
@@ -885,10 +881,6 @@ case "$COMMAND" in
         xc "-workspace $workspace -scheme Encryption -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
         xc "-workspace $workspace -scheme Backlink -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
         xc "-workspace $workspace -scheme GroupedTableView -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
-        if [ "$REALM_SWIFT_VERSION" == "2.2" ]; then # Only Swift 2.2 has the ReactKitTableView example
-            pod install --project-directory="$workspace/.." --no-repo-update
-            xc "-workspace $workspace -scheme ReactKitTableView -configuration $CONFIGURATION -destination 'name=iPhone 6' build ${CODESIGN_PARAMS}"
-        fi
         exit 0
         ;;
 
@@ -904,9 +896,6 @@ case "$COMMAND" in
         ;;
 
     "examples-tvos-swift")
-        if [ "$REALM_SWIFT_VERSION" == "2.3" ]; then # Skip Swift 2.3 examples for now.
-            exit 0
-        fi
         workspace="examples/tvos/swift-$REALM_SWIFT_VERSION/RealmExamples.xcworkspace"
         xc "-workspace $workspace -scheme DownloadCache -configuration $CONFIGURATION -destination 'name=Apple TV 1080p' build ${CODESIGN_PARAMS}"
         xc "-workspace $workspace -scheme PreloadedData -configuration $CONFIGURATION -destination 'name=Apple TV 1080p' build ${CODESIGN_PARAMS}"
@@ -999,10 +988,11 @@ EOM
           mkdir -p include
           mv core/include include/core
 
-          mkdir -p include/impl/apple
-          mkdir -p include/util/apple
+          mkdir -p include/impl/apple include/util/apple include/sync/impl
           cp Realm/*.hpp include
           cp Realm/ObjectStore/src/*.hpp include
+          cp Realm/ObjectStore/src/sync/*.hpp include/sync
+          cp Realm/ObjectStore/src/sync/impl/*.hpp include/sync/impl
           cp Realm/ObjectStore/src/impl/*.hpp include/impl
           cp Realm/ObjectStore/src/impl/apple/*.hpp include/impl/apple
           cp Realm/ObjectStore/src/util/*.hpp include/util
@@ -1143,24 +1133,24 @@ EOM
 
     "package-ios-swift")
         cd tightdb_objc
-        for version in 2.2 2.3 3.0; do
+        for version in 3.0 3.0.1 3.0.2; do
             REALM_SWIFT_VERSION="$version" sh build.sh prelaunch-simulator
             REALM_SWIFT_VERSION="$version" sh build.sh ios-swift
         done
 
         cd build/ios
-        zip --symlinks -r realm-swift-framework-ios.zip swift-2.2 swift-2.3 swift-3.0
+        zip --symlinks -r realm-swift-framework-ios.zip swift-3.0 swift-3.0.1 swift-3.0.2
         ;;
 
     "package-osx-swift")
         cd tightdb_objc
-        for version in 2.2 2.3 3.0; do
+        for version in 3.0 3.0.1 3.0.2; do
             REALM_SWIFT_VERSION="$version" sh build.sh prelaunch-simulator
             REALM_SWIFT_VERSION="$version" sh build.sh osx-swift
         done
 
         cd build/osx
-        zip --symlinks -r realm-swift-framework-osx.zip swift-2.2 swift-2.3 swift-3.0
+        zip --symlinks -r realm-swift-framework-osx.zip swift-3.0 swift-3.0.1 swift-3.0.2
         ;;
 
     "package-watchos")
@@ -1173,13 +1163,13 @@ EOM
 
     "package-watchos-swift")
         cd tightdb_objc
-        for version in 2.2 2.3 3.0; do
+        for version in 3.0 3.0.1 3.0.2; do
             REALM_SWIFT_VERSION="$version" sh build.sh prelaunch-simulator
             REALM_SWIFT_VERSION="$version" sh build.sh watchos-swift
         done
 
         cd build/watchos
-        zip --symlinks -r realm-swift-framework-watchos.zip swift-2.2 swift-2.3 swift-3.0
+        zip --symlinks -r realm-swift-framework-watchos.zip swift-3.0 swift-3.0.1 swift-3.0.2
         ;;
 
     "package-tvos")
@@ -1192,13 +1182,13 @@ EOM
 
     "package-tvos-swift")
         cd tightdb_objc
-        for version in 2.2 2.3 3.0; do
+        for version in 3.0 3.0.1 3.0.2; do
             REALM_SWIFT_VERSION="$version" sh build.sh prelaunch-simulator
             REALM_SWIFT_VERSION="$version" sh build.sh tvos-swift
         done
 
         cd build/tvos
-        zip --symlinks -r realm-swift-framework-tvos.zip swift-2.2 swift-2.3 swift-3.0
+        zip --symlinks -r realm-swift-framework-tvos.zip swift-3.0 swift-3.0.1 swift-3.0.2
         ;;
 
     "package-release")
@@ -1372,7 +1362,7 @@ EOF
 x.x.x Release notes (yyyy-MM-dd)
 =============================================================
 
-### API breaking changes
+### API Breaking Changes
 
 * None.
 
